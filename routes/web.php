@@ -27,7 +27,9 @@ use App\Models\Track;
 |
 */
 
-Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
+Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
+    
     Route::group(['prefix' => 'jenis-biota', 'as' => 'jenis-biota.'], function () {
         Route::get('/', [JenisBiotaController::class,'index'])->name('index');
         Route::get('/destroy/{id}', [JenisBiotaController::class,'destroy'])->name('destroy');
@@ -112,15 +114,11 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
         });
     });
 
-    Route::group(['middleware' => ['auth']], function() {
-        Route::resource('roles', RoleController::class);
-        Route::resource('users', UserController::class);
-    });
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
 
     //Language Translation
     Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
-
-    // Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
 
     //Update User Details
     Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
