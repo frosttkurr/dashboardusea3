@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin', 
             'email' => 'admin@gmail.com',
             'password' => bcrypt('123456'),
-            'avatar' => 'zzz'
+            'avatar' => '1637834357.jpg'
         ]);
     
         $role = Role::create(['name' => 'Admin']);
@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Nelayan', 
             'email' => 'nelayan@gmail.com',
             'password' => bcrypt('123456'),
-            'avatar' => 'zzz'
+            'avatar' => '1637834357.jpg'
         ]);
         
         $role2 = Role::create(['name' => 'Nelayan']);
@@ -77,7 +77,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Team U-Fish', 
             'email' => 'team-ufish@gmail.com',
             'password' => bcrypt('123456'),
-            'avatar' => 'zzz'
+            'avatar' => '1637834357.jpg'
         ]);
         
         $role3 = Role::create(['name' => 'Team U-Fish']);
@@ -100,7 +100,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Time', 
             'email' => 'time@gmail.com',
             'password' => bcrypt('123456'),
-            'avatar' => 'zzz'
+            'avatar' => '1637834357.jpg'
         ]);
         
         $role4 = Role::create(['name' => 'Time']);
