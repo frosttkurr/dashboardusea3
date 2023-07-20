@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-10">
                         <h4 class="card-title">Biota</h4>
-                        <p class="card-title-desc">Ini biota</p>
+                        <p class="card-title-desc">Data biota yang tersedia</p>
                     </div>
                 </div>
                 </div>
@@ -38,21 +38,21 @@
 
                     <tbody>
                     @foreach($biotas as $biota)
-                    <tr>
-                        <td>{{$biota->nama_biota}}</td>
-                        <td>
-                            @if($biota->jenisBiota)
-                                {{$biota->jenisBiota['jenis_biota']}}
-                            @else
-                            -
-                            @endif
-                        </td>
-                        <td>
-                            {{$biota->deskripsi}}
-                        <td>
-                            <img src="/storage/{{$biota->image}}" height="200px" alt="zzz">
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>{{$biota->nama_biota}}</td>
+                            <td>
+                                @if($biota->jenisBiota)
+                                    {{$biota->jenisBiota['jenis_biota']}}
+                                @else
+                                -
+                                @endif
+                            </td>
+                            <td>
+                                {{$biota->deskripsi}}
+                            <td>
+                                <img src="/storage/{{$biota->image}}" height="200px" alt="zzz">
+                            </td>
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>

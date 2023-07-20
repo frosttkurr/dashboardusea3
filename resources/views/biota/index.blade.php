@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-10">
                         <h4 class="card-title">Biota</h4>
-                        <p class="card-title-desc">Ini biota</p>
+                        <p class="card-title-desc">Data biota yang tersedia</p>
                     </div>
                     <div class="col-2 text-right">
                         <a href="biota/create"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>

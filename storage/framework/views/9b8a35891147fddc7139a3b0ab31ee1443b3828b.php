@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-10">
                         <h4 class="card-title">Biota</h4>
-                        <p class="card-title-desc">Ini biota</p>
+                        <p class="card-title-desc">Data biota yang tersedia</p>
                     </div>
                 </div>
                 </div>
@@ -38,23 +38,23 @@
 
                     <tbody>
                     <?php $__currentLoopData = $biotas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $biota): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <tr>
-                        <td><?php echo e($biota->nama_biota); ?></td>
-                        <td>
-                            <?php if($biota->jenisBiota): ?>
-                                <?php echo e($biota->jenisBiota['jenis_biota']); ?>
+                        <tr>
+                            <td><?php echo e($biota->nama_biota); ?></td>
+                            <td>
+                                <?php if($biota->jenisBiota): ?>
+                                    <?php echo e($biota->jenisBiota['jenis_biota']); ?>
 
-                            <?php else: ?>
-                            -
-                            <?php endif; ?>
-                        </td>
-                        <td>
-                            <?php echo e($biota->deskripsi); ?>
+                                <?php else: ?>
+                                -
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <?php echo e($biota->deskripsi); ?>
 
-                        <td>
-                            <img src="/storage/<?php echo e($biota->image); ?>" height="200px" alt="zzz">
-                        </td>
-                    </tr>
+                            <td>
+                                <img src="/storage/<?php echo e($biota->image); ?>" height="200px" alt="zzz">
+                            </td>
+                        </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 </table>
