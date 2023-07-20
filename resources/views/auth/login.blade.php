@@ -13,13 +13,13 @@
                         <div class="d-flex flex-column h-100">
                             <div class="mb-4 mb-md-5 text-center">
                                 <a href="{{ url('/') }}" class="d-block auth-logo">
-                                    <img src="{{ URL::asset('assets/images/logo-sm.svg') }}" alt="" height="28"> <span class="logo-txt">Dason</span>
+                                    <img src="{{ URL::asset('assets/images/logo-sm.svg') }}" alt="" height="28"> <span class="logo-txt">U-Sea</span>
                                 </a>
                             </div>
                             <div class="auth-content my-auto">
                                 <div class="text-center">
-                                    <h5 class="mb-0">Welcome Back !</h5>
-                                    <p class="text-muted mt-2">Sign in to continue to Dason.</p>
+                                    <h5 class="mb-0">Selamat datang!</h5>
+                                    <p class="text-muted mt-2">Masuk untuk menggunakan U-Sea</p>
                                 </div>
                                 <form class="mt-4 pt-2" action="{{ route('login') }}" method="POST">
                                     @csrf
@@ -50,6 +50,10 @@
                                         <div class="form-floating-icon">
                                             <i data-feather="lock"></i>
                                         </div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <p class="text-muted mt-2">Belum punya akun? <a href="{{ url('/register') }}" class="text-primary">Daftar</a></p>
                                     </div>
 
                                     <div class="mb-3">

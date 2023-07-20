@@ -12,13 +12,13 @@
                         <div class="d-flex flex-column h-100">
                             <div class="mb-4 mb-md-5 text-center">
                                 <a href="{{ url('/') }}" class="d-block auth-logo">
-                                    <img src="{{ URL::asset('assets/images/logo-sm.svg') }}" alt="" height="28"> <span class="logo-txt">Dason</span>
+                                    <img src="{{ URL::asset('assets/images/logo-sm.svg') }}" alt="" height="28"> <span class="logo-txt">U-Sea</span>
                                 </a>
                             </div>
                             <div class="auth-content my-auto">
                                 <div class="text-center">
-                                    <h5 class="mb-0">Register Account</h5>
-                                    <p class="text-muted mt-2">Get your free Dason account now.</p>
+                                    <h5 class="mb-0">Daftar</h5>
+                                    <p class="text-muted mt-2">Akses U-Sea dengan mudah dan gratis</p>
                                 </div>
                                 <form class="needs-validation mt-4 pt-2" novalidate method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                                     @csrf
@@ -48,7 +48,7 @@
                                         </div>
                                     </div>
                                     <div class="form-floating form-floating-custom mb-4">
-                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password"  id="input-password" placeholder="Enter Password" required>
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="input-password" placeholder="Enter Password" required>
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -60,7 +60,7 @@
                                         </div>
                                     </div>
                                     <div class="form-floating form-floating-custom mb-4">
-                                        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation"  id="input-password" placeholder="Enter Password" required>
+                                        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="input-password" placeholder="Enter Password" required>
 
                                         <label for="input-password">Confirm Password</label>
                                         <div class="form-floating-icon">
@@ -78,48 +78,16 @@
                                             <i data-feather="file"></i>
                                         </div>
                                     </div>
-                                    <div class="mb-4">
-                                        <p class="mb-0">By registering you agree to the Dason <a href="#" class="text-primary">Terms of Use</a></p>
-                                    </div>
+
                                     <div class="mb-3">
-                                        <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Register</button>
+                                        <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Daftar Sekarang</button>
                                     </div>
                                 </form>
 
-                                <div class="mt-4 pt-2 text-center">
-                                    <div class="signin-other-title">
-                                        <h5 class="font-size-14 mb-3 text-muted fw-medium">- Sign up using -</h5>
-                                    </div>
-
-                                    <ul class="list-inline mb-0">
-                                        <li class="list-inline-item">
-                                            <a href="javascript:void()"
-                                                class="social-list-item bg-primary text-white border-primary">
-                                                <i class="mdi mdi-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="javascript:void()"
-                                                class="social-list-item bg-info text-white border-info">
-                                                <i class="mdi mdi-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="javascript:void()"
-                                                class="social-list-item bg-danger text-white border-danger">
-                                                <i class="mdi mdi-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                <div class="mt-4 text-center">
+                                    <p class="text-muted mb-0">Sudah punya akun? <a href="{{ url('login') }}"
+                                            class="text-primary fw-semibold"> Masuk </a> </p>
                                 </div>
-
-                                <div class="mt-5 text-center">
-                                    <p class="text-muted mb-0">Already have an account ? <a href="{{ url('login') }}"
-                                            class="text-primary fw-semibold"> Login </a> </p>
-                                </div>
-                            </div>
-                            <div class="mt-4 mt-md-5 text-center">
-                                <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> Dason   . Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</p>
                             </div>
                         </div>
                     </div>

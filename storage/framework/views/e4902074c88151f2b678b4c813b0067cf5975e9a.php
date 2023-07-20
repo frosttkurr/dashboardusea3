@@ -12,13 +12,13 @@
                         <div class="d-flex flex-column h-100">
                             <div class="mb-4 mb-md-5 text-center">
                                 <a href="<?php echo e(url('/')); ?>" class="d-block auth-logo">
-                                    <img src="<?php echo e(URL::asset('assets/images/logo-sm.svg')); ?>" alt="" height="28"> <span class="logo-txt">Dason</span>
+                                    <img src="<?php echo e(URL::asset('assets/images/logo-sm.svg')); ?>" alt="" height="28"> <span class="logo-txt">U-Sea</span>
                                 </a>
                             </div>
                             <div class="auth-content my-auto">
                                 <div class="text-center">
-                                    <h5 class="mb-0">Register Account</h5>
-                                    <p class="text-muted mt-2">Get your free Dason account now.</p>
+                                    <h5 class="mb-0">Daftar</h5>
+                                    <p class="text-muted mt-2">Akses U-Sea dengan mudah dan gratis</p>
                                 </div>
                                 <form class="needs-validation mt-4 pt-2" novalidate method="POST" action="<?php echo e(route('register')); ?>" enctype="multipart/form-data">
                                     <?php echo csrf_field(); ?>
@@ -83,7 +83,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="password"  id="input-password" placeholder="Enter Password" required>
+unset($__errorArgs, $__bag); ?>" name="password" id="input-password" placeholder="Enter Password" required>
                                         <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -109,7 +109,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="password_confirmation"  id="input-password" placeholder="Enter Password" required>
+unset($__errorArgs, $__bag); ?>" name="password_confirmation" id="input-password" placeholder="Enter Password" required>
 
                                         <label for="input-password">Confirm Password</label>
                                         <div class="form-floating-icon">
@@ -141,48 +141,16 @@ unset($__errorArgs, $__bag); ?>
                                             <i data-feather="file"></i>
                                         </div>
                                     </div>
-                                    <div class="mb-4">
-                                        <p class="mb-0">By registering you agree to the Dason <a href="#" class="text-primary">Terms of Use</a></p>
-                                    </div>
+
                                     <div class="mb-3">
-                                        <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Register</button>
+                                        <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Daftar Sekarang</button>
                                     </div>
                                 </form>
 
-                                <div class="mt-4 pt-2 text-center">
-                                    <div class="signin-other-title">
-                                        <h5 class="font-size-14 mb-3 text-muted fw-medium">- Sign up using -</h5>
-                                    </div>
-
-                                    <ul class="list-inline mb-0">
-                                        <li class="list-inline-item">
-                                            <a href="javascript:void()"
-                                                class="social-list-item bg-primary text-white border-primary">
-                                                <i class="mdi mdi-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="javascript:void()"
-                                                class="social-list-item bg-info text-white border-info">
-                                                <i class="mdi mdi-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="javascript:void()"
-                                                class="social-list-item bg-danger text-white border-danger">
-                                                <i class="mdi mdi-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                <div class="mt-4 text-center">
+                                    <p class="text-muted mb-0">Sudah punya akun? <a href="<?php echo e(url('login')); ?>"
+                                            class="text-primary fw-semibold"> Masuk </a> </p>
                                 </div>
-
-                                <div class="mt-5 text-center">
-                                    <p class="text-muted mb-0">Already have an account ? <a href="<?php echo e(url('login')); ?>"
-                                            class="text-primary fw-semibold"> Login </a> </p>
-                                </div>
-                            </div>
-                            <div class="mt-4 mt-md-5 text-center">
-                                <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> Dason   . Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</p>
                             </div>
                         </div>
                     </div>
