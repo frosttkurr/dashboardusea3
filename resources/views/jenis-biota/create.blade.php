@@ -18,7 +18,13 @@
                 @csrf
                     <div class="mb-4">
                         <label class="form-label" for="jenis_biota">Jenis Biota</label>
-                        <input class="form-control" type="text" id="jenis_biota" name="jenis_biota" placeholder="Jenis Biota" required>
+                        <input class="form-control @error('jenis_biota') is-invalid @enderror" type="text" id="jenis_biota" name="jenis_biota" placeholder="Jenis Biota">
+                        
+                        @error('jenis_biota')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button>

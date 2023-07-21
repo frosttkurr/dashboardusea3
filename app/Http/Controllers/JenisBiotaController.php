@@ -16,7 +16,7 @@ class JenisBiotaController extends Controller
     {
          $this->middleware('permission:jenis-biota');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +46,10 @@ class JenisBiotaController extends Controller
      */
     public function store(Request $request)
     {
-        // dd('ppp');
+        $validatedData = $request->validate([
+            'jenis_biota' => 'required|unique:jenis_biotas'
+        ]);
+        
         $new = new JenisBiota();
         $new->jenis_biota = $request->jenis_biota;
         $new->save();
@@ -86,6 +89,10 @@ class JenisBiotaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'jenis_biota' => 'required|unique:jenis_biotas'
+        ]);
+        
         $new = JenisBiota::find($id);
         $new->jenis_biota = $request->jenis_biota;
         $new->save();

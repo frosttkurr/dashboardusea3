@@ -18,7 +18,27 @@
                 <?php echo csrf_field(); ?>
                     <div class="mb-4">
                         <label class="form-label" for="jenis_biota">Jenis Biota</label>
-                        <input class="form-control" type="text" id="jenis_biota" name="jenis_biota" placeholder="Jenis Biota" required>
+                        <input class="form-control <?php $__errorArgs = ['jenis_biota'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" type="text" id="jenis_biota" name="jenis_biota" placeholder="Jenis Biota">
+                        
+                        <?php $__errorArgs = ['jenis_biota'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <span class="invalid-feedback" role="alert">
+                                <strong><?php echo e($message); ?></strong>
+                            </span>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                     </div>
 
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button>
