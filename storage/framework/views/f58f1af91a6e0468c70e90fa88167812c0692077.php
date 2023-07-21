@@ -112,7 +112,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>">
                                 <div class="fallback">
-                                    <input name="image" type="file">
+                                    <input name="image" type="file" accept=".png, .jpg, .jpeg">
                                 </div>
                             </div>
 

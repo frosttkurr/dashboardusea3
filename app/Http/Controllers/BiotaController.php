@@ -57,7 +57,7 @@ class BiotaController extends Controller
             'nama_biota' => 'required',
             'id_jenis_biota' => 'required',
             'deskripsi' => 'required',
-            'image' => ['required', 'image' ,'mimes:jpg,jpeg,png'],
+            'image' => ['required', 'image','mimes:jpg,jpeg,png'],
         ]);
 
         if (request()->has('image')) {

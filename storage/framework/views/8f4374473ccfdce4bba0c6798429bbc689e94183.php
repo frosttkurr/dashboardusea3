@@ -31,6 +31,7 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                     <tr>
+                        <th class="col-1"> No.</th>
                         <th class="col-2"> Biota</th>
                         <th class="col-2"> Jenis</th>
                         <th class="col-3"> Deskripsi</th>
@@ -41,8 +42,9 @@
 
 
                     <tbody>
-                    <?php $__currentLoopData = $biotas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $biota): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $biotas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $biota): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
+                        <td><?php echo e($key+1); ?></td>
                         <td><?php echo e($biota->nama_biota); ?></td>
                         <td>
                             <?php if($biota->jenisBiota): ?>

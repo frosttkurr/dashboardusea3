@@ -31,6 +31,7 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                     <tr>
+                        <th class="col-1"> No.</th>
                         <th class="col-2"> Biota</th>
                         <th class="col-2"> Jenis</th>
                         <th class="col-3"> Deskripsi</th>
@@ -41,8 +42,9 @@
 
 
                     <tbody>
-                    @foreach($biotas as $biota)
+                    @foreach($biotas as $key => $biota)
                     <tr>
+                        <td>{{$key+1}}</td>
                         <td>{{$biota->nama_biota}}</td>
                         <td>
                             @if($biota->jenisBiota)

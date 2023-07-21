@@ -63,7 +63,7 @@
                         <div class="card-body">
                             <div class="@error('image') is-invalid @enderror">
                                 <div class="fallback">
-                                    <input name="image" type="file">
+                                    <input name="image" type="file" accept=".png, .jpg, .jpeg">
                                 </div>
                             </div>
 
