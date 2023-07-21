@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-10">
                         <h4 class="card-title">Laporan Nelayan</h4>
-                        <p class="card-title-desc">Ini Laporan Nelayan</p>
+                        <p class="card-title-desc">Data laporan nelayan yang tersedia</p>
                     </div>
                     <div class="col-2 text-right">
                         <a href="laporan-nelayan/create"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
