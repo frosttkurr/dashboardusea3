@@ -27,7 +27,7 @@ use App\Models\Track;
 |
 */
 
-Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
     
     Route::group(['prefix' => 'jenis-biota', 'as' => 'jenis-biota.'], function () {

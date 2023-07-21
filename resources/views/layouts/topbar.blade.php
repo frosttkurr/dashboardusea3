@@ -283,7 +283,7 @@
         </div>
         @else
         <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top sticky-navigation">
-            <a class="navbar-brand mx-auto" href="index.html">
+            <a class="navbar-brand mx-auto" href="{{ url('/dashboard/laporan-nelayan') }}">
                 U-SEA
             </a>
             <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" 
