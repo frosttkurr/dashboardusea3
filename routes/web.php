@@ -28,8 +28,6 @@ use App\Models\Track;
 */
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
-
     Route::group(['prefix' => 'biota', 'as' => 'biota.'], function () {
         Route::get('/', [BiotaController::class,'indexNelayan'])->name('index');
     });
@@ -64,6 +62,8 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
 
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
+    
     Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
         Route::group(['prefix' => 'jenis-biota', 'as' => 'jenis-biota.'], function () {
             Route::get('/', [JenisBiotaController::class,'index'])->name('index');
