@@ -63,7 +63,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::group(['prefix' => 'jenis-biota', 'as' => 'jenis-biota.'], function () {
             Route::get('/', [JenisBiotaController::class,'index'])->name('index');
-            Route::get('/destroy/{id}', [JenisBiotaController::class,'destroy'])->name('destroy');
+            Route::delete('/destroy/{id}', [JenisBiotaController::class,'destroy'])->name('destroy');
             Route::get('/show{id}', [JenisBiotaController::class,'show'])->name('show');
             Route::get('/edit/{id}', [JenisBiotaController::class,'edit'])->name('edit');
             Route::get('/create', [JenisBiotaController::class,'create'])->name('create');

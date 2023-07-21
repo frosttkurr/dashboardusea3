@@ -1,5 +1,6 @@
 <header id="page-topbar">
-    
+    <script src="{{ asset('js/sweetalert2.js') }}"></script>
+
     <div class="navbar-header">
     @if (Auth::check())
         <div class="d-flex">

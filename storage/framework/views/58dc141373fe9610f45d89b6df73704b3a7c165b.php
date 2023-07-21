@@ -1,5 +1,6 @@
 <header id="page-topbar">
-    
+    <script src="<?php echo e(asset('js/sweetalert2.js')); ?>"></script>
+
     <div class="navbar-header">
     <?php if(Auth::check()): ?>
         <div class="d-flex">
