@@ -32,7 +32,7 @@ class TrackController extends Controller
     public function indexNelayan()
     {
         $tracks = Track::all();
-        return view('track.index', compact("tracks"));
+        return view('track.nelayan.index', compact("tracks"));
     }
 
     /**

@@ -23,7 +23,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo e(route('dashboard.report.nelayan')); ?>">
+                        <a href="<?php echo e(route('dashboard.track.report.nelayan')); ?>">
                             <i data-feather="activity"></i>
                             <span data-key="t-dashboard">Lihat Report Biota</span>
                         </a>

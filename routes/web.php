@@ -46,15 +46,11 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
         Route::get('/', [KondisiPerairanController::class,'indexNelayan'])->name('index');
     });
 
-
-    Route::get('/report-biota', [TrackController::class,'indexNelayan'])->name('report.nelayan');
-
     Route::group(['prefix' => 'track', 'as' => 'track.'], function () {
-        Route::get('/', [TrackController::class,'index'])->name('index');
-        Route::get('/show{id}', [TrackController::class,'show'])->name('show');
+        Route::get('/report-biota', [TrackController::class,'indexNelayan'])->name('report.nelayan');
 
         Route::group(['prefix' => 'detail/{id}', 'as' => 'detail.'], function () {
-            Route::get('/', [TrackDetailController::class,'index'])->name('index');
+            Route::get('/', [TrackDetailController::class,'indexNelayan'])->name('index');
             Route::get('/show{detail}', [TrackDetailController::class,'show'])->name('show');
         });
     });

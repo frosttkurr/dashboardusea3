@@ -19,13 +19,8 @@
                 <div class="row">
                     <div class="col-10">
                         <h4 class="card-title">Track Detail</h4>
-                        <p class="card-title-desc">Data track detail nelayan</p>
+                        <p class="card-title-desc">Data track detail biodata</p>
                     </div>
-                    @can('track')
-                    <div class="col-2 text-right">
-                        <a href="/dashboard/track/detail/{{$trackId}}/create"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
-                    </div>
-                    @endcan
                 </div>
                 </div>
             <div class="card-body">
