@@ -31,7 +31,7 @@ class BiotaController extends Controller
     public function indexNelayan()
     {
         $biotas = Biota::all();
-        return view('biota.indexNelayan', compact("biotas"));
+        return view('biota.nelayan.index', compact("biotas"));
     }
 
     /**
