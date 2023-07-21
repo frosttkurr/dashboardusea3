@@ -6,6 +6,7 @@ use App\Models\Biota;
 use App\Models\Lokasi;
 use App\Models\TrackDetail;
 use Illuminate\Http\Request;
+use Auth;
 
 class TrackDetailController extends Controller
 {
@@ -19,7 +20,12 @@ class TrackDetailController extends Controller
     {
         $trackId = $id;
         $trackDetails = TrackDetail::where('id_track', $id)->get();
-        return view('track.detail.index', compact("trackDetails", "trackId"));
+
+        if (Auth::user()) {
+            return view('track.detail.index', compact("trackDetails", "trackId"));
+        } else {
+            return view('track.nelayan.detail.index', compact("trackDetails", "trackId"));
+        }
     }
 
     /**

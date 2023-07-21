@@ -21,14 +21,8 @@
                         <h4 class="card-title">Track</h4>
                         <p class="card-title-desc">Detail data track biodata yang tersedia</p>
                     </div>
-                    
-                    @can('track')
-                    <div class="col-2 text-right">
-                        <a href="track/create"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
-                    </div>
-                    @endcan
                 </div>
-                </div>
+            </div>
             <div class="card-body">
 
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
@@ -53,11 +47,7 @@
                             @endif
                         </td>
                         <td>
-                            @can('track')
-                                <a href="track/edit/{{$track->id}}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
-                                <a onclick="return confirm ('Hapus data?')" href="track/destroy/{{$track->id}}"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
-                            @endcan
-                            <a href="track/detail/{{$track->id}}"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Detail</button></a>
+                            <a href="{{ route('dashboard.track.detail.index', $track->id) }}"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Detail</button></a>
                         </td>
                     </tr>
                     @endforeach
