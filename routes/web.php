@@ -155,5 +155,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 Route::get('/', function () {
     return view('landing');
-});
+})->name('home');
 Auth::routes();

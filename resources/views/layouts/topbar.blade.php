@@ -293,9 +293,9 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#about">Tentang Kami</a>
+                        <a class="nav-link page-scroll" href="{{ route('home') }}">Homepage</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link page-scroll" href="#services">Fitur</a>
                     </li>
                     <li class="nav-item">
@@ -303,14 +303,14 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="#blog">Blog</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="/dashboard/biota/nelayan">Akses Nelayan</a>
                     </li>
                 </ul>
-                <form class="form-inline">
+                {{-- <form class="form-inline">
                     <p class="mb-0 mx-3"><a class="page-scroll font-weight-bold" href="#contact">Hubungi Kami</a></p>
-                </form>
+                </form> --}}
             </div>
         </nav>
         @endif

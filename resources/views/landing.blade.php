@@ -42,7 +42,7 @@
                         <a class="nav-link page-scroll" href="#blog">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="/dashboard/biota/nelayan">Akses Nelayan</a>
+                        <a class="nav-link page-scroll" href="{{ route('dashboard.biota.index') }}">Akses Nelayan</a>
                     </li>
                 </ul>
                 <form class="form-inline">
