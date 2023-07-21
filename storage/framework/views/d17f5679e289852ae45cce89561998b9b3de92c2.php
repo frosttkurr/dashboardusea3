@@ -93,7 +93,7 @@
                     <?php endif; ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('track')): ?>
                         <li>
-                            <a href="/dashboard/track">
+                            <a href="<?php echo e(route('admin.dashboard.track.index')); ?>">
                                 <i data-feather="activity"></i>
                                 <span data-key="t-dashboard">Report Biota</span>
                             </a>

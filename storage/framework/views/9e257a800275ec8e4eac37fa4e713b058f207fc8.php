@@ -24,7 +24,7 @@
                     
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('track')): ?>
                     <div class="col-2 text-right">
-                        <a href="track/create"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
+                        <a href="<?php echo e(route('admin.dashboard.track.create')); ?>"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
                     </div>
                     <?php endif; ?>
                 </div>
@@ -34,6 +34,7 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                     <tr>
+                        <th class="col-1">No.</th>
                         <th class="col-4">Tanggal</th>
                         <th class="col-4">Status</th>
                         <th class="col-4">Action</th>
@@ -42,9 +43,10 @@
 
 
                     <tbody>
-                    <?php $__currentLoopData = $tracks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $track): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $tracks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $track): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        <td><?php echo e($track->tanggal); ?></td>
+                        <td><?php echo e($key+1); ?></td>
+                        <td><?php echo e(date('d-M-Y', strtotime($track->tanggal))); ?></td>
                         <td>
                             <?php if($track->is_valid == 0): ?>
                                 Belum Valid
@@ -54,10 +56,10 @@
                         </td>
                         <td>
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('track')): ?>
-                                <a href="track/edit/<?php echo e($track->id); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
+                                <a href="<?php echo e(route('admin.dashboard.track.edit', $track->id)); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
                                 <a onclick="return confirm ('Hapus data?')" href="track/destroy/<?php echo e($track->id); ?>"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
                             <?php endif; ?>
-                            <a href="track/detail/<?php echo e($track->id); ?>"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Detail</button></a>
+                            <a href="<?php echo e(route('admin.dashboard.track.detail.index', $track->id)); ?>"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Detail</button></a>
                         </td>
                     </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

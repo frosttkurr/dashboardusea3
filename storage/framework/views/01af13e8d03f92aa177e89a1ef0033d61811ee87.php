@@ -11,16 +11,35 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Sizing</h4>
-                <p class="card-title-desc">Set heights using classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.</p>
+                <h4 class="card-title">Silahkan tambah data track/report biota disini.</h4>
+                <p class="card-title-desc">Harap isi semua data dengan lengkap agar informasi yang diberikan sesuai.</p>
             </div>
             <div class="card-body">
-                <form action="<?php echo e(route('dashboard.track.store')); ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo e(route('admin.dashboard.track.store')); ?>" method="POST" enctype="multipart/form-data">
                 <?php echo csrf_field(); ?>
                     <div class="mb-4">
                         <label class="form-label" for="isi_laporan">Tanggal</label>
-                        <?php echo Form::date('tanggal', \Carbon\Carbon::now(), ['class' => 'form-control']); ?>
-
+                        <input name="tanggal" id="tanggal" class="form-control <?php $__errorArgs = ['tanggal'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(\Carbon\Carbon::now()->format('Y-m-d')); ?>" type="date">
+                    
+                        <?php $__errorArgs = ['tanggal'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <span class="invalid-feedback" role="alert">
+                                <strong><?php echo e($message); ?></strong>
+                            </span>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                     </div>
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button>
                 </form>

@@ -93,7 +93,7 @@
                     @endcan
                     @can('track')
                         <li>
-                            <a href="/dashboard/track">
+                            <a href="{{ route('admin.dashboard.track.index') }}">
                                 <i data-feather="activity"></i>
                                 <span data-key="t-dashboard">Report Biota</span>
                             </a>

@@ -47,7 +47,7 @@
                         <?php $__currentLoopData = $kondisiPerairans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $kondisi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
                                 <td><?php echo e($key+1); ?></td>
-                                <td><?php echo e($kondisi->tanggal); ?></td>
+                                <td><?php echo e(date('d-M-Y', strtotime($kondisi->tanggal))); ?></td>
                                 <td><?php echo e($kondisi->lokasi->nama_lokasi); ?></td>
                                 <td><?php echo e($kondisi->kondisi); ?></td>
                                 <td><?php echo e($kondisi->uraian); ?></td>

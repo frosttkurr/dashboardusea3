@@ -53,13 +53,17 @@ class TrackController extends Controller
      */
     public function store(Request $request)
     {
+        $validateData = $request->validate([
+            'tanggal' => 'required'
+        ]);
+
         $new = new Track();
         $new->id_staff = Auth::user()->id;
         $new->tanggal = $request->tanggal;
         $new->is_valid = 0;
         $new->save();
 
-        return redirect()->route('dashboard.track.detail.index', $new->id);
+        return redirect()->route('admin.dashboard.track.detail.index', $new->id);
     }
 
     /**
@@ -94,11 +98,15 @@ class TrackController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validateData = $request->validate([
+            'tanggal' => 'required'
+        ]);
+
         $new = Track::find($id);
         $new->tanggal = $request->tanggal;
         $new->save();
 
-        return redirect()->route('dashboard.track.index');
+        return redirect()->route('admin.dashboard.track.index');
     }
 
     /**
@@ -112,6 +120,6 @@ class TrackController extends Controller
         $lokasi = Track::find($id);
         $lokasi->delete();
 
-        return redirect()->route('dashboard.track.index');
+        return redirect()->route('admin.dashboard.track.index');
     }
 }

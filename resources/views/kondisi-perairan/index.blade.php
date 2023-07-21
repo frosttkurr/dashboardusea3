@@ -47,7 +47,7 @@
                         @foreach($kondisiPerairans as $key => $kondisi)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{$kondisi->tanggal}}</td>
+                                <td>{{date('d-M-Y', strtotime($kondisi->tanggal))}}</td>
                                 <td>{{$kondisi->lokasi->nama_lokasi}}</td>
                                 <td>{{$kondisi->kondisi}}</td>
                                 <td>{{$kondisi->uraian}}</td>
