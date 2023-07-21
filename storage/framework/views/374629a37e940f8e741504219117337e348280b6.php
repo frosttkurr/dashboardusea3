@@ -1,5 +1,5 @@
 
-<?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.Basic_Elements'); ?>  <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> Edit Biota <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <?php $__env->startComponent('components.breadcrumb'); ?>
 <?php $__env->slot('li_1'); ?> Biota <?php $__env->endSlot(); ?>
@@ -129,7 +129,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                         </div>
                     </div>
-                    <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Update Data</button>
+                    <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Ubah Data</button>
                 </form>
             </div>
         </div>

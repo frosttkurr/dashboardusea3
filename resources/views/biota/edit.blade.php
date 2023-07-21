@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') @lang('translation.Basic_Elements')  @endsection
+@section('title') Edit Biota @endsection
 @section('content')
 @component('components.breadcrumb')
 @slot('li_1') Biota @endslot
@@ -73,7 +73,7 @@
                             @enderror
                         </div>
                     </div>
-                    <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Update Data</button>
+                    <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Ubah Data</button>
                 </form>
             </div>
         </div>

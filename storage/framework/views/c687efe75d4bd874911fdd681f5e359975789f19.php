@@ -11,6 +11,7 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
+                <h4 class="card-title">Silahkan tambah jenis biota disini.</h4>
                 <p class="card-title-desc">Harap isi semua data dengan lengkap agar informasi yang diberikan sesuai.</p>
             </div>
             <div class="card-body">
