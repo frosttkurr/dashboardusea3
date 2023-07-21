@@ -9,7 +9,7 @@
 
 <?php $__env->startComponent('components.breadcrumb'); ?>
 <?php $__env->slot('li_1'); ?> Dashboard <?php $__env->endSlot(); ?>
-<?php $__env->slot('title'); ?> Welcome ! <?php $__env->endSlot(); ?>
+<?php $__env->slot('title'); ?> Selamat datang <?php $__env->endSlot(); ?>
 <?php echo $__env->renderComponent(); ?>
 
 <div class="row">
@@ -75,7 +75,7 @@
                         </h4>
                         <div class="text-nowrap">
                             <span class="badge bg-soft-success text-success">+ 0</span>
-                            <span class="ms-1 text-muted font-size-13">Since Bulan Lalu</span>
+                            <span class="ms-1 text-muted font-size-13">Dari Bulan Lalu</span>
                         </div>
                     </div>
                     <div class="flex-shrink-0 text-end dash-widget">
