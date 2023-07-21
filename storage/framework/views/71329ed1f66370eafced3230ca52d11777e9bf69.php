@@ -11,8 +11,7 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Sizing</h4>
-                <p class="card-title-desc">Set heights using classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.</p>
+                <p class="card-title-desc">Laporkan data temuan biota pada form berikut:</p>
             </div>
             <div class="card-body">
                 <form action="<?php echo e(route('dashboard.laporan-nelayan.store')); ?>" method="POST" enctype="multipart/form-data">
@@ -20,7 +19,7 @@
                     <div class="mb-4">
                         <label class="form-label">Lokasi</label>
                         <select name="id_lokasi" class="form-control">
-                            <option></option>   
+                            <option selected="true" disabled="disabled">Pilih Lokasi Temuan</option>   
                             <?php $__currentLoopData = $lokasis; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lokasi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e($lokasi->id); ?>"><?php echo e($lokasi->nama_lokasi); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -30,7 +29,7 @@
                     <div class="mb-4">
                         <label class="form-label">Jenis Temuan</label>
                         <select name="id_jenis_temuan" class="form-control">
-                            <option></option>   
+                            <option selected="true" disabled="disabled">Pilih Jenis Temuan</option>   
                             <?php $__currentLoopData = $jenisTemuans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $jenisTemuan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e($jenisTemuan->id); ?>"><?php echo e($jenisTemuan->jenis_temuan); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -39,7 +38,7 @@
 
                     <div class="mb-4">
                         <label class="form-label" for="isi_laporan">Isi Laporan</label>
-                        <textarea class="form-control" type="text" id="isi_laporan" name="isi_laporan" rows="4" ></textarea>
+                        <textarea class="form-control" type="text" id="isi_laporan" name="isi_laporan" rows="4" placeholder="Jabarkan isi/keterangan laporan temuan biota"></textarea>
                     </div>
 
                     <div class="mb-4">
@@ -47,8 +46,7 @@
                         <?php echo Form::date('tanggal', \Carbon\Carbon::now(), ['class' => 'form-control']); ?>
 
                     </div>
-                    
-
+    
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button>
                 </form>
             </div>
