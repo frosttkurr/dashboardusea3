@@ -60,7 +60,9 @@
                         </td>
                         <td>
                             <a href="{{ route('admin.dashboard.biota.edit', $biota->id) }}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
-                            <a onclick="return confirm ('Hapus data?')" href="biota/destroy/{{$biota->id}}"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
+                            <a href="{{ route('admin.dashboard.biota.destroy', $biota->id) }}" onclick="notificationBeforeDelete(event, this)">
+                                <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
+                            </a>
                         </td>
                     </tr>
                     @endforeach
@@ -84,4 +86,28 @@
 <script src="{{ URL::asset('assets/libs/datatables.net-responsive-bs4/datatables.net-responsive-bs4.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/pages/datatables.init.js') }}"></script>
 <script src="{{ URL::asset('assets/js/app.min.js') }}"></script>
+
+<form action="" id="delete-form" method="post">
+    @method('delete')
+    @csrf
+</form>
+
+<script>
+    function notificationBeforeDelete(event, el) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Yakin hapus data?',
+            text: 'Data akan dihapus',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Hapus',                
+        }).then((result) => {
+            if (result.value) {
+                $("#delete-form").attr('action', $(el).attr('href'));
+                $("#delete-form").submit();
+            }
+        })
+    }
+</script>
 @endsection

@@ -145,6 +145,6 @@ class BiotaController extends Controller
         $biota = Biota::find($id);
         $biota->delete();
 
-        return redirect()->route('dashboard.biota.index');
+        return redirect()->route('admin.dashboard.biota.index');
     }
 }

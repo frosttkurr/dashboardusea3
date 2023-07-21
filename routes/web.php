@@ -73,7 +73,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::group(['prefix' => 'biota', 'as' => 'biota.'], function () {
             Route::get('/', [BiotaController::class,'index'])->name('index');
-            Route::get('/destroy/{id}', [BiotaController::class,'destroy'])->name('destroy');
+            Route::delete('/destroy/{id}', [BiotaController::class,'destroy'])->name('destroy');
             Route::get('/show{id}', [BiotaController::class,'show'])->name('show');
             Route::get('/edit/{id}', [BiotaController::class,'edit'])->name('edit');
             Route::get('/create', [BiotaController::class,'create'])->name('create');
