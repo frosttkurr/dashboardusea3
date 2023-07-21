@@ -283,9 +283,10 @@
         </div>
         @else
         <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top sticky-navigation">
-            <a class="navbar-brand mx-auto" href="{{ url('/dashboard/laporan-nelayan') }}">
+            <a class="navbar-brand mx-auto" href="@if (Auth::user()) {{ route('admin.root') }} @else {{ route('dashboard.biota.index') }} @endif">
                 U-SEA
             </a>
+
             <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" 
                     data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span data-feather="grid"></span>

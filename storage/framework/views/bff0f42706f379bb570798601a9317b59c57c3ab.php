@@ -20,7 +20,7 @@
 
         <!--navigation-->
         <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top sticky-navigation">
-            <a class="navbar-brand mx-auto" href="<?php echo e(url('/')); ?>">
+            <a class="navbar-brand mx-auto" href="<?php echo e(route('home')); ?>">
                 U-SEA
             </a>
             <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" 

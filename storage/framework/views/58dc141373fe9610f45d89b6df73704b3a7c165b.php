@@ -71,9 +71,10 @@
         </div>
         <?php else: ?>
         <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top sticky-navigation">
-            <a class="navbar-brand mx-auto" href="<?php echo e(url('/dashboard/laporan-nelayan')); ?>">
+            <a class="navbar-brand mx-auto" href="<?php if(Auth::user()): ?> <?php echo e(route('admin.root')); ?> <?php else: ?> <?php echo e(route('dashboard.biota.index')); ?> <?php endif; ?>">
                 U-SEA
             </a>
+
             <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" 
                     data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span data-feather="grid"></span>
