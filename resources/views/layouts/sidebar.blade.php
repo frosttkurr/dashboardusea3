@@ -8,7 +8,7 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 
-                @if (!Auth::check())
+                @if (!Auth::user())
                     <li class="menu-title" data-key="t-menu"></li>
                     <li>
                         <a href="{{ route('dashboard.biota.index') }}">
@@ -35,74 +35,72 @@
                         </a>
                     </li>
                 @else
-                    <li class="menu-title" data-key="t-menu">@lang('translation.Menu')</li>
+                    @can('jenis-biota')
+                        <li>
+                            <a href="/dashboard/jenis-biota">
+                                <i data-feather="align-justify"></i>
+                                <span data-key="t-dashboard">Jenis Biota</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('biota')
+                        <li>
+                            <a href="/dashboard/biota">
+                                <i data-feather="anchor"></i>
+                                <span data-key="t-dashboard">Biota</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('user')
+                        <li>
+                            <a href="/dashboard/users">
+                                <i data-feather="user"></i>
+                                <span data-key="t-dashboard">Users</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('role')
+                        <li>
+                            <a href="/dashboard/roles">
+                                <i data-feather="users"></i>
+                                <span data-key="t-dashboard">Roles</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('jenis-temuan')
+                        <li>
+                            <a href="/dashboard/jenis-temuan">
+                                <i data-feather="book-open"></i>
+                                <span data-key="t-dashboard">Jenis Temuan</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('lokasi')
+                        <li>
+                            <a href="/dashboard/lokasi">
+                                <i data-feather="airplay"></i>
+                                <span data-key="t-dashboard">Lokasi</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('kondisi-perairan')
+                        <li>
+                            <a href="/dashboard/kondisi-perairan">
+                                <i data-feather="archive"></i>
+                                <span data-key="t-dashboard">Kondisi Perairan</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('track')
+                        <li>
+                            <a href="/dashboard/track">
+                                <i data-feather="activity"></i>
+                                <span data-key="t-dashboard">Report Biota</span>
+                            </a>
+                        </li>
+                    @endcan
                 @endif
-                @can('jenis-biota')
-                    <li>
-                        <a href="/dashboard/jenis-biota">
-                            <i data-feather="align-justify"></i>
-                            <span data-key="t-dashboard">Jenis Biota</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('biota')
-                    <li>
-                        <a href="/dashboard/biota">
-                            <i data-feather="anchor"></i>
-                            <span data-key="t-dashboard">Biota</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('user')
-                    <li>
-                        <a href="/dashboard/users">
-                            <i data-feather="user"></i>
-                            <span data-key="t-dashboard">Users</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('role')
-                    <li>
-                        <a href="/dashboard/roles">
-                            <i data-feather="users"></i>
-                            <span data-key="t-dashboard">Roles</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('jenis-temuan')
-                    <li>
-                        <a href="/dashboard/jenis-temuan">
-                            <i data-feather="book-open"></i>
-                            <span data-key="t-dashboard">Jenis Temuan</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('lokasi')
-                    <li>
-                        <a href="/dashboard/lokasi">
-                            <i data-feather="airplay"></i>
-                            <span data-key="t-dashboard">Lokasi</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('kondisi-perairan')
-                    <li>
-                        <a href="/dashboard/kondisi-perairan">
-                            <i data-feather="archive"></i>
-                            <span data-key="t-dashboard">Kondisi Perairan</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('track')
-                    <li>
-                        <a href="/dashboard/track">
-                            <i data-feather="activity"></i>
-                            <span data-key="t-dashboard">Report Biota</span>
-                        </a>
-                    </li>
-                @endcan
                 
-
                 <!-- <li class="menu-title" data-key="t-apps">@lang('translation.Apps')</li>
 
                 <li>

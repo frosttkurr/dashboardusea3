@@ -86,7 +86,7 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="/dashboard/biota/nelayan">Akses Nelayan</a>
+                        <a class="nav-link page-scroll" href="<?php echo e(route('dashboard.biota.index')); ?>">Akses Nelayan</a>
                     </li>
                 </ul>
                 

@@ -81,7 +81,7 @@ unset($__errorArgs, $__bag); ?>
                                     </div>
 
                                     <div class="text-center">
-                                        <p class="text-muted mt-2">Belum punya akun? <a href="<?php echo e(url('/register')); ?>" class="text-primary">Daftar</a></p>
+                                        <p class="text-muted mt-2">Belum punya akun? <a href="<?php echo e(route('register')); ?>" class="text-primary">Daftar</a></p>
                                     </div>
 
                                     <div class="mb-3">
