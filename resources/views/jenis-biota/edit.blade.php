@@ -11,11 +11,11 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Sizing</h4>
-                <p class="card-title-desc">Set heights using classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.</p>
+                <h4 class="card-title">Ubah Data Jenis Biota</h4>
+                <p class="card-title-desc">Harap isi data dengan benar agar informasi yang diberikan sesuai.</p>
             </div>
             <div class="card-body">
-                <form action="{{ route('dashboard.jenis-biota.update', $jenisBiota->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.dashboard.jenis-biota.update', $jenisBiota->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                     <div class="mb-4">
                         <label class="form-label" for="jenis_biota">Jenis Biota</label>

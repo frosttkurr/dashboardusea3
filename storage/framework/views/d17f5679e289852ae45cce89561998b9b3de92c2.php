@@ -37,7 +37,7 @@
                 <?php else: ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('jenis-biota')): ?>
                         <li>
-                            <a href="/dashboard/jenis-biota">
+                            <a href="<?php echo e(route('admin.dashboard.jenis-biota.index')); ?>">
                                 <i data-feather="align-justify"></i>
                                 <span data-key="t-dashboard">Jenis Biota</span>
                             </a>

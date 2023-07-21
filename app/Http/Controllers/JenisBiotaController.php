@@ -51,7 +51,7 @@ class JenisBiotaController extends Controller
         $new->jenis_biota = $request->jenis_biota;
         $new->save();
 
-        return redirect()->route('dashboard.jenis-biota.index');
+        return redirect()->route('admin.dashboard.jenis-biota.index');
     }
 
     /**
@@ -90,7 +90,7 @@ class JenisBiotaController extends Controller
         $new->jenis_biota = $request->jenis_biota;
         $new->save();
 
-        return redirect()->route('dashboard.jenis-biota.index');
+        return redirect()->route('admin.dashboard.jenis-biota.index');
     }
 
     /**
@@ -104,6 +104,6 @@ class JenisBiotaController extends Controller
         $jenisBiota = JenisBiota::find($id);
         $jenisBiota->delete();
 
-        return redirect()->route('dashboard.jenis-biota.index');
+        return redirect()->route('admin.dashboard.jenis-biota.index');
     }
 }

@@ -11,17 +11,18 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                <p class="card-title-desc">Harap isi semua data dengan lengkap agar informasi yang diberikan sesuai.</p>
+                <h4 class="card-title">Ubah Data Jenis Biota</h4>
+                <p class="card-title-desc">Harap isi data dengan benar agar informasi yang diberikan sesuai.</p>
             </div>
             <div class="card-body">
-                <form action="<?php echo e(route('admin.dashboard.jenis-biota.store')); ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo e(route('admin.dashboard.jenis-biota.update', $jenisBiota->id)); ?>" method="POST" enctype="multipart/form-data">
                 <?php echo csrf_field(); ?>
                     <div class="mb-4">
                         <label class="form-label" for="jenis_biota">Jenis Biota</label>
-                        <input class="form-control" type="text" id="jenis_biota" name="jenis_biota" placeholder="Jenis Biota" required>
+                        <input class="form-control" value="<?php echo e($jenisBiota->jenis_biota); ?>" type="text" id="jenis_biota" name="jenis_biota" placeholder="Jenis Biota">
                     </div>
 
-                    <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button>
+                    <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Update Data</button>
                 </form>
             </div>
         </div>
@@ -33,4 +34,4 @@
 <script src="<?php echo e(URL::asset('/assets/js/app.min.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Laravel\dashboardusea3\resources\views/jenis-biota/create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Laravel\dashboardusea3\resources\views/jenis-biota/edit.blade.php ENDPATH**/ ?>

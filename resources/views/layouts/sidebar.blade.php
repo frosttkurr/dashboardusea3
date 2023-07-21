@@ -37,7 +37,7 @@
                 @else
                     @can('jenis-biota')
                         <li>
-                            <a href="/dashboard/jenis-biota">
+                            <a href="{{ route('admin.dashboard.jenis-biota.index') }}">
                                 <i data-feather="align-justify"></i>
                                 <span data-key="t-dashboard">Jenis Biota</span>
                             </a>
