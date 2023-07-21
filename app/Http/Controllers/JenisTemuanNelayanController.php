@@ -46,12 +46,15 @@ class JenisTemuanNelayanController extends Controller
      */
     public function store(Request $request)
     {
-        // dd('ppp');
+        $validatedData = $request->validate([
+            'jenis_temuan' => 'required'
+        ]);
+
         $new = new JenisTemuanNelayan();
         $new->jenis_temuan = $request->jenis_temuan;
         $new->save();
 
-        return redirect()->route('dashboard.jenis-temuan.index');
+        return redirect()->route('admin.dashboard.jenis-temuan.index');
     }
 
     /**
@@ -86,11 +89,15 @@ class JenisTemuanNelayanController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'jenis_temuan' => 'required'
+        ]);
+        
         $new = JenisTemuanNelayan::find($id);
         $new->jenis_temuan = $request->jenis_temuan;
         $new->save();
 
-        return redirect()->route('dashboard.jenis-temuan.index');
+        return redirect()->route('admin.dashboard.jenis-temuan.index');
     }
 
     /**
@@ -104,6 +111,6 @@ class JenisTemuanNelayanController extends Controller
         $jenisTemuan = JenisTemuanNelayan::find($id);
         $jenisTemuan->delete();
 
-        return redirect()->route('dashboard.jenis-temuan.index');
+        return redirect()->route('admin.dashboard.jenis-temuan.index');
     }
 }

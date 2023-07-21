@@ -19,34 +19,33 @@
                 <div class="row">
                     <div class="col-10">
                         <h4 class="card-title">Jenis Temuan</h4>
-                        <p class="card-title-desc">Ini jenis Temuan</p>
+                        <p class="card-title-desc">Data jenis temuan yang tercatat</p>
                     </div>
                     <div class="col-2 text-right">
-                        <a href="jenis-temuan/create"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
+                        <a href="{{ route('admin.dashboard.jenis-temuan.create') }}"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
                     </div>
                 </div>
                 </div>
             <div class="card-body">
-
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
-                    <tr>
-                        <th class="col-10">Jenis Temuan</th>
-                        <th class="col-2">Action</th>
-                    </tr>
+                        <tr>
+                            <th class="col-1">No.</th>
+                            <th class="col-10">Jenis Temuan</th>
+                            <th class="col-2">Action</th>
+                        </tr>
                     </thead>
-
-
                     <tbody>
-                    @foreach($jenisTemuans as $jenisTemuan)
-                    <tr>
-                        <td>{{$jenisTemuan->jenis_temuan}}</td>
-                        <td>
-                            <a href="jenis-temuan/edit/{{$jenisTemuan->id}}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
-                            <a onclick="return confirm ('Hapus data?')" href="jenis-temuan/destroy/{{$jenisTemuan->id}}"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
-                        </td>
-                    </tr>
-                    @endforeach
+                        @foreach($jenisTemuans as $key => $jenisTemuan)
+                            <tr>
+                                <td>{{$key+1}}</td>
+                                <td>{{$jenisTemuan->jenis_temuan}}</td>
+                                <td>
+                                    <a href="{{ route('admin.dashboard.jenis-temuan.edit', $jenisTemuan->id) }}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
+                                    <a onclick="return confirm ('Hapus data?')" href="jenis-temuan/destroy/{{$jenisTemuan->id}}"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
 

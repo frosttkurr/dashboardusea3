@@ -69,7 +69,7 @@
                     <?php endif; ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('jenis-temuan')): ?>
                         <li>
-                            <a href="/dashboard/jenis-temuan">
+                            <a href="<?php echo e(route('admin.dashboard.jenis-temuan.index')); ?>">
                                 <i data-feather="book-open"></i>
                                 <span data-key="t-dashboard">Jenis Temuan</span>
                             </a>

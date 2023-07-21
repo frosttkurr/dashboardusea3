@@ -69,7 +69,7 @@
                     @endcan
                     @can('jenis-temuan')
                         <li>
-                            <a href="/dashboard/jenis-temuan">
+                            <a href="{{ route('admin.dashboard.jenis-temuan.index') }}">
                                 <i data-feather="book-open"></i>
                                 <span data-key="t-dashboard">Jenis Temuan</span>
                             </a>
