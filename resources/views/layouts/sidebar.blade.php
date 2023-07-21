@@ -85,7 +85,7 @@
                     @endcan
                     @can('kondisi-perairan')
                         <li>
-                            <a href="/dashboard/kondisi-perairan">
+                            <a href="{{ route('admin.dashboard.kondisi-perairan.index') }}">
                                 <i data-feather="archive"></i>
                                 <span data-key="t-dashboard">Kondisi Perairan</span>
                             </a>

@@ -85,7 +85,7 @@
                     <?php endif; ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('kondisi-perairan')): ?>
                         <li>
-                            <a href="/dashboard/kondisi-perairan">
+                            <a href="<?php echo e(route('admin.dashboard.kondisi-perairan.index')); ?>">
                                 <i data-feather="archive"></i>
                                 <span data-key="t-dashboard">Kondisi Perairan</span>
                             </a>

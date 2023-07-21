@@ -56,6 +56,13 @@ class KondisiPerairanController extends Controller
      */
     public function store(Request $request)
     {
+        $validateData = $request->validate([
+            'tanggal' => 'required',
+            'id_lokasi' => 'required',
+            'kondisi' => 'required',
+            'uraian' => 'required',
+        ]);
+
         $new = new KondisiPerairan();
         $new->id_lokasi = $request->id_lokasi;
         $new->id_staff = Auth::user()->id;
@@ -64,7 +71,7 @@ class KondisiPerairanController extends Controller
         $new->uraian = $request->uraian;
         $new->save();
 
-        return redirect()->route('dashboard.kondisi-perairan.index');
+        return redirect()->route('admin.dashboard.kondisi-perairan.index');
     }
 
     /**
@@ -100,6 +107,13 @@ class KondisiPerairanController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validateData = $request->validate([
+            'tanggal' => 'required',
+            'id_lokasi' => 'required',
+            'kondisi' => 'required',
+            'uraian' => 'required',
+        ]);
+        
         $new = KondisiPerairan::find($id);
         $new->id_lokasi = $request->id_lokasi;
         $new->tanggal = $request->tanggal;
@@ -107,7 +121,7 @@ class KondisiPerairanController extends Controller
         $new->uraian = $request->uraian;
         $new->save();
 
-        return redirect()->route('dashboard.kondisi-perairan.index');
+        return redirect()->route('admin.dashboard.kondisi-perairan.index');
     }
 
     /**
@@ -121,6 +135,6 @@ class KondisiPerairanController extends Controller
         $lokasi = KondisiPerairan::find($id);
         $lokasi->delete();
 
-        return redirect()->route('dashboard.kondisi-perairan.index');
+        return redirect()->route('admin.dashboard.kondisi-perairan.index');
     }
 }

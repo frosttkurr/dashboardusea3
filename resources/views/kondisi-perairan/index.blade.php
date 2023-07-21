@@ -19,12 +19,12 @@
                 <div class="row">
                     <div class="col-10">
                         <h4 class="card-title">Kondisi Perairan</h4>
-                        <p class="card-title-desc">Ini Kondisi Perairan</p>
+                        <p class="card-title-desc">Data kondisi perairan yang tercatat</p>
                     </div>
                     
                     @can('kondisi-perairan')
                         <div class="col-2 text-right">
-                            <a href="kondisi-perairan/create"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
+                            <a href="{{ route('admin.dashboard.kondisi-perairan.create') }}"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
                         </div>
                     @endcan
                 </div>
@@ -34,29 +34,29 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                         <tr>
+                            <th class="col-1">No.</th>
                             <th class="col-2">Tanggal</th>
                             <th class="col-2">Lokasi</th>
                             <th class="col-2">Kondisi</th>
                             <th class="col-4">Uraian</th>
-                            @can('lihat-kondisi-perairan')
-                                <th class="col-2">Action</th>
-                            @endcan
+                            <th class="col-2">Action</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach($kondisiPerairans as $kondisi)
+                        @foreach($kondisiPerairans as $key => $kondisi)
                             <tr>
+                                <td>{{$key+1}}</td>
                                 <td>{{$kondisi->tanggal}}</td>
                                 <td>{{$kondisi->lokasi->nama_lokasi}}</td>
                                 <td>{{$kondisi->kondisi}}</td>
                                 <td>{{$kondisi->uraian}}</td>
-                                @can('kondisi-perairan')
-                                    <td>
-                                        <a href="kondisi-perairan/edit/{{$kondisi->id}}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
-                                        <a onclick="return confirm ('Hapus data?')" href="kondisi-perairan/destroy/{{$kondisi->id}}"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
-                                    </td>
-                                @endcan
+                                <td>
+                                    <a href="{{ route('admin.dashboard.kondisi-perairan.edit', $kondisi->id) }}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
+                                    <a href="{{ route('admin.dashboard.kondisi-perairan.destroy', $kondisi->id) }}" onclick="notificationBeforeDelete(event, this)">
+                                        <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -78,4 +78,28 @@
 <script src="{{ URL::asset('assets/libs/datatables.net-responsive-bs4/datatables.net-responsive-bs4.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/pages/datatables.init.js') }}"></script>
 <script src="{{ URL::asset('assets/js/app.min.js') }}"></script>
+
+<form action="" id="delete-form" method="post">
+    @method('delete')
+    @csrf
+</form>
+
+<script>
+    function notificationBeforeDelete(event, el) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Yakin hapus data?',
+            text: 'Data akan dihapus',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Hapus',                
+        }).then((result) => {
+            if (result.value) {
+                $("#delete-form").attr('action', $(el).attr('href'));
+                $("#delete-form").submit();
+            }
+        })
+    }
+</script>
 @endsection

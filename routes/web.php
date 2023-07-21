@@ -111,10 +111,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::post('/update/{id}', [LaporanNelayanController::class,'update'])->name('update');
         });
     
-        Route::get('/lihat-kondisi-perairan', [KondisiPerairanController::class,'indexNelayan'])->name('indexNelayan');
         Route::group(['prefix' => 'kondisi-perairan', 'as' => 'kondisi-perairan.'], function () {
             Route::get('/', [KondisiPerairanController::class,'index'])->name('index');
-            Route::get('/destroy/{id}', [KondisiPerairanController::class,'destroy'])->name('destroy');
+            Route::delete('/destroy/{id}', [KondisiPerairanController::class,'destroy'])->name('destroy');
             Route::get('/show{id}', [KondisiPerairanController::class,'show'])->name('show');
             Route::get('/edit/{id}', [KondisiPerairanController::class,'edit'])->name('edit');
             Route::get('/create', [KondisiPerairanController::class,'create'])->name('create');
