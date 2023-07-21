@@ -34,7 +34,7 @@ class KondisiPerairanController extends Controller
     public function indexNelayan()
     {
         $kondisiPerairans = KondisiPerairan::all();
-        return view('kondisi-perairan.index', compact("kondisiPerairans"));
+        return view('kondisi-perairan.nelayan.index', compact("kondisiPerairans"));
     }
 
     /**
