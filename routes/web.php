@@ -83,7 +83,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     
         Route::group(['prefix' => 'jenis-temuan', 'as' => 'jenis-temuan.'], function () {
             Route::get('/', [JenisTemuanNelayanController::class,'index'])->name('index');
-            Route::get('/destroy/{id}', [JenisTemuanNelayanController::class,'destroy'])->name('destroy');
+            Route::delete('/destroy/{id}', [JenisTemuanNelayanController::class,'destroy'])->name('destroy');
             Route::get('/show{id}', [JenisTemuanNelayanController::class,'show'])->name('show');
             Route::get('/edit/{id}', [JenisTemuanNelayanController::class,'edit'])->name('edit');
             Route::get('/create', [JenisTemuanNelayanController::class,'create'])->name('create');
