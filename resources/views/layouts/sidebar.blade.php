@@ -9,97 +9,97 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 
                 @if (!Auth::check())
-                <li class="menu-title" data-key="t-menu"></li>
-                <li>
-                    <a href="/dashboard/biota/nelayan">
-                        <i data-feather="anchor"></i>
-                        <span data-key="t-dashboard">Lihat Biota</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/dashboard/laporan-nelayan">
-                        <i data-feather="aperture"></i>
-                        <span data-key="t-dashboard">Laporan Nelayan</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/dashboard/lihat-report-biota">
-                        <i data-feather="activity"></i>
-                        <span data-key="t-dashboard">Lihat Report Biota</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/dashboard/lihat-kondisi-perairan">
-                        <i data-feather="archive"></i>
-                        <span data-key="t-dashboard">Lihat Kondisi Perairan</span>
-                    </a>
-                </li>
+                    <li class="menu-title" data-key="t-menu"></li>
+                    <li>
+                        <a href="{{ route('dashboard.biota.index') }}">
+                            <i data-feather="anchor"></i>
+                            <span data-key="t-dashboard">Lihat Biota</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('dashboard.laporan-nelayan.index') }}">
+                            <i data-feather="aperture"></i>
+                            <span data-key="t-dashboard">Laporan Nelayan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('dashboard.report.nelayan') }}">
+                            <i data-feather="activity"></i>
+                            <span data-key="t-dashboard">Lihat Report Biota</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('dashboard.kondisi-perairan.index') }}">
+                            <i data-feather="archive"></i>
+                            <span data-key="t-dashboard">Lihat Kondisi Perairan</span>
+                        </a>
+                    </li>
                 @else
-                <li class="menu-title" data-key="t-menu">@lang('translation.Menu')</li>
+                    <li class="menu-title" data-key="t-menu">@lang('translation.Menu')</li>
                 @endif
                 @can('jenis-biota')
-                <li>
-                    <a href="/dashboard/jenis-biota">
-                        <i data-feather="align-justify"></i>
-                        <span data-key="t-dashboard">Jenis Biota</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/dashboard/jenis-biota">
+                            <i data-feather="align-justify"></i>
+                            <span data-key="t-dashboard">Jenis Biota</span>
+                        </a>
+                    </li>
                 @endcan
                 @can('biota')
-                <li>
-                    <a href="/dashboard/biota">
-                        <i data-feather="anchor"></i>
-                        <span data-key="t-dashboard">Biota</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/dashboard/biota">
+                            <i data-feather="anchor"></i>
+                            <span data-key="t-dashboard">Biota</span>
+                        </a>
+                    </li>
                 @endcan
                 @can('user')
-                <li>
-                    <a href="/dashboard/users">
-                        <i data-feather="user"></i>
-                        <span data-key="t-dashboard">Users</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/dashboard/users">
+                            <i data-feather="user"></i>
+                            <span data-key="t-dashboard">Users</span>
+                        </a>
+                    </li>
                 @endcan
                 @can('role')
-                <li>
-                    <a href="/dashboard/roles">
-                        <i data-feather="users"></i>
-                        <span data-key="t-dashboard">Roles</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/dashboard/roles">
+                            <i data-feather="users"></i>
+                            <span data-key="t-dashboard">Roles</span>
+                        </a>
+                    </li>
                 @endcan
                 @can('jenis-temuan')
-                <li>
-                    <a href="/dashboard/jenis-temuan">
-                        <i data-feather="book-open"></i>
-                        <span data-key="t-dashboard">Jenis Temuan</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/dashboard/jenis-temuan">
+                            <i data-feather="book-open"></i>
+                            <span data-key="t-dashboard">Jenis Temuan</span>
+                        </a>
+                    </li>
                 @endcan
                 @can('lokasi')
-                <li>
-                    <a href="/dashboard/lokasi">
-                        <i data-feather="airplay"></i>
-                        <span data-key="t-dashboard">Lokasi</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/dashboard/lokasi">
+                            <i data-feather="airplay"></i>
+                            <span data-key="t-dashboard">Lokasi</span>
+                        </a>
+                    </li>
                 @endcan
                 @can('kondisi-perairan')
-                <li>
-                    <a href="/dashboard/kondisi-perairan">
-                        <i data-feather="archive"></i>
-                        <span data-key="t-dashboard">Kondisi Perairan</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/dashboard/kondisi-perairan">
+                            <i data-feather="archive"></i>
+                            <span data-key="t-dashboard">Kondisi Perairan</span>
+                        </a>
+                    </li>
                 @endcan
                 @can('track')
-                <li>
-                    <a href="/dashboard/track">
-                        <i data-feather="activity"></i>
-                        <span data-key="t-dashboard">Report Biota</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/dashboard/track">
+                            <i data-feather="activity"></i>
+                            <span data-key="t-dashboard">Report Biota</span>
+                        </a>
+                    </li>
                 @endcan
                 
 

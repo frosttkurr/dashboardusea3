@@ -9,97 +9,97 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 
                 <?php if(!Auth::check()): ?>
-                <li class="menu-title" data-key="t-menu"></li>
-                <li>
-                    <a href="/dashboard/biota/nelayan">
-                        <i data-feather="anchor"></i>
-                        <span data-key="t-dashboard">Lihat Biota</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/dashboard/laporan-nelayan">
-                        <i data-feather="aperture"></i>
-                        <span data-key="t-dashboard">Laporan Nelayan</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/dashboard/lihat-report-biota">
-                        <i data-feather="activity"></i>
-                        <span data-key="t-dashboard">Lihat Report Biota</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/dashboard/lihat-kondisi-perairan">
-                        <i data-feather="archive"></i>
-                        <span data-key="t-dashboard">Lihat Kondisi Perairan</span>
-                    </a>
-                </li>
+                    <li class="menu-title" data-key="t-menu"></li>
+                    <li>
+                        <a href="<?php echo e(route('dashboard.biota.index')); ?>">
+                            <i data-feather="anchor"></i>
+                            <span data-key="t-dashboard">Lihat Biota</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo e(route('dashboard.laporan-nelayan.index')); ?>">
+                            <i data-feather="aperture"></i>
+                            <span data-key="t-dashboard">Laporan Nelayan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo e(route('dashboard.report.nelayan')); ?>">
+                            <i data-feather="activity"></i>
+                            <span data-key="t-dashboard">Lihat Report Biota</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo e(route('dashboard.kondisi-perairan.index')); ?>">
+                            <i data-feather="archive"></i>
+                            <span data-key="t-dashboard">Lihat Kondisi Perairan</span>
+                        </a>
+                    </li>
                 <?php else: ?>
-                <li class="menu-title" data-key="t-menu"><?php echo app('translator')->get('translation.Menu'); ?></li>
+                    <li class="menu-title" data-key="t-menu"><?php echo app('translator')->get('translation.Menu'); ?></li>
                 <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('jenis-biota')): ?>
-                <li>
-                    <a href="/dashboard/jenis-biota">
-                        <i data-feather="align-justify"></i>
-                        <span data-key="t-dashboard">Jenis Biota</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/dashboard/jenis-biota">
+                            <i data-feather="align-justify"></i>
+                            <span data-key="t-dashboard">Jenis Biota</span>
+                        </a>
+                    </li>
                 <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('biota')): ?>
-                <li>
-                    <a href="/dashboard/biota">
-                        <i data-feather="anchor"></i>
-                        <span data-key="t-dashboard">Biota</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/dashboard/biota">
+                            <i data-feather="anchor"></i>
+                            <span data-key="t-dashboard">Biota</span>
+                        </a>
+                    </li>
                 <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user')): ?>
-                <li>
-                    <a href="/dashboard/users">
-                        <i data-feather="user"></i>
-                        <span data-key="t-dashboard">Users</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/dashboard/users">
+                            <i data-feather="user"></i>
+                            <span data-key="t-dashboard">Users</span>
+                        </a>
+                    </li>
                 <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role')): ?>
-                <li>
-                    <a href="/dashboard/roles">
-                        <i data-feather="users"></i>
-                        <span data-key="t-dashboard">Roles</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/dashboard/roles">
+                            <i data-feather="users"></i>
+                            <span data-key="t-dashboard">Roles</span>
+                        </a>
+                    </li>
                 <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('jenis-temuan')): ?>
-                <li>
-                    <a href="/dashboard/jenis-temuan">
-                        <i data-feather="book-open"></i>
-                        <span data-key="t-dashboard">Jenis Temuan</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/dashboard/jenis-temuan">
+                            <i data-feather="book-open"></i>
+                            <span data-key="t-dashboard">Jenis Temuan</span>
+                        </a>
+                    </li>
                 <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('lokasi')): ?>
-                <li>
-                    <a href="/dashboard/lokasi">
-                        <i data-feather="airplay"></i>
-                        <span data-key="t-dashboard">Lokasi</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/dashboard/lokasi">
+                            <i data-feather="airplay"></i>
+                            <span data-key="t-dashboard">Lokasi</span>
+                        </a>
+                    </li>
                 <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('kondisi-perairan')): ?>
-                <li>
-                    <a href="/dashboard/kondisi-perairan">
-                        <i data-feather="archive"></i>
-                        <span data-key="t-dashboard">Kondisi Perairan</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/dashboard/kondisi-perairan">
+                            <i data-feather="archive"></i>
+                            <span data-key="t-dashboard">Kondisi Perairan</span>
+                        </a>
+                    </li>
                 <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('track')): ?>
-                <li>
-                    <a href="/dashboard/track">
-                        <i data-feather="activity"></i>
-                        <span data-key="t-dashboard">Report Biota</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/dashboard/track">
+                            <i data-feather="activity"></i>
+                            <span data-key="t-dashboard">Report Biota</span>
+                        </a>
+                    </li>
                 <?php endif; ?>
                 
 

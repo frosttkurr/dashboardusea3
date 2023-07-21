@@ -31,7 +31,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
 
     Route::group(['prefix' => 'biota', 'as' => 'biota.'], function () {
-        Route::get('/', [BiotaController::class,'indexNelayan'])->name('index.nelayan');
+        Route::get('/', [BiotaController::class,'indexNelayan'])->name('index');
     });
 
     Route::group(['prefix' => 'laporan-nelayan', 'as' => 'laporan-nelayan.'], function () {
@@ -49,7 +49,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     });
 
 
-    Route::get('/report-biota', [TrackController::class,'indexNelayan'])->name('indexNelayan');
+    Route::get('/report-biota', [TrackController::class,'indexNelayan'])->name('report.nelayan');
 
     Route::group(['prefix' => 'track', 'as' => 'track.'], function () {
         Route::get('/', [TrackController::class,'index'])->name('index');
