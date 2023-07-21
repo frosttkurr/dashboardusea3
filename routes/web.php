@@ -93,7 +93,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     
         Route::group(['prefix' => 'lokasi', 'as' => 'lokasi.'], function () {
             Route::get('/', [LokasiController::class,'index'])->name('index');
-            Route::get('/destroy/{id}', [LokasiController::class,'destroy'])->name('destroy');
+            Route::delete('/destroy/{id}', [LokasiController::class,'destroy'])->name('destroy');
             Route::get('/show{id}', [LokasiController::class,'show'])->name('show');
             Route::get('/edit/{id}', [LokasiController::class,'edit'])->name('edit');
             Route::get('/create', [LokasiController::class,'create'])->name('create');

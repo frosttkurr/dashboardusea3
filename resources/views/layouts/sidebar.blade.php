@@ -77,7 +77,7 @@
                     @endcan
                     @can('lokasi')
                         <li>
-                            <a href="/dashboard/lokasi">
+                            <a href="{{ route('admin.dashboard.lokasi.index') }}">
                                 <i data-feather="airplay"></i>
                                 <span data-key="t-dashboard">Lokasi</span>
                             </a>

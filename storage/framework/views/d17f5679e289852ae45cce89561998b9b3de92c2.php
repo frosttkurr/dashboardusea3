@@ -77,7 +77,7 @@
                     <?php endif; ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('lokasi')): ?>
                         <li>
-                            <a href="/dashboard/lokasi">
+                            <a href="<?php echo e(route('admin.dashboard.lokasi.index')); ?>">
                                 <i data-feather="airplay"></i>
                                 <span data-key="t-dashboard">Lokasi</span>
                             </a>

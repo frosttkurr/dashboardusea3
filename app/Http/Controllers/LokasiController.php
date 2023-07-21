@@ -46,11 +46,15 @@ class LokasiController extends Controller
      */
     public function store(Request $request)
     {
+        $validateData = $request->validate([
+            'nama_lokasi' => 'required'
+        ]);
+
         $new = new Lokasi();
         $new->nama_lokasi = $request->nama_lokasi;
         $new->save();
 
-        return redirect()->route('dashboard.lokasi.index');
+        return redirect()->route('admin.dashboard.lokasi.index');
     }
 
     /**
@@ -85,11 +89,15 @@ class LokasiController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validateData = $request->validate([
+            'nama_lokasi' => 'required'
+        ]);
+
         $new = Lokasi::find($id);
         $new->nama_lokasi = $request->nama_lokasi;
         $new->save();
 
-        return redirect()->route('dashboard.lokasi.index');
+        return redirect()->route('admin.dashboard.lokasi.index');
     }
 
     /**
@@ -103,6 +111,6 @@ class LokasiController extends Controller
         $lokasi = Lokasi::find($id);
         $lokasi->delete();
 
-        return redirect()->route('dashboard.lokasi.index');
+        return redirect()->route('admin.dashboard.lokasi.index');
     }
 }
