@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-10">
                         <h4 class="card-title">Track</h4>
-                        <p class="card-title-desc">Detail data track biodata yang tersedia</p>
+                        <p class="card-title-desc">Data track biota yang tersedia</p>
                     </div>
                 </div>
             </div>

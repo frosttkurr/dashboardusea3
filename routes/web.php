@@ -42,10 +42,6 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
         Route::post('/update/{id}', [LaporanNelayanController::class,'update'])->name('update');
     });
 
-    Route::group(['prefix' => 'kondisi-perairan', 'as' => 'kondisi-perairan.'], function () {
-        Route::get('/', [KondisiPerairanController::class,'indexNelayan'])->name('index');
-    });
-
     Route::group(['prefix' => 'track', 'as' => 'track.'], function () {
         Route::get('/report-biota', [TrackController::class,'indexNelayan'])->name('report.nelayan');
 
@@ -53,6 +49,10 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
             Route::get('/', [TrackDetailController::class,'indexNelayan'])->name('index');
             Route::get('/show{detail}', [TrackDetailController::class,'show'])->name('show');
         });
+    });
+
+    Route::group(['prefix' => 'kondisi-perairan', 'as' => 'kondisi-perairan.'], function () {
+        Route::get('/', [KondisiPerairanController::class,'indexNelayan'])->name('index');
     });
 });
 
