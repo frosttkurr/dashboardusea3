@@ -45,7 +45,7 @@
                     @endcan
                     @can('biota')
                         <li>
-                            <a href="/dashboard/biota">
+                            <a href="{{ route('admin.dashboard.biota.index') }}">
                                 <i data-feather="anchor"></i>
                                 <span data-key="t-dashboard">Biota</span>
                             </a>

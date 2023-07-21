@@ -45,7 +45,7 @@
                     <?php endif; ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('biota')): ?>
                         <li>
-                            <a href="/dashboard/biota">
+                            <a href="<?php echo e(route('admin.dashboard.biota.index')); ?>">
                                 <i data-feather="anchor"></i>
                                 <span data-key="t-dashboard">Biota</span>
                             </a>

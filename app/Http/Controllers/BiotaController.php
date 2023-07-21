@@ -53,15 +53,28 @@ class BiotaController extends Controller
      */
     public function store(Request $request)
     {
-        $image_path = $request->file('image')->store('image', 'public');
+        $validateData = $request->validate([
+            'nama_biota' => 'required',
+            'id_jenis_biota' => 'required',
+            'deskripsi' => 'required',
+            'image' => ['required', 'image' ,'mimes:jpg,jpeg,png'],
+        ]);
+
+        if (request()->has('image')) {
+            $image = request()->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $imagePath = public_path('assets/images/biota/');
+            $image->move($imagePath, $imageName);
+        }
+
         $new = new Biota();
         $new->nama_biota = $request->nama_biota;
         $new->id_jenis_biota = $request->id_jenis_biota;
         $new->deskripsi = $request->deskripsi;
-        $new->image = $image_path;
+        $new->image = $imageName;
         $new->save();
 
-        return redirect()->route('dashboard.biota.index');
+        return redirect()->route('admin.dashboard.biota.index');
     }
 
     /**

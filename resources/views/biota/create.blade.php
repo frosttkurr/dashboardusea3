@@ -17,61 +17,63 @@
                 <p class="card-title-desc">Harap isi semua data dengan lengkap agar informasi yang diberikan sesuai.</p>
             </div>
             <div class="card-body">
-                <form action="{{ route('dashboard.biota.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.dashboard.biota.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                     <div class="mb-4">
                         <label class="form-label" for="biota">Biota</label>
-                        <input class="form-control" type="text" id="biota" name="nama_biota" placeholder="Nama Biota">
+                        <input class="form-control @error('nama_biota') is-invalid @enderror" type="text" id="biota" name="nama_biota" placeholder="Nama Biota">
+                        @error('nama_biota')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="mb-4">
-                        <!-- <label for="choices-single-default" class="form-label font-size-13 text-muted">Default</label> -->
-                            <label class="form-label" for="biota">Jenis Biota</label>
-                                <select class="form-control" data-trigger name="id_jenis_biota"
-                                    id="choices-single-default"
-                                    placeholder="Cari jenis biota">
-                                    <option value="">Pilih jenis biota</option>
-                                    @foreach($jenisBiotas as $jenisBiota)
-                                    
-                                    <option value="{{$jenisBiota->id}}">{{$jenisBiota->jenis_biota}}</option>
-                                    @endforeach
-                                    <!-- <option value="Choice 2">Choice 2</option>
-                                    <option value="Choice 3">Choice 3</option> -->
-                                </select>
-                        <!-- <label class="form-label" for="biota">Jenis Biota</label>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                $jenisBiota <i class="mdi mdi-chevron-down"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
-                                @foreach($jenisBiotas as $jenisBiota)
-                                <a class="dropdown-item" href="#">{{$jenisBiota->jenis_biota}}</a>
-                                @endforeach
-                            </div>
-                        </div> -->
+                        <label class="form-label" for="biota">Jenis Biota</label>
+                        <select class="form-control @error('id_jenis_biota') is-invalid @enderror" data-trigger name="id_jenis_biota" id="choices-single-default" placeholder="Cari jenis biota">
+                            <option selected="true" disabled="disabled">Pilih jenis biota</option>
+                            @foreach($jenisBiotas as $jenisBiota)
+                                <option value="{{$jenisBiota->id}}">{{$jenisBiota->jenis_biota}}</option>
+                            @endforeach
+                        </select>
+
+                        @error('id_jenis_biota')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
+
                     <div class="mb-4">
                         <label class="form-label" for="biota">Deskripsi</label>
-                        <input class="form-control" type="text" id="deskripsi" name="deskripsi" placeholder="Deskripsi">
+                        <input class="form-control @error('deskripsi') is-invalid @enderror" type="text" id="deskripsi" name="deskripsi" placeholder="Deskripsi">
+
+                        @error('deskripsi')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Gambar</h4>
-                            <p class="card-title-desc">Silahkan upload file gambar dari biota disini.
-                            </p>
+                            <p class="card-title-desc">Silahkan upload file gambar dari biota disini.</p>
                         </div>
                         <div class="card-body">
-
-                            <div>
-                                    <div class="fallback">
-                                        <input name="image" type="file">
-                                    </div>
+                            <div class="@error('image') is-invalid @enderror">
+                                <div class="fallback">
+                                    <input name="image" type="file">
+                                </div>
                             </div>
+
+                            @error('image')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                         </div>
                     </div>
-
-
-                    
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button>
                 </form>
             </div>
@@ -81,7 +83,6 @@
 <!-- end row -->
 @endsection
 @section('script')
-<script src="{{ URL::asset('/assets/libs/dropzone/dropzone.min.js') }}"></script>
-<script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
-
+    <script src="{{ URL::asset('/assets/libs/dropzone/dropzone.min.js') }}"></script>
+    <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
 @endsection

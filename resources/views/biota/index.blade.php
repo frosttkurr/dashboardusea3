@@ -22,7 +22,7 @@
                         <p class="card-title-desc">Data biota yang tersedia</p>
                     </div>
                     <div class="col-2 text-right">
-                        <a href="biota/create"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
+                        <a href="{{ route('admin.dashboard.biota.create') }}"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
                     </div>
                 </div>
                 </div>
@@ -54,7 +54,7 @@
                         <td>
                             {{$biota->deskripsi}}
                         <td>
-                            <img src="/storage/{{$biota->image}}" width="100px" height="100px" alt="zzz">
+                            <img src="{{ asset('assets/images/biota/'.$biota->image) }}" width="100px" height="100px" alt="Gambar Biota">
                         </td>
                         <td>
                             <a href="biota/edit/{{$biota->id}}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
