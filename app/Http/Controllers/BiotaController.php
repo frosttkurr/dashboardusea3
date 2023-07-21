@@ -110,11 +110,28 @@ class BiotaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validateData = $request->validate([
+            'nama_biota' => 'required',
+            'id_jenis_biota' => 'required',
+            'deskripsi' => 'required',
+            'image' => ['image','mimes:jpg,jpeg,png'],
+        ]);
+
+        if (request()->has('image')) {
+            $image = request()->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $imagePath = public_path('assets/images/biota/');
+            $image->move($imagePath, $imageName);
+        }
+
         $new = Biota::find($id);
         $new->nama_biota = $request->nama_biota;
+        $new->id_jenis_biota = $request->id_jenis_biota;
+        $new->deskripsi = $request->deskripsi;
+        $new->image = $imageName;
         $new->save();
 
-        return redirect()->route('dashboard.biota.index');
+        return redirect()->route('admin.dashboard.biota.index');
     }
 
     /**

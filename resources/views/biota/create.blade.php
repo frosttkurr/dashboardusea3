@@ -68,10 +68,10 @@
                             </div>
 
                             @error('image')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button>

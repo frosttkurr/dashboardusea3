@@ -61,7 +61,7 @@
                             <img src="<?php echo e(asset('assets/images/biota/'.$biota->image)); ?>" width="100px" height="100px" alt="Gambar Biota">
                         </td>
                         <td>
-                            <a href="biota/edit/<?php echo e($biota->id); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
+                            <a href="<?php echo e(route('admin.dashboard.biota.edit', $biota->id)); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
                             <a onclick="return confirm ('Hapus data?')" href="biota/destroy/<?php echo e($biota->id); ?>"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
                         </td>
                     </tr>

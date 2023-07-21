@@ -59,7 +59,7 @@
                             <img src="{{ asset('assets/images/biota/'.$biota->image) }}" width="100px" height="100px" alt="Gambar Biota">
                         </td>
                         <td>
-                            <a href="biota/edit/{{$biota->id}}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
+                            <a href="{{ route('admin.dashboard.biota.edit', $biota->id) }}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
                             <a onclick="return confirm ('Hapus data?')" href="biota/destroy/{{$biota->id}}"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
                         </td>
                     </tr>
