@@ -6,7 +6,7 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="<?php echo e(url('/dashboard')); ?>" class="logo logo-dark">
+                <a href="<?php echo e(route('admin.dashboard.root')); ?>" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="<?php echo e(URL::asset('assets/images/usealogo.svg')); ?>" alt="" height="30">
                     </span>
@@ -15,7 +15,7 @@
                     </span>
                 </a>
 
-                <a href="<?php echo e(url('/dashboard')); ?>" class="logo logo-light">
+                <a href="<?php echo e(route('admin.dashboard.root')); ?>" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="<?php echo e(URL::asset('assets/images/usealogo.svg')); ?>" alt="" height="30">
                     </span>
