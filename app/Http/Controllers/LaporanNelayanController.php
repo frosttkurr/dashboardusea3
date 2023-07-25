@@ -92,8 +92,16 @@ class LaporanNelayanController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validateData = $request->validate([
+            'id_lokasi' => 'required',
+            'id_jenis_temuan' => 'required',
+            'isi_laporan' => 'required',
+            'tanggal' => 'required',
+        ]);
+
         $new = LaporanNelayan::find($id);
         $new->id_lokasi = $request->id_lokasi;
+        $new->id_jenis_temuan = $request->id_jenis_temuan;
         $new->isi_laporan = $request->isi_laporan;
         $new->tanggal = $request->tanggal;
         $new->save();

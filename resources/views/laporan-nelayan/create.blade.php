@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') @lang('translation.Basic_Elements')  @endsection
+@section('title') Tambah Laporan Nelayan @endsection
 @section('content')
 @component('components.breadcrumb')
 @slot('li_1') Laporan Nelayan @endslot
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label class="form-label" for="isi_laporan">Tanggal</label>
+                        <label class="form-label" for="tanggal">Tanggal</label>
                         <input name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{\Carbon\Carbon::now()->format('Y-m-d')}}" type="date">
 
                         @error('tanggal')
