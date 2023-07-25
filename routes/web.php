@@ -34,7 +34,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
 
     Route::group(['prefix' => 'laporan-nelayan', 'as' => 'laporan-nelayan.'], function () {
         Route::get('/', [LaporanNelayanController::class,'index'])->name('index');
-        Route::get('/destroy/{id}', [LaporanNelayanController::class,'destroy'])->name('destroy');
+        Route::delete('/destroy/{id}', [LaporanNelayanController::class,'destroy'])->name('destroy');
         Route::get('/show{id}', [LaporanNelayanController::class,'show'])->name('show');
         Route::get('/edit/{id}', [LaporanNelayanController::class,'edit'])->name('edit');
         Route::get('/create', [LaporanNelayanController::class,'create'])->name('create');
@@ -103,7 +103,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     
         Route::group(['prefix' => 'laporan-nelayan', 'as' => 'laporan-nelayan.'], function () {
             Route::get('/', [LaporanNelayanController::class,'index'])->name('index');
-            Route::get('/destroy/{id}', [LaporanNelayanController::class,'destroy'])->name('destroy');
+            Route::delete('/destroy/{id}', [LaporanNelayanController::class,'destroy'])->name('destroy');
             Route::get('/show{id}', [LaporanNelayanController::class,'show'])->name('show');
             Route::get('/edit/{id}', [LaporanNelayanController::class,'edit'])->name('edit');
             Route::get('/create', [LaporanNelayanController::class,'create'])->name('create');

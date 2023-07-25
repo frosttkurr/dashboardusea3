@@ -1,5 +1,5 @@
 
-<?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.Basic_Elements'); ?>  <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> Tambah Laporan Nelayan <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <?php $__env->startComponent('components.breadcrumb'); ?>
 <?php $__env->slot('li_1'); ?> Laporan Nelayan <?php $__env->endSlot(); ?>
@@ -102,7 +102,7 @@ unset($__errorArgs, $__bag); ?>
                     </div>
 
                     <div class="mb-4">
-                        <label class="form-label" for="isi_laporan">Tanggal</label>
+                        <label class="form-label" for="tanggal">Tanggal</label>
                         <input name="tanggal" id="tanggal" class="form-control <?php $__errorArgs = ['tanggal'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
