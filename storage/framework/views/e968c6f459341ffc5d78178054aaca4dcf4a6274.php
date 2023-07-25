@@ -50,7 +50,7 @@
                         <td><?php echo e($detail->biota->nama_biota); ?></td>
                         <td><?php echo e($detail->lokasi->nama_lokasi); ?></td>
                         <td>
-                            <img src="<?php echo e(asset('assets/images/track-detail/'.$detail->image)); ?>" alt="Gambar biota" width="200px">
+                            <img src="<?php echo e(url('storage/'.$detail->image)); ?>" alt="Gambar biota" width="200px">
                         </td>
                         <td><?php echo e($detail->keterangan); ?></td>
                         <td>

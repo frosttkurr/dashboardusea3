@@ -50,7 +50,7 @@
                         <td>{{$detail->biota->nama_biota}}</td>
                         <td>{{$detail->lokasi->nama_lokasi}}</td>
                         <td>
-                            <img src="{{ asset('assets/images/track-detail/'.$detail->image) }}" alt="Gambar biota" width="200px">
+                            <img src="{{ url('storage/'.$detail->image) }}" alt="Gambar biota" width="200px">
                         </td>
                         <td>{{$detail->keterangan}}</td>
                         <td>
