@@ -56,7 +56,7 @@
                         <td>
                             {{$biota->deskripsi}}
                         <td>
-                            <img src="{{ asset('assets/images/biota/'.$biota->image) }}" width="100px" height="100px" alt="Gambar Biota">
+                            <img src="{{ url('storage/'.$biota->image) }}" width="100px" height="100px" alt="Gambar Biota">
                         </td>
                         <td>
                             <a href="{{ route('admin.dashboard.biota.edit', $biota->id) }}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>

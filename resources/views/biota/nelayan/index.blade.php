@@ -28,6 +28,7 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                     <tr>
+                        <th class="col-1"> No.</th>
                         <th class="col-2"> Biota</th>
                         <th class="col-2"> Jenis</th>
                         <th class="col-3"> Deskripsi</th>
@@ -37,8 +38,9 @@
 
 
                     <tbody>
-                    @foreach($biotas as $biota)
+                    @foreach($biotas as $key => $biota)
                         <tr>
+                            <td>{{$key+1}}</td>
                             <td>{{$biota->nama_biota}}</td>
                             <td>
                                 @if($biota->jenisBiota)
@@ -50,7 +52,7 @@
                             <td>
                                 {{$biota->deskripsi}}
                             <td>
-                                <img src="/storage/{{$biota->image}}" height="200px" alt="zzz">
+                                <img src="{{ url('storage/'.$biota->image) }}" width="100px" height="100px" alt="Gambar Biota">
                             </td>
                         </tr>
                     @endforeach

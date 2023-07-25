@@ -60,18 +60,15 @@ class BiotaController extends Controller
             'image' => ['required', 'image','mimes:jpg,jpeg,png'],
         ]);
 
-        if (request()->has('image')) {
-            $image = request()->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $imagePath = public_path('assets/images/biota/');
-            $image->move($imagePath, $imageName);
-        }
-
         $new = new Biota();
         $new->nama_biota = $request->nama_biota;
         $new->id_jenis_biota = $request->id_jenis_biota;
         $new->deskripsi = $request->deskripsi;
-        $new->image = $imageName;
+
+        if($request->file('image')){
+            $path = $request->file('image')->store('biotas', 'public');
+            $new->image = $path;
+        }
         $new->save();
 
         return redirect()->route('admin.dashboard.biota.index');
@@ -116,19 +113,16 @@ class BiotaController extends Controller
             'deskripsi' => 'required',
             'image' => ['image','mimes:jpg,jpeg,png'],
         ]);
-
-        if (request()->has('image')) {
-            $image = request()->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $imagePath = public_path('assets/images/biota/');
-            $image->move($imagePath, $imageName);
-        }
-
+        
         $new = Biota::find($id);
         $new->nama_biota = $request->nama_biota;
         $new->id_jenis_biota = $request->id_jenis_biota;
         $new->deskripsi = $request->deskripsi;
-        $new->image = $imageName;
+        
+        if($request->file('image')){
+            $path = $request->file('image')->store('biotas', 'public');
+            $new->image = $path;
+        }
         $new->save();
 
         return redirect()->route('admin.dashboard.biota.index');

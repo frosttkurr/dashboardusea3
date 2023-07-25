@@ -58,7 +58,7 @@
                             <?php echo e($biota->deskripsi); ?>
 
                         <td>
-                            <img src="<?php echo e(asset('assets/images/biota/'.$biota->image)); ?>" width="100px" height="100px" alt="Gambar Biota">
+                            <img src="<?php echo e(url('storage/'.$biota->image)); ?>" width="100px" height="100px" alt="Gambar Biota">
                         </td>
                         <td>
                             <a href="<?php echo e(route('admin.dashboard.biota.edit', $biota->id)); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
