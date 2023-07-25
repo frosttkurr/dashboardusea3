@@ -52,18 +52,28 @@ class TrackDetailController extends Controller
      */
     public function store(Request $request)
     {
+        $validateData = $request->validate([
+            'id_track' => 'required',
+            'id_biota' => 'required',
+            'id_lokasi' => 'required',
+            'keterangan' => 'required',
+            'image' => 'required',
+        ]);
+
         $new = new TrackDetail();
         $new->id_track = $request->id_track;
         $new->id_biota = $request->id_biota;
         $new->id_lokasi = $request->id_lokasi;
         $new->keterangan = $request->keterangan;
 
-        $path = $request->file('image')->store('track-details', 'public');
+        if($request->file('image')){
+            $path = $request->file('image')->store('track-details', 'public');
+            $new->image = $path;
+        }
 
-        $new->image = $path;
         $new->save();   
 
-        return redirect()->route('dashboard.track.detail.index', $request->id_track);
+        return redirect()->route('admin.dashboard.track.detail.index', $request->id_track);
     }
 
     /**
@@ -114,10 +124,10 @@ class TrackDetailController extends Controller
         $new->keterangan = $request->keterangan;
 
         if($request->file('image')){
-            $path = $request->file('image')->store('/track-details');
+            $path = $request->file('image')->store('public/track-details');
             $new->image = $path;
         }
-
+        
         $new->save();
 
         return redirect()->route('admin.dashboard.track.detail.index', $id);
