@@ -132,7 +132,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     
             Route::group(['prefix' => 'detail/{id}', 'as' => 'detail.'], function () {
                 Route::get('/', [TrackDetailController::class,'index'])->name('index');
-                Route::get('/destroy/{detail}', [TrackDetailController::class,'destroy'])->name('destroy');
+                Route::delete('/destroy/{detail}', [TrackDetailController::class,'destroy'])->name('destroy');
                 Route::get('/show{detail}', [TrackDetailController::class,'show'])->name('show');
                 Route::get('/edit/{detail}', [TrackDetailController::class,'edit'])->name('edit');
                 Route::get('/create', [TrackDetailController::class,'create'])->name('create');

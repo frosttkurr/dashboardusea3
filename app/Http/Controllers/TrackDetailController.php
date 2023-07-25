@@ -143,6 +143,6 @@ class TrackDetailController extends Controller
         $lokasi = TrackDetail::find($detail);
         $lokasi->delete();
 
-        return redirect()->route('dashboard.track.detail.index', $id);
+        return redirect()->route('admin.dashboard.track.detail.index', $id);
     }
 }
