@@ -31,6 +31,7 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                     <tr>
+                        <th class="col-1">No.</th>
                         <th class="col-2">Tanggal</th>
                         <th class="col-3">Lokasi</th>
                         <th class="col-3">Jenis Temuan</th>
@@ -41,8 +42,9 @@
 
 
                     <tbody>
-                    @foreach($laporanNelayans as $laporan)
+                    @foreach($laporanNelayans as $key => $laporan)
                     <tr>
+                        <td>{{$key+1}}</td>
                         <td>{{$laporan->tanggal}}</td>
                         <td>{{$laporan->lokasi->nama_lokasi}}</td>
                         <td>{{$laporan->jenis_temuan->jenis_temuan}}</td>

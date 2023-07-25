@@ -41,6 +41,13 @@ class LaporanNelayanController extends Controller
      */
     public function store(Request $request)
     {
+        $validateData = $request->validate([
+            'id_lokasi' => 'required',
+            'id_jenis_temuan' => 'required',
+            'isi_laporan' => 'required',
+            'tanggal' => 'required',
+        ]);
+
         $new = new LaporanNelayan();
         $new->id_lokasi = $request->id_lokasi;
         $new->id_jenis_temuan = $request->id_jenis_temuan;

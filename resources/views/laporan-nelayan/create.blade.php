@@ -18,32 +18,56 @@
                 @csrf
                     <div class="mb-4">
                         <label class="form-label">Lokasi</label>
-                        <select name="id_lokasi" class="form-control">
+                        <select name="id_lokasi" class="form-control @error('id_lokasi') is-invalid @enderror">
                             <option selected="true" disabled="disabled">Pilih Lokasi Temuan</option>   
                             @foreach ($lokasis as $lokasi)
                                 <option value="{{ $lokasi->id }}">{{ $lokasi->nama_lokasi }}</option>
                             @endforeach
                         </select>
+
+                        @error('id_lokasi')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="mb-4">
                         <label class="form-label">Jenis Temuan</label>
-                        <select name="id_jenis_temuan" class="form-control">
+                        <select name="id_jenis_temuan" class="form-control @error('id_jenis_temuan') is-invalid @enderror">
                             <option selected="true" disabled="disabled">Pilih Jenis Temuan</option>   
                             @foreach ($jenisTemuans as $jenisTemuan)
                                 <option value="{{ $jenisTemuan->id }}">{{ $jenisTemuan->jenis_temuan }}</option>
                             @endforeach
                         </select>
+
+                        @error('id_jenis_temuan')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="mb-4">
                         <label class="form-label" for="isi_laporan">Isi Laporan</label>
-                        <textarea class="form-control" type="text" id="isi_laporan" name="isi_laporan" rows="4" placeholder="Jabarkan isi/keterangan laporan temuan biota"></textarea>
+                        <textarea class="form-control @error('isi_laporan') is-invalid @enderror" type="text" id="isi_laporan" name="isi_laporan" rows="4" placeholder="Jabarkan isi/keterangan laporan temuan biota"></textarea>
+                        
+                        @error('isi_laporan')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="mb-4">
                         <label class="form-label" for="isi_laporan">Tanggal</label>
-                        {!! Form::date('tanggal', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
+                        <input name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{\Carbon\Carbon::now()->format('Y-m-d')}}" type="date">
+
+                        @error('tanggal')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
     
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button>
