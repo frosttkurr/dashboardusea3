@@ -27,6 +27,7 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                         <tr>
+                            <th class="col-1">No.</th>
                             <th class="col-2">Tanggal</th>
                             <th class="col-2">Lokasi</th>
                             <th class="col-2">Kondisi</th>
@@ -34,8 +35,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($kondisiPerairans as $kondisi)
+                        @foreach($kondisiPerairans as $key => $kondisi)
                             <tr>
+                                <td>{{$key+1}}</td>
                                 <td>{{$kondisi->tanggal}}</td>
                                 <td>{{$kondisi->lokasi->nama_lokasi}}</td>
                                 <td>{{$kondisi->kondisi}}</td>

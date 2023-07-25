@@ -27,6 +27,7 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                         <tr>
+                            <th class="col-1">No.</th>
                             <th class="col-2">Tanggal</th>
                             <th class="col-2">Lokasi</th>
                             <th class="col-2">Kondisi</th>
@@ -34,8 +35,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $__currentLoopData = $kondisiPerairans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kondisi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php $__currentLoopData = $kondisiPerairans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $kondisi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
+                                <td><?php echo e($key+1); ?></td>
                                 <td><?php echo e($kondisi->tanggal); ?></td>
                                 <td><?php echo e($kondisi->lokasi->nama_lokasi); ?></td>
                                 <td><?php echo e($kondisi->kondisi); ?></td>
