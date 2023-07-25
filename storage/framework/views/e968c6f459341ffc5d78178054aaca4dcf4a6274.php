@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-10">
                         <h4 class="card-title">Track Detail</h4>
-                        <p class="card-title-desc">Data track detail yang tercatat</p>
+                        <p class="card-title-desc">Ini Track Detail</p>
                     </div>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('track')): ?>
                     <div class="col-2 text-right">

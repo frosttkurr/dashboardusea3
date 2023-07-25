@@ -123,7 +123,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     
         Route::group(['prefix' => 'track', 'as' => 'track.'], function () {
             Route::get('/', [TrackController::class,'index'])->name('index');
-            Route::get('/destroy/{id}', [TrackController::class,'destroy'])->name('destroy');
+            Route::delete('/destroy/{id}', [TrackController::class,'destroy'])->name('destroy');
             Route::get('/show{id}', [TrackController::class,'show'])->name('show');
             Route::get('/edit/{id}', [TrackController::class,'edit'])->name('edit');
             Route::get('/create', [TrackController::class,'create'])->name('create');
