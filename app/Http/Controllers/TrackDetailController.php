@@ -83,12 +83,12 @@ class TrackDetailController extends Controller
      * @param  \App\Models\TrackDetail  $trackDetail
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, $detail)
+    public function edit($track_id, $track_detail_id)
     {
-        $trackDetail = TrackDetail::find($detail);
+        $trackDetail = TrackDetail::find($track_detail_id);
         $lokasis = Lokasi::all();
         $biotas = Biota::all();
-        return view('track.detail.edit',compact("id", "trackDetail", "lokasis", "biotas"));
+        return view('track.detail.edit',compact("track_id", "trackDetail", "lokasis", "biotas"));
     }
 
     /**
@@ -100,6 +100,13 @@ class TrackDetailController extends Controller
      */
     public function update(Request $request, $id, $detail)
     {
+        $validateData = $request->validate([
+            'id_track' => 'required',
+            'id_biota' => 'required',
+            'id_lokasi' => 'required',
+            'keterangan' => 'required',
+        ]);
+
         $new = TrackDetail::find($detail);
         $new->id_track = $request->id_track;
         $new->id_biota = $request->id_biota;
@@ -113,7 +120,7 @@ class TrackDetailController extends Controller
 
         $new->save();
 
-        return redirect()->route('dashboard.track.detail.index', $id);
+        return redirect()->route('admin.dashboard.track.detail.index', $id);
     }
 
     /**

@@ -55,7 +55,7 @@
                         <td><?php echo e($detail->keterangan); ?></td>
                         <td>
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('track')): ?>
-                            <a href="<?php echo e(route('admin.dashboard.track.detail.edit', ['$track->id', '$detail->id'])); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
+                            <a href="<?php echo e(route('admin.dashboard.track.detail.edit', [$track->id, $detail->id])); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
                             <a onclick="return confirm ('Hapus data?')" href="/dashboard/track/detail/<?php echo e($track->id); ?>/destroy/<?php echo e($detail->id); ?>"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
                             <?php endif; ?>
                         </td>

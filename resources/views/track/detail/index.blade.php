@@ -55,7 +55,7 @@
                         <td>{{$detail->keterangan}}</td>
                         <td>
                             @can('track')
-                            <a href="{{ route('admin.dashboard.track.detail.edit', ['$track->id', '$detail->id']) }}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
+                            <a href="{{ route('admin.dashboard.track.detail.edit', [$track->id, $detail->id]) }}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
                             <a onclick="return confirm ('Hapus data?')" href="/dashboard/track/detail/{{$track->id}}/destroy/{{$detail->id}}"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
                             @endcan
                         </td>
