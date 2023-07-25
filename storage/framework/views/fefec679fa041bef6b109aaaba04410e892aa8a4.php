@@ -28,6 +28,7 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                     <tr>
+                        <th class="col-1">No.</th>
                         <th class="col-4">Tanggal</th>
                         <th class="col-4">Status</th>
                         <th class="col-4">Action</th>
@@ -36,9 +37,10 @@
 
 
                     <tbody>
-                    <?php $__currentLoopData = $tracks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $track): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $tracks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $track): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        <td><?php echo e($track->tanggal); ?></td>
+                        <td><?php echo e($key+1); ?></td>
+                        <td><?php echo e(date('d-M-Y', strtotime($track->tanggal))); ?></td>
                         <td>
                             <?php if($track->is_valid == 0): ?>
                                 Belum Valid

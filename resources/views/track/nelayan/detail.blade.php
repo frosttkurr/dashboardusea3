@@ -18,8 +18,8 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-10">
-                        <h4 class="card-title">Track Detail</h4>
-                        <p class="card-title-desc">Data track detail biota</p>
+                        <h4 class="card-title">Track: {{ date('d-M-Y', strtotime($track->tanggal)) }}</h4>
+                        <p class="card-title-desc">Detail track biota yang tercatat</p>
                     </div>
                 </div>
                 </div>
@@ -28,30 +28,25 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                     <tr>
+                        <th class="col-1">No.</th>
                         <th class="col-2">Biota</th>
                         <th class="col-2">Lokasi</th>
                         <th class="col-3">Gambar</th>
                         <th class="col-3">Keterangan</th>
-                        <th class="col-2">Action</th>
                     </tr>
                     </thead>
 
 
                     <tbody>
-                    @foreach($trackDetails as $detail)
+                    @foreach($trackDetails as $key => $detail)
                     <tr>
+                        <td>{{$key+1}}</td>
                         <td>{{$detail->biota->nama_biota}}</td>
                         <td>{{$detail->lokasi->nama_lokasi}}</td>
                         <td>
-                            <img src="/storage/{{$detail->image}}" alt="" width="200px">
+                            <img src="{{ url('storage/'.$detail->image) }}" alt="Gambar biota" width="200px">
                         </td>
                         <td>{{$detail->keterangan}}</td>
-                        <td>
-                            @can('track')
-                            <a href="/dashboard/track/detail/{{$trackId}}/edit/{{$detail->id}}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
-                            <a onclick="return confirm ('Hapus data?')" href="/dashboard/track/detail/{{$trackId}}/destroy/{{$detail->id}}"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
-                            @endcan
-                        </td>
                     </tr>
                     @endforeach
                     </tbody>

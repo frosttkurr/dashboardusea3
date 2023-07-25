@@ -26,9 +26,9 @@ class TrackDetailController extends Controller
 
     public function indexNelayan($id)
     {
-        $trackId = $id;
+        $track = Track::find($id);
         $trackDetails = TrackDetail::where('id_track', $id)->get();
-        return view('track.nelayan.detail', compact("trackDetails", "trackId"));
+        return view('track.nelayan.detail', compact("trackDetails", "track"));
     }
 
     /**

@@ -28,6 +28,7 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                     <tr>
+                        <th class="col-1">No.</th>
                         <th class="col-4">Tanggal</th>
                         <th class="col-4">Status</th>
                         <th class="col-4">Action</th>
@@ -36,9 +37,10 @@
 
 
                     <tbody>
-                    @foreach($tracks as $track)
+                    @foreach($tracks as $key => $track)
                     <tr>
-                        <td>{{$track->tanggal}}</td>
+                        <td>{{$key+1}}</td>
+                        <td>{{date('d-M-Y', strtotime($track->tanggal))}}</td>
                         <td>
                             @if($track->is_valid == 0)
                                 Belum Valid
