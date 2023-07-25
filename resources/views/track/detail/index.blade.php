@@ -9,7 +9,7 @@
 @section('content')
 @component('components.breadcrumb')
 @slot('li_1') Track @endslot
-@slot('title') Detail @endslot
+@slot('title') Data Track Detail @endslot
 @endcomponent
 
 <div class="row">
@@ -18,12 +18,12 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-10">
-                        <h4 class="card-title">Track Detail</h4>
-                        <p class="card-title-desc">Ini Track Detail</p>
+                        <h4 class="card-title">Tanggal: {{ date('d-M-Y', strtotime($track->tanggal)) }}</h4>
+                        <p class="card-title-desc">Detail track biota yang tercatat</p>
                     </div>
                     @can('track')
                     <div class="col-2 text-right">
-                        <a href="/dashboard/track/detail/{{$trackId}}/create"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
+                        <a href="{{ route('admin.dashboard.track.detail.create', $track->id) }}"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
                     </div>
                     @endcan
                 </div>
@@ -33,6 +33,7 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                     <tr>
+                        <th class="col-1">No.</th>
                         <th class="col-2">Biota</th>
                         <th class="col-2">Lokasi</th>
                         <th class="col-3">Gambar</th>
@@ -43,18 +44,19 @@
 
 
                     <tbody>
-                    @foreach($trackDetails as $detail)
+                    @foreach($trackDetails as $key => $detail)
                     <tr>
+                        <td>{{$key+1}}</td>
                         <td>{{$detail->biota->nama_biota}}</td>
                         <td>{{$detail->lokasi->nama_lokasi}}</td>
                         <td>
-                            <img src="/storage/{{$detail->image}}" alt="" width="200px">
+                            <img src="{{ asset('assets/images/track-detail/'.$detail->image) }}" alt="Gambar biota" width="200px">
                         </td>
                         <td>{{$detail->keterangan}}</td>
                         <td>
                             @can('track')
-                            <a href="/dashboard/track/detail/{{$trackId}}/edit/{{$detail->id}}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
-                            <a onclick="return confirm ('Hapus data?')" href="/dashboard/track/detail/{{$trackId}}/destroy/{{$detail->id}}"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
+                            <a href="{{ route('admin.dashboard.track.detail.edit', ['$track->id', '$detail->id']) }}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
+                            <a onclick="return confirm ('Hapus data?')" href="/dashboard/track/detail/{{$track->id}}/destroy/{{$detail->id}}"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
                             @endcan
                         </td>
                     </tr>

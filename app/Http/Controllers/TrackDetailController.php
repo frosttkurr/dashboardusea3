@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Biota;
 use App\Models\Lokasi;
+use App\Models\Track;
 use App\Models\TrackDetail;
 use Illuminate\Http\Request;
 use Auth;
@@ -18,9 +19,9 @@ class TrackDetailController extends Controller
      */
     public function index($id)
     {
-        $trackId = $id;
+        $track = Track::find($id);
         $trackDetails = TrackDetail::where('id_track', $id)->get();
-        return view('track.detail.index', compact("trackDetails", "trackId"));
+        return view('track.detail.index', compact("trackDetails", "track"));
     }
 
     public function indexNelayan($id)

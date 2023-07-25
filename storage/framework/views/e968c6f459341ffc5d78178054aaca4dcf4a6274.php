@@ -9,7 +9,7 @@
 <?php $__env->startSection('content'); ?>
 <?php $__env->startComponent('components.breadcrumb'); ?>
 <?php $__env->slot('li_1'); ?> Track <?php $__env->endSlot(); ?>
-<?php $__env->slot('title'); ?> Detail <?php $__env->endSlot(); ?>
+<?php $__env->slot('title'); ?> Data Track Detail <?php $__env->endSlot(); ?>
 <?php echo $__env->renderComponent(); ?>
 
 <div class="row">
@@ -18,12 +18,12 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-10">
-                        <h4 class="card-title">Track Detail</h4>
-                        <p class="card-title-desc">Ini Track Detail</p>
+                        <h4 class="card-title">Tanggal: <?php echo e(date('d-M-Y', strtotime($track->tanggal))); ?></h4>
+                        <p class="card-title-desc">Detail track biota yang tercatat</p>
                     </div>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('track')): ?>
                     <div class="col-2 text-right">
-                        <a href="/dashboard/track/detail/<?php echo e($trackId); ?>/create"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
+                        <a href="<?php echo e(route('admin.dashboard.track.detail.create', $track->id)); ?>"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button></a>
                     </div>
                     <?php endif; ?>
                 </div>
@@ -33,6 +33,7 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                     <tr>
+                        <th class="col-1">No.</th>
                         <th class="col-2">Biota</th>
                         <th class="col-2">Lokasi</th>
                         <th class="col-3">Gambar</th>
@@ -43,18 +44,19 @@
 
 
                     <tbody>
-                    <?php $__currentLoopData = $trackDetails; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $detail): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $trackDetails; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $detail): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
+                        <td><?php echo e($key+1); ?></td>
                         <td><?php echo e($detail->biota->nama_biota); ?></td>
                         <td><?php echo e($detail->lokasi->nama_lokasi); ?></td>
                         <td>
-                            <img src="/storage/<?php echo e($detail->image); ?>" alt="" width="200px">
+                            <img src="<?php echo e(asset('assets/images/track-detail/'.$detail->image)); ?>" alt="Gambar biota" width="200px">
                         </td>
                         <td><?php echo e($detail->keterangan); ?></td>
                         <td>
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('track')): ?>
-                            <a href="/dashboard/track/detail/<?php echo e($trackId); ?>/edit/<?php echo e($detail->id); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
-                            <a onclick="return confirm ('Hapus data?')" href="/dashboard/track/detail/<?php echo e($trackId); ?>/destroy/<?php echo e($detail->id); ?>"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
+                            <a href="<?php echo e(route('admin.dashboard.track.detail.edit', ['$track->id', '$detail->id'])); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
+                            <a onclick="return confirm ('Hapus data?')" href="/dashboard/track/detail/<?php echo e($track->id); ?>/destroy/<?php echo e($detail->id); ?>"><button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button></a>
                             <?php endif; ?>
                         </td>
                     </tr>
