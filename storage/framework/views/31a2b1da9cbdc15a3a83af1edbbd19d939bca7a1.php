@@ -11,11 +11,11 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Silahkan tambah data detail track disini.</h4>
+                <h4 class="card-title">Track: <?php echo e(date('d-M-Y', strtotime($track->tanggal))); ?></h4>
                 <p class="card-title-desc">Harap isi semua data dengan lengkap agar informasi yang diberikan sesuai.</p>
             </div>
             <div class="card-body">
-                <form action="<?php echo e(route('admin.dashboard.track.detail.store', $trackId)); ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo e(route('admin.dashboard.track.detail.store', $track->id)); ?>" method="POST" enctype="multipart/form-data">
                 <?php echo csrf_field(); ?>
 
                     <div class="mb-4">
@@ -128,7 +128,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                     </div>
 
-                    <input type="hidden" name="id_track" class="form-control" value="<?php echo e($trackId); ?>">
+                    <input type="hidden" name="id_track" class="form-control" value="<?php echo e($track->id); ?>">
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button>
                 </form>
             </div>

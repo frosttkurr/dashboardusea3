@@ -38,10 +38,10 @@ class TrackDetailController extends Controller
      */
     public function create($id)
     {
-        $trackId = $id;
+        $track = Track::find($id);
         $lokasis = Lokasi::all();
         $biotas = Biota::all();
-        return view('track.detail.create', compact("lokasis", "biotas", "trackId"));
+        return view('track.detail.create', compact("lokasis", "biotas", "track"));
     }
 
     /**
@@ -94,10 +94,11 @@ class TrackDetailController extends Controller
      */
     public function edit($track_id, $track_detail_id)
     {
+        $track = Track::find($track_id);
         $trackDetail = TrackDetail::find($track_detail_id);
         $lokasis = Lokasi::all();
         $biotas = Biota::all();
-        return view('track.detail.edit',compact("track_id", "trackDetail", "lokasis", "biotas"));
+        return view('track.detail.edit',compact("track", "trackDetail", "lokasis", "biotas"));
     }
 
     /**

@@ -11,10 +11,11 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
+                <h4 class="card-title">Track: {{ date('d-M-Y', strtotime($track->tanggal)) }}</h4>
                 <p class="card-title-desc">Harap isi data dengan benar agar informasi yang diberikan sesuai.</p>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.dashboard.track.detail.update', [$track_id, $trackDetail->id]) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.dashboard.track.detail.update', [$track->id, $trackDetail->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                     <div class="mb-4">
                         <label class="form-label">Biota</label>
@@ -69,7 +70,7 @@
                             </span>
                         @enderror
                     </div>
-                    <input type="hidden" name="id_track" class="form-control" value="{{$track_id}}">
+                    <input type="hidden" name="id_track" class="form-control" value="{{$track->id}}">
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Ubah Data</button>
                 </form>
             </div>

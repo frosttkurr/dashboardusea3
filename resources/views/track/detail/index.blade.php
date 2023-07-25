@@ -18,7 +18,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-10">
-                        <h4 class="card-title">Tanggal: {{ date('d-M-Y', strtotime($track->tanggal)) }}</h4>
+                        <h4 class="card-title">Track: {{ date('d-M-Y', strtotime($track->tanggal)) }}</h4>
                         <p class="card-title-desc">Detail track biota yang tercatat</p>
                     </div>
                     @can('track')

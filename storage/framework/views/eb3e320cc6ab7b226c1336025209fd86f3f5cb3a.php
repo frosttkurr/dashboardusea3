@@ -11,10 +11,11 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
+                <h4 class="card-title">Track: <?php echo e(date('d-M-Y', strtotime($track->tanggal))); ?></h4>
                 <p class="card-title-desc">Harap isi data dengan benar agar informasi yang diberikan sesuai.</p>
             </div>
             <div class="card-body">
-                <form action="<?php echo e(route('admin.dashboard.track.detail.update', [$track_id, $trackDetail->id])); ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo e(route('admin.dashboard.track.detail.update', [$track->id, $trackDetail->id])); ?>" method="POST" enctype="multipart/form-data">
                 <?php echo csrf_field(); ?>
                     <div class="mb-4">
                         <label class="form-label">Biota</label>
@@ -125,7 +126,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                     </div>
-                    <input type="hidden" name="id_track" class="form-control" value="<?php echo e($track_id); ?>">
+                    <input type="hidden" name="id_track" class="form-control" value="<?php echo e($track->id); ?>">
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Ubah Data</button>
                 </form>
             </div>
