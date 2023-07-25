@@ -70,7 +70,6 @@ class TrackDetailController extends Controller
             $path = $request->file('image')->store('track-details', 'public');
             $new->image = $path;
         }
-
         $new->save();   
 
         return redirect()->route('admin.dashboard.track.detail.index', $request->id_track);
@@ -124,10 +123,9 @@ class TrackDetailController extends Controller
         $new->keterangan = $request->keterangan;
 
         if($request->file('image')){
-            $path = $request->file('image')->store('public/track-details');
+            $path = $request->file('image')->store('track-details', 'public');
             $new->image = $path;
         }
-        
         $new->save();
 
         return redirect()->route('admin.dashboard.track.detail.index', $id);
