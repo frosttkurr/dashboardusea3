@@ -39,8 +39,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $permission = Permission::get();
-        return view('roles.create',compact('permission'));
+        $permissions = Permission::get();
+        return view('roles.create',compact('permissions'));
     }
     
     /**
@@ -59,7 +59,7 @@ class RoleController extends Controller
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
     
-        return redirect()->route('dashboard.roles.index')
+        return redirect()->route('admin.dashboard.roles.index')
                         ->with('success','Role created successfully');
     }
     /**
@@ -110,7 +110,7 @@ class RoleController extends Controller
     
         $role->syncPermissions($request->input('permission'));
     
-        return redirect()->route('dashboard.roles.index')
+        return redirect()->route('admin.dashboard.roles.index')
                         ->with('success','Role updated successfully');
     }
     /**
@@ -122,7 +122,7 @@ class RoleController extends Controller
     public function destroy($id)
     {
         DB::table("roles")->where('id',$id)->delete();
-        return redirect()->route('dashboard.roles.index')
+        return redirect()->route('admin.dashboard.roles.index')
                         ->with('success','Role deleted successfully');
     }
 }
