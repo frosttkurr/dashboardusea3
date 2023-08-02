@@ -8,6 +8,7 @@ use App\Models\Track;
 use App\Models\TrackDetail;
 use Illuminate\Http\Request;
 use Auth;
+use App\Models\Log;
 
 class TrackDetailController extends Controller
 {
@@ -70,7 +71,10 @@ class TrackDetailController extends Controller
             $path = $request->file('image')->store('track-details', 'public');
             $new->image = $path;
         }
-        $new->save();   
+        $new->save();
+
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'create', 'Create new track detail data (ID: '.$new->id.' | ID Track: '.$new->id_track.')', '\App\TrackDetail', 'TrackDetailController@store');
 
         return redirect()->route('admin.dashboard.track.detail.index', $request->id_track);
     }
@@ -129,6 +133,9 @@ class TrackDetailController extends Controller
         }
         $new->save();
 
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'update', 'Update track detail data (ID: '.$new->id.' | ID Track: '.$new->id_track.')', '\App\TrackDetail', 'TrackDetailController@update');
+
         return redirect()->route('admin.dashboard.track.detail.index', $id);
     }
 
@@ -140,9 +147,9 @@ class TrackDetailController extends Controller
      */
     public function destroy($id, $detail)
     {
-        $lokasi = TrackDetail::find($detail);
-        $lokasi->delete();
-
+        $track_detail = new TrackDetail;
+        $track_detail->destroy($detail);
+        
         return redirect()->route('admin.dashboard.track.detail.index', $id);
     }
 }

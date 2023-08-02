@@ -6,6 +6,7 @@ use App\Models\Track;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Log;
+use App\Models\TrackDetail;
 
 class TrackController extends Controller
 {
@@ -125,6 +126,12 @@ class TrackController extends Controller
     public function destroy($id)
     {
         $track = Track::find($id);
+        
+        $track_details = TrackDetail::where('id_track', $track->id)->get();
+        foreach ($track_details as $track_detail) {
+            $track_detail->destroy($track_detail->id);
+        }
+
         $track->delete();
 
         $log = new Log();

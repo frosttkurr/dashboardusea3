@@ -1,5 +1,5 @@
 
-<?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.Basic_Elements'); ?>  <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> Ubah Track Detail <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <?php $__env->startComponent('components.breadcrumb'); ?>
 <?php $__env->slot('li_1'); ?> Track <?php $__env->endSlot(); ?>
