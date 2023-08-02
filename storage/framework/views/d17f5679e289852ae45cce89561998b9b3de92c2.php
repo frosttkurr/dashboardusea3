@@ -100,6 +100,14 @@
                             </a>
                         </li>
                     <?php endif; ?>
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('logs')): ?>
+                        <li>
+                            <a href="<?php echo e(route('admin.dashboard.logs.index')); ?>">
+                                <i data-feather="activity"></i>
+                                <span data-key="t-dashboard">Logs</span>
+                            </a>
+                        </li>
+                    <?php endif; ?>
                 <?php endif; ?>
                 
                 <!-- <li class="menu-title" data-key="t-apps"><?php echo app('translator')->get('translation.Apps'); ?></li>

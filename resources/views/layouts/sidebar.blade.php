@@ -105,6 +105,14 @@
                             </a>
                         </li>
                     @endcan
+                    @can('logs')
+                        <li>
+                            <a href="{{ route('admin.dashboard.logs.index') }}">
+                                <i data-feather="activity"></i>
+                                <span data-key="t-dashboard">Logs</span>
+                            </a>
+                        </li>
+                    @endcan
                 @endif
                 
                 <!-- <li class="menu-title" data-key="t-apps">@lang('translation.Apps')</li>
