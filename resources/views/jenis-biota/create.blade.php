@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') @lang('translation.Basic_Elements')  @endsection
+@section('title') Tambah Jenis Biota @endsection
 @section('content')
 @component('components.breadcrumb')
 @slot('li_1') Biota @endslot
