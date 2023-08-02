@@ -6,6 +6,7 @@ use App\Models\KondisiPerairan;
 use App\Models\Lokasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Log;
 
 class KondisiPerairanController extends Controller
 {
@@ -71,6 +72,9 @@ class KondisiPerairanController extends Controller
         $new->uraian = $request->uraian;
         $new->save();
 
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'create', 'Create new kondisi perairan data (ID: '.$new->id.' | Tanggal: '.$new->tanggal.')', '\App\KondisiPerairan', 'KondisiPerairanController@store');
+
         return redirect()->route('admin.dashboard.kondisi-perairan.index');
     }
 
@@ -121,6 +125,9 @@ class KondisiPerairanController extends Controller
         $new->uraian = $request->uraian;
         $new->save();
 
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'update', 'Update kondisi perairan data (ID: '.$new->id.' | Tanggal: '.$new->tanggal.')', '\App\KondisiPerairan', 'KondisiPerairanController@update');
+
         return redirect()->route('admin.dashboard.kondisi-perairan.index');
     }
 
@@ -134,6 +141,9 @@ class KondisiPerairanController extends Controller
     {
         $lokasi = KondisiPerairan::find($id);
         $lokasi->delete();
+
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'delete', 'Delete kondisi perairan data (ID: '.$lokasi->id.' | Tanggal: '.$lokasi->tanggal.')', '\App\KondisiPerairan', 'KondisiPerairanController@destroy');
 
         return redirect()->route('admin.dashboard.kondisi-perairan.index');
     }
