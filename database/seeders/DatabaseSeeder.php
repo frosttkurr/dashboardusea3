@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\JenisBiota;
 use App\Models\Lokasi;
 use App\Models\User;
 use Illuminate\Database\Seeder;
