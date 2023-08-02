@@ -59,11 +59,9 @@
                             </td>
                             <td>
                                 <a class="btn btn-primary" href="<?php echo e(route('admin.dashboard.users.edit',$user->id)); ?>">Edit</a>
-                                <?php echo Form::open(['method' => 'DELETE','route' => ['admin.dashboard.users.destroy', $user->id],'style'=>'display:inline']); ?>
-
-                                    <button onclick="return confirm ('Hapus data?')" type="submit" class="btn btn-danger waves-effect waves-light">Hapus</button>
-                                <?php echo Form::close(); ?>
-
+                                <a href="<?php echo e(route('admin.dashboard.users.destroy', $user->id)); ?>" onclick="notificationBeforeDelete(event, this)">
+                                    <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -87,6 +85,30 @@
 <script src="<?php echo e(URL::asset('assets/libs/datatables.net-responsive-bs4/datatables.net-responsive-bs4.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/js/pages/datatables.init.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/js/app.min.js')); ?>"></script>
+
+<form action="" id="delete-form" method="post">
+    <?php echo method_field('delete'); ?>
+    <?php echo csrf_field(); ?>
+</form>
+
+<script>
+    function notificationBeforeDelete(event, el) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Yakin hapus data?',
+            text: 'Data akan dihapus',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Hapus',                
+        }).then((result) => {
+            if (result.value) {
+                $("#delete-form").attr('action', $(el).attr('href'));
+                $("#delete-form").submit();
+            }
+        })
+    }
+</script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Laravel\dashboardusea3\resources\views/users/index.blade.php ENDPATH**/ ?>
