@@ -59,7 +59,7 @@
                     <?php endif; ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user')): ?>
                         <li>
-                            <a href="/dashboard/users">
+                            <a href="<?php echo e(route('admin.dashboard.users.index')); ?>">
                                 <i data-feather="user"></i>
                                 <span data-key="t-dashboard">Users</span>
                             </a>
@@ -67,7 +67,7 @@
                     <?php endif; ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role')): ?>
                         <li>
-                            <a href="/dashboard/roles">
+                            <a href="<?php echo e(route('admin.dashboard.roles.index')); ?>">
                                 <i data-feather="users"></i>
                                 <span data-key="t-dashboard">Roles</span>
                             </a>

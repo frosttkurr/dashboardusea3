@@ -19,10 +19,10 @@
                 <div class="row">
                     <div class="col-10">
                         <h4 class="card-title">Users</h4>
-                        <p class="card-title-desc">Ini Users</p>
+                        <p class="card-title-desc">Data users yang terdaftar</p>
                     </div>
                     <div class="col-2 text-right">
-                        <a class="btn btn-primary" href="{{ route('dashboard.users.create') }}">Tambah</a>
+                        <a class="btn btn-primary" href="{{ route('admin.dashboard.users.create') }}">Tambah</a>
                     </div>
                 </div>
                 </div>
@@ -31,6 +31,7 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                     <tr>
+                        <th class="col-1">No.</th>
                         <th class="col-4">Nama</th>
                         <th class="col-4">Email</th>
                         <th class="col-2">Role</th>
@@ -40,16 +41,21 @@
 
 
                     <tbody>
-                    @foreach($users as $user)
+                    @foreach($users as $key => $user)
                         <tr>
+                            <td>{{$key+1}}</td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
                             <td>
-                                {{$user->roles[0]->name}}
+                                @if (count($user->roles) > 0) 
+                                    {{ $user->roles[0]->name }} 
+                                @else 
+                                    -
+                                @endif
                             </td>
                             <td>
-                                <a class="btn btn-primary" href="{{ route('dashboard.users.edit',$user->id) }}">Edit</a>
-                                {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+                                <a class="btn btn-primary" href="{{ route('admin.dashboard.users.edit',$user->id) }}">Edit</a>
+                                {!! Form::open(['method' => 'DELETE','route' => ['admin.dashboard.users.destroy', $user->id],'style'=>'display:inline']) !!}
                                     <button onclick="return confirm ('Hapus data?')" type="submit" class="btn btn-danger waves-effect waves-light">Hapus</button>
                                 {!! Form::close() !!}
                             </td>

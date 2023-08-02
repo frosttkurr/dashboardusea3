@@ -40,7 +40,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name','name')->all();
+        $roles = Role::all();
         return view('users.create',compact('roles'));
     }
     
@@ -65,7 +65,7 @@ class UserController extends Controller
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
     
-        return redirect()->route('dashboard.users.index')
+        return redirect()->route('admin.dashboard.users.index')
                         ->with('success','User created successfully');
     }
     
@@ -125,7 +125,7 @@ class UserController extends Controller
     
         $user->assignRole($request->input('roles'));
     
-        return redirect()->route('dashboard.users.index')
+        return redirect()->route('admin.dashboard.users.index')
                         ->with('success','User updated successfully');
     }
     
@@ -138,7 +138,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('dashboard.users.index')
+        return redirect()->route('admin.dashboard.users.index')
                         ->with('success','User deleted successfully');
     }
 }
