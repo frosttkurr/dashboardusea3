@@ -56,8 +56,14 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
+            'avatar' => ['required', 'mimes:jpg,jpeg,png'],
             'roles' => 'required'
         ]);
+
+        if($request->file('avatar')){
+            $path = $request->file('avatar')->store('avatar', 'public');
+            $request->avatar = $path;
+        }
     
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);

@@ -15,7 +15,7 @@
                 <p class="card-title-desc">Harap isi semua data dengan lengkap.</p>
             </div>
             <div class="card-body">
-                <form action="<?php echo e(route('admin.dashboard.users.store')); ?>" method="POST">
+                <form action="<?php echo e(route('admin.dashboard.users.store')); ?>" method="POST" enctype="multipart/form-data">
                     <?php echo csrf_field(); ?>
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -104,6 +104,36 @@ unset($__errorArgs, $__bag); ?>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
+                                <label for="avatar">Avatar:</label>
+                                <div class="<?php $__errorArgs = ['avatar'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
+                                    <div class="fallback">
+                                        <input name="avatar" type="file" accept=".png, .jpg, .jpeg">
+                                    </div>
+                                </div>
+    
+                                <?php $__errorArgs = ['avatar'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong><?php echo e($message); ?></strong>
+                                    </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
                                 <label for="roles">Role:</label>
                                 <select name="roles" id="roles" class="form-control mb-4 <?php $__errorArgs = ['roles'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -113,7 +143,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>">
-                                    <option selected="true" disabled="disabled">Pilih jenis biota</option>
+                                    <option selected="true" disabled="disabled">Pilih roles</option>
                                     <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($role->id); ?>"><?php echo e($role->name); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
