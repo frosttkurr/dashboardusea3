@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') Logs @endsection
+@section('title') Logs Detail @endsection
 @section('css')
 <link href="{{ URL::asset('assets/libs/datatables.net-bs4/datatables.net-bs4.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('assets/libs/datatables.net-buttons-bs4/datatables.net-buttons-bs4.min.css') }}" rel="stylesheet" type="text/css" />
@@ -9,7 +9,7 @@
 @section('content')
 @component('components.breadcrumb')
 @slot('li_1') U-Sea @endslot
-@slot('title') Logs @endslot
+@slot('title') Logs Detail @endslot
 @endcomponent
 
 <div class="row">
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-10">
                         <h4 class="card-title">Logs</h4>
-                        <p class="card-title-desc">Data log aktivitas user yang tercatat</p>
+                        <p class="card-title-desc">Detail data log aktivitas user</p>
                     </div>
                 </div>
                 </div>
@@ -28,27 +28,23 @@
                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                     <tr>
-                        <th class="col-1">No.</th>
                         <th class="col-2">Username</th>
                         <th class="col-2">Activity</th>
-                        <th class="col-6">Description</th>
-                        <th></th>
+                        <th class="col-4">Description</th>
+                        <th class="col-2">Model</th>
+                        <th class="col-4">Controller</th>
                     </tr>
                     </thead>
 
 
                     <tbody>
-                    @foreach($logs as $key => $log)
                         <tr>
-                            <td>{{$key+1}}</td>
                             <td>{{ $log->username }}</td>
                             <td>{{ $log->activity }}</td>
                             <td>{{ $log->description }}</td>
-                            <td>
-                                <a href="{{ route('admin.dashboard.logs.show', $log->id) }}"><button type="button" class="mt-1 btn btn-info waves-effect waves-light">Show</button></a>
-                            </td>
+                            <td>{{ $log->model }}</td>
+                            <td>{{ $log->controller }}</td>
                         </tr>
-                    @endforeach
                     </tbody>
                 </table>
             </div>

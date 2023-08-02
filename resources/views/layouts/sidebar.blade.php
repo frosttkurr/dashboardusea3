@@ -108,7 +108,7 @@
                     @can('logs')
                         <li>
                             <a href="{{ route('admin.dashboard.logs.index') }}">
-                                <i data-feather="activity"></i>
+                                <i data-feather="pocket"></i>
                                 <span data-key="t-dashboard">Logs</span>
                             </a>
                         </li>

@@ -48,7 +48,7 @@ class LogController extends Controller
     public function show($id)
     {
         $log = Log::find($id);
-        return view('logs.index', compact('log'));
+        return view('logs.show', compact('log'));
     }
 
     /**

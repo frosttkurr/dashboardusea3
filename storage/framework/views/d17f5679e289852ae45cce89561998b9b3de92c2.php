@@ -103,7 +103,7 @@
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('logs')): ?>
                         <li>
                             <a href="<?php echo e(route('admin.dashboard.logs.index')); ?>">
-                                <i data-feather="activity"></i>
+                                <i data-feather="pocket"></i>
                                 <span data-key="t-dashboard">Logs</span>
                             </a>
                         </li>
