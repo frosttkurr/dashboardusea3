@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('username');
             $table->enum('activity', ['create', 'update', 'delete']);
             $table->text('description');
-            $table->text('models');
+            $table->text('model');
             $table->text('controller');
             $table->timestamps();
         });

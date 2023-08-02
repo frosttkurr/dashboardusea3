@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Models\Log;
 use App\Models\Biota;
 use App\Models\JenisBiota;
 use Illuminate\Http\Request;
@@ -71,6 +73,9 @@ class BiotaController extends Controller
         }
         $new->save();
 
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'create', 'Create new biota data (ID: '.$new->id.' | Name: '.$new->nama_biota.')', '\App\Biota', 'BiotaController@store');
+
         return redirect()->route('admin.dashboard.biota.index');
     }
 
@@ -125,6 +130,9 @@ class BiotaController extends Controller
         }
         $new->save();
 
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'update', 'Update biota data (ID: '.$id.' | Name: '.$new->nama_biota.')', '\App\Biota', 'BiotaController@update');
+
         return redirect()->route('admin.dashboard.biota.index');
     }
 
@@ -138,6 +146,9 @@ class BiotaController extends Controller
     {
         $biota = Biota::find($id);
         $biota->delete();
+
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'delete', 'Delete biota data (ID: '.$id.' | Name: '.$biota->nama_biota.')', '\App\Biota', 'BiotaController@destroy');
 
         return redirect()->route('admin.dashboard.biota.index');
     }
