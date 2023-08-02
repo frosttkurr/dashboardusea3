@@ -1,5 +1,5 @@
 
-<?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.Basic_Elements'); ?>  <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> Tambah Roles  <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <?php $__env->startComponent('components.breadcrumb'); ?>
 <?php $__env->slot('li_1'); ?> Biota <?php $__env->endSlot(); ?>
@@ -76,7 +76,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                         </div>
                         <div class="col-12 text-center">
-                            <button type="submit" class="col-12 btn btn-primary">Submit</button>
+                            <button type="submit" class="col-12 btn btn-primary">Tambah</button>
                         </div>
                     </div>
                 </form>

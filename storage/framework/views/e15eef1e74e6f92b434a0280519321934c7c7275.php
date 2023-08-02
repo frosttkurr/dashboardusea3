@@ -1,9 +1,9 @@
 
-<?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.Basic_Elements'); ?>  <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> Ubah Roles <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <?php $__env->startComponent('components.breadcrumb'); ?>
 <?php $__env->slot('li_1'); ?> Biota <?php $__env->endSlot(); ?>
-<?php $__env->slot('title'); ?> Tambah Roles <?php $__env->endSlot(); ?>
+<?php $__env->slot('title'); ?> Ubah Roles <?php $__env->endSlot(); ?>
 <?php echo $__env->renderComponent(); ?>
 
 <!-- Start row -->
@@ -46,19 +46,12 @@ unset($__errorArgs, $__bag); ?>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="permission">Permission:</label>
-                                <select name="permission" id="permission" class="form-control mb-4 <?php $__errorArgs = ['permission'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>">
-                                    <option selected="true" disabled="disabled">Pilih jenis permission</option>
-                                    <?php $__currentLoopData = $permissions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permission): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($permission->id); ?>" <?php if(in_array($permission->id, $rolePermissions)): ?> selected <?php endif; ?>><?php echo e($permission->name); ?></option>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </select>
+                                <?php $__currentLoopData = $permissions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permission): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <div class="form-check">
+                                        <input type="checkbox" name="permission[]" id="permission_<?php echo e($permission->id); ?>" value="<?php echo e($permission->id); ?>" class="form-check-input" <?php if(in_array($permission->id, $rolePermissions)): ?> checked <?php endif; ?>>
+                                        <label for="permission_<?php echo e($permission->id); ?>" class="form-check-label"><?php echo e($permission->name); ?></label>
+                                    </div>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                 <?php $__errorArgs = ['permission'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -75,7 +68,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
                         <div class="col-12 text-center">
-                            <button type="submit" class="col-12 btn btn-primary">Submit</button>
+                            <button type="submit" class="col-12 btn btn-primary">Ubah</button>
                         </div>
                     </div>
                 </form>

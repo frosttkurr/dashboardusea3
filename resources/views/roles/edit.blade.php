@@ -1,9 +1,9 @@
 @extends('layouts.master')
-@section('title') @lang('translation.Basic_Elements')  @endsection
+@section('title') Ubah Roles @endsection
 @section('content')
 @component('components.breadcrumb')
 @slot('li_1') Biota @endslot
-@slot('title') Tambah Roles @endslot
+@slot('title') Ubah Roles @endslot
 @endcomponent
 
 <!-- Start row -->
@@ -32,12 +32,12 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="permission">Permission:</label>
-                                <select name="permission" id="permission" class="form-control mb-4 @error('permission') is-invalid @enderror">
-                                    <option selected="true" disabled="disabled">Pilih jenis permission</option>
-                                    @foreach ($permissions as $permission)
-                                        <option value="{{$permission->id}}" @if (in_array($permission->id, $rolePermissions)) selected @endif>{{$permission->name}}</option>
-                                    @endforeach
-                                </select>
+                                @foreach ($permissions as $permission)
+                                    <div class="form-check">
+                                        <input type="checkbox" name="permission[]" id="permission_{{ $permission->id }}" value="{{ $permission->id }}" class="form-check-input" @if (in_array($permission->id, $rolePermissions)) checked @endif>
+                                        <label for="permission_{{ $permission->id }}" class="form-check-label">{{ $permission->name }}</label>
+                                    </div>
+                                @endforeach
 
                                 @error('permission')
                                     <span class="invalid-feedback" role="alert">
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="col-12 text-center">
-                            <button type="submit" class="col-12 btn btn-primary">Submit</button>
+                            <button type="submit" class="col-12 btn btn-primary">Ubah</button>
                         </div>
                     </div>
                 </form>

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') @lang('translation.Basic_Elements')  @endsection
+@section('title') Tambah Roles  @endsection
 @section('content')
 @component('components.breadcrumb')
 @slot('li_1') Biota @endslot
@@ -48,7 +48,7 @@
                                 @enderror
                         </div>
                         <div class="col-12 text-center">
-                            <button type="submit" class="col-12 btn btn-primary">Submit</button>
+                            <button type="submit" class="col-12 btn btn-primary">Tambah</button>
                         </div>
                     </div>
                 </form>
