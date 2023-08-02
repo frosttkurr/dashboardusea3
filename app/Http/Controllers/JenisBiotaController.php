@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Models\Log;
 use App\Models\JenisBiota;
 use Illuminate\Http\Request;
 
@@ -54,6 +56,9 @@ class JenisBiotaController extends Controller
         $new->jenis_biota = $request->jenis_biota;
         $new->save();
 
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'create', 'Create new jenis biota data (ID: '.$new->id.' | Jenis Biota: '.$new->jenis_biota.')', '\App\JenisBiota', 'JenisBiotaController@store');
+
         return redirect()->route('admin.dashboard.jenis-biota.index');
     }
 
@@ -97,6 +102,9 @@ class JenisBiotaController extends Controller
         $new->jenis_biota = $request->jenis_biota;
         $new->save();
 
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'update', 'Update jenis biota data (ID: '.$new->id.' | Jenis Biota: '.$new->jenis_biota.')', '\App\JenisBiota', 'JenisBiotaController@update');
+
         return redirect()->route('admin.dashboard.jenis-biota.index');
     }
 
@@ -110,6 +118,9 @@ class JenisBiotaController extends Controller
     {
         $jenisBiota = JenisBiota::find($id);
         $jenisBiota->delete();
+
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'delete', 'Delete jenis biota data (ID: '.$jenisBiota->id.' | Jenis Biota: '.$jenisBiota->jenis_biota.')', '\App\JenisBiota', 'JenisBiotaController@destroy');
 
         return redirect()->route('admin.dashboard.jenis-biota.index');
     }
