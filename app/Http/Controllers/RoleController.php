@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Auth;
+use App\Models\Log;
     
 class RoleController extends Controller
 {
@@ -70,6 +72,9 @@ class RoleController extends Controller
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
     
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'create', 'Create new role data (ID: '.$role->id.' | Role: '.$role->name.')', '\App\Role', 'RoleController@store');
+
         return redirect()->route('admin.dashboard.roles.index')
                         ->with('success','Role created successfully');
     }
@@ -121,6 +126,9 @@ class RoleController extends Controller
     
         $role->syncPermissions($request->input('permission'));
     
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'update', 'Update role data (ID: '.$role->id.' | Role: '.$role->name.')', '\App\Role', 'RoleController@update');
+
         return redirect()->route('admin.dashboard.roles.index')
                         ->with('success','Role updated successfully');
     }
@@ -132,7 +140,12 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        DB::table("roles")->where('id',$id)->delete();
+        $role = Role::find($id);
+        $role->delete();
+
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'delete', 'Delete role data (ID: '.$role->id.' | Role: '.$role->name.')', '\App\Role', 'RoleController@destroy');
+
         return redirect()->route('admin.dashboard.roles.index')
                         ->with('success','Role deleted successfully');
     }
