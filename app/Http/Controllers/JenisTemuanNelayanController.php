@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\JenisTemuanNelayan;
 use Illuminate\Http\Request;
+use Auth;
+use App\Models\Log;
 
 class JenisTemuanNelayanController extends Controller
 {
@@ -54,6 +56,9 @@ class JenisTemuanNelayanController extends Controller
         $new->jenis_temuan = $request->jenis_temuan;
         $new->save();
 
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'create', 'Create new jenis temuan data (ID: '.$new->id.' | Jenis Temuan: '.$new->jenis_temuan.')', '\App\JenisTemuan', 'JenisTemuanController@store');
+
         return redirect()->route('admin.dashboard.jenis-temuan.index');
     }
 
@@ -97,6 +102,9 @@ class JenisTemuanNelayanController extends Controller
         $new->jenis_temuan = $request->jenis_temuan;
         $new->save();
 
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'update', 'Update jenis temuan data (ID: '.$new->id.' | Jenis Temuan: '.$new->jenis_temuan.')', '\App\JenisTemuan', 'JenisTemuanController@update');
+
         return redirect()->route('admin.dashboard.jenis-temuan.index');
     }
 
@@ -110,6 +118,9 @@ class JenisTemuanNelayanController extends Controller
     {
         $jenisTemuan = JenisTemuanNelayan::find($id);
         $jenisTemuan->delete();
+
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'delete', 'Delete jenis temuan data (ID: '.$jenisTemuan->id.' | Jenis Temuan: '.$jenisTemuan->jenis_temuan.')', '\App\JenisTemuan', 'JenisTemuanController@destroy');
 
         return redirect()->route('admin.dashboard.jenis-temuan.index');
     }
