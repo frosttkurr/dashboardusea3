@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Track;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Log;
 
 class TrackController extends Controller
 {
@@ -63,6 +64,9 @@ class TrackController extends Controller
         $new->is_valid = 0;
         $new->save();
 
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'create', 'Create new track data (ID: '.$new->id.' | Tanggal: '.$new->tanggal.')', '\App\Track', 'TrackController@store');
+
         return redirect()->route('admin.dashboard.track.detail.index', $new->id);
     }
 
@@ -106,6 +110,9 @@ class TrackController extends Controller
         $new->tanggal = $request->tanggal;
         $new->save();
 
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'update', 'Update track data (ID: '.$new->id.' | Tanggal: '.$new->tanggal.')', '\App\Track', 'TrackController@update');
+
         return redirect()->route('admin.dashboard.track.index');
     }
 
@@ -117,8 +124,11 @@ class TrackController extends Controller
      */
     public function destroy($id)
     {
-        $lokasi = Track::find($id);
-        $lokasi->delete();
+        $track = Track::find($id);
+        $track->delete();
+
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'delete', 'Delete track data (ID: '.$track->id.' | Tanggal: '.$track->tanggal.')', '\App\Track', 'TrackController@destroy');
 
         return redirect()->route('admin.dashboard.track.index');
     }
