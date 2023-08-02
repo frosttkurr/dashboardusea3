@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             'track',
             'lihat-report-biota',
             'lihat-kondisi-perairan',
+            'logs',
          ];
       
          foreach ($permissions as $permission) {
