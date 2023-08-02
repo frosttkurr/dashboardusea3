@@ -35,6 +35,7 @@
                         <th class="col-4">Nama</th>
                         <th class="col-4">Email</th>
                         <th class="col-2">Role</th>
+                        <th class="col-1"></th>
                         <th class="col-2">Action</th>
                     </tr>
                     </thead>
@@ -52,6 +53,9 @@
                                 <?php else: ?> 
                                     -
                                 <?php endif; ?>
+                            </td>
+                            <td>
+                                <img src="<?php echo e(url('storage/'.$user->avatar)); ?>" width="50px" height="50px" alt="Avatar">
                             </td>
                             <td>
                                 <a class="btn btn-primary" href="<?php echo e(route('admin.dashboard.users.edit',$user->id)); ?>">Edit</a>

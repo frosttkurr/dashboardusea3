@@ -60,12 +60,11 @@ class UserController extends Controller
             'roles' => 'required'
         ]);
 
+        $input = $request->all();
         if($request->file('avatar')){
             $path = $request->file('avatar')->store('avatar', 'public');
-            $request->avatar = $path;
+            $input['avatar'] = $path;
         }
-    
-        $input = $request->all();
         $input['password'] = Hash::make($input['password']);
     
         $user = User::create($input);
