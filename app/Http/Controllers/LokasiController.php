@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Lokasi;
 use Illuminate\Http\Request;
+use Auth;
+use App\Models\Log;
 
 class LokasiController extends Controller
 {
@@ -54,6 +56,9 @@ class LokasiController extends Controller
         $new->nama_lokasi = $request->nama_lokasi;
         $new->save();
 
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'create', 'Create new lokasi data (ID: '.$new->id.' | Lokasi: '.$new->nama_lokasi.')', '\App\Lokasi', 'LokasiController@store');
+
         return redirect()->route('admin.dashboard.lokasi.index');
     }
 
@@ -97,6 +102,9 @@ class LokasiController extends Controller
         $new->nama_lokasi = $request->nama_lokasi;
         $new->save();
 
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'update', 'Update lokasi data (ID: '.$new->id.' | Lokasi: '.$new->nama_lokasi.')', '\App\Lokasi', 'LokasiController@update');
+
         return redirect()->route('admin.dashboard.lokasi.index');
     }
 
@@ -110,6 +118,9 @@ class LokasiController extends Controller
     {
         $lokasi = Lokasi::find($id);
         $lokasi->delete();
+
+        $log = new Log();
+        $log->createLog(Auth::user()->name, 'delete', 'Delete lokasi data (ID: '.$lokasi->id.' | Lokasi: '.$lokasi->nama_lokasi.')', '\App\Lokasi', 'LokasiController@destroy');
 
         return redirect()->route('admin.dashboard.lokasi.index');
     }
