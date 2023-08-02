@@ -95,8 +95,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
+        $roles = Role::all();
+        $userRole = $user->roles->pluck('name','id')->all();
     
         return view('users.edit',compact('user','roles','userRole'));
     }
@@ -114,6 +114,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
+            'avatar' => 'mimes:jpg,jpeg,png',
             'roles' => 'required'
         ]);
     
@@ -124,10 +125,14 @@ class UserController extends Controller
             $input = Arr::except($input,array('password'));    
         }
     
+        if($request->file('avatar')){
+            $path = $request->file('avatar')->store('avatar', 'public');
+            $input['avatar'] = $path;
+        }
+
         $user = User::find($id);
         $user->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
-    
         $user->assignRole($request->input('roles'));
     
         return redirect()->route('admin.dashboard.users.index')

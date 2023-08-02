@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') @lang('translation.Basic_Elements')  @endsection
+@section('title') Ubah Users  @endsection
 @section('content')
 @component('components.breadcrumb')
 @slot('li_1') User @endslot
@@ -11,57 +11,92 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Sizing</h4>
-                <p class="card-title-desc">Set heights using classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.</p>
-                
-                @if ($errors->any())
-                <div class="alert alert-danger alert-dismissible show fade">
-                    <div class="alert-body">
-                        @foreach ($errors->all() as $error)
-                        <p>{{ $error }}</p>
-                        @endforeach
-                    </div>
-                </div>
-                @endif
+                <p class="card-title-desc">Harap isi data dengan benar agar informasi yang diberikan sesuai.</p>
             </div>
             <div class="card-body">
-                {!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Name:</strong>
-                            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control mb-4')) !!}
+                <form action="{{ route('admin.dashboard.users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label for="name">Nama:</label>
+                                <input type="text" name="name" id="name" placeholder="Nama" value="{{ $user->name }}" class="form-control mb-4 @error('name') is-invalid @enderror">
+                            
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="text" name="email" id="email" placeholder="Email" value="{{ $user->email }}" class="form-control mb-4 @error('email') is-invalid @enderror">
+                            
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" name="password" id="password" placeholder="Password" class="form-control mb-4 @error('password') is-invalid @enderror">
+                            
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label for="confirm-password">Konfirmasi Password:</label>
+                                <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password" class="form-control mb-4">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label for="avatar">Avatar:</label>
+                                <div class="@error('avatar') is-invalid @enderror">
+                                    <div class="fallback">
+                                        <input name="avatar" type="file" accept=".png, .jpg, .jpeg">
+                                    </div>
+                                </div>
+    
+                                @error('avatar')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label for="roles">Role:</label>
+                                <select name="roles" id="roles" class="form-control mb-4 @error('roles') is-invalid @enderror">
+                                    <option selected="true" disabled="disabled">Pilih roles</option>
+                                    @foreach ($roles as $role)
+                                        <option value="{{$role->id}}" @if (isset($userRole[$role->id])) selected @endif>{{$role->name}}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('roles')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="col-12 btn btn-primary">Submit</button>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Email:</strong>
-                            {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control mb-4')) !!}
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Password:</strong>
-                            {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control mb-4')) !!}
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Confirm Password:</strong>
-                            {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control mb-4')) !!}
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Role:</strong>
-                            {!! Form::select('roles[]', $roles,[], array('class' => 'form-control mb-4')) !!}
-                        </div>
-                    </div>
-                    <div class="col-12 text-center">
-                        <button type="submit" class="col-12 btn btn-primary">Submit</button>
-                    </div>
-                </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
     </div>

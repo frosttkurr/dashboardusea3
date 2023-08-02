@@ -142,7 +142,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         });
     
         Route::resource('roles', RoleController::class);
-        Route::resource('users', UserController::class);
+
+        Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
+            Route::get('/', [UserController::class,'index'])->name('index');
+            Route::delete('/destroy/{id}', [UserController::class,'destroy'])->name('destroy');
+            Route::get('/show{id}', [UserController::class,'show'])->name('show');
+            Route::get('/edit/{id}', [UserController::class,'edit'])->name('edit');
+            Route::get('/create', [UserController::class,'create'])->name('create');
+            Route::post('/store', [UserController::class,'store'])->name('store');
+            Route::post('/update/{id}', [UserController::class,'update'])->name('update');
+        });
     
         //Update User Details
         Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
