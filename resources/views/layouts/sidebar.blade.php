@@ -35,12 +35,12 @@
                         </a>
                     </li>
                 @else
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('admin.dashboard.root') }}">
                             <i data-feather="cloud-rain"></i>
                             <span data-key="t-dashboard">Dashboard</span>
                         </a>
-                    </li>
+                    </li> --}}
                     @can('jenis-biota')
                         <li>
                             <a href="{{ route('admin.dashboard.jenis-biota.index') }}">

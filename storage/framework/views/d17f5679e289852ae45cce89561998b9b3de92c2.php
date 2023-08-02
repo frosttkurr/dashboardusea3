@@ -35,12 +35,7 @@
                         </a>
                     </li>
                 <?php else: ?>
-                    <li>
-                        <a href="<?php echo e(route('admin.dashboard.root')); ?>">
-                            <i data-feather="cloud-rain"></i>
-                            <span data-key="t-dashboard">Dashboard</span>
-                        </a>
-                    </li>
+                    
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('jenis-biota')): ?>
                         <li>
                             <a href="<?php echo e(route('admin.dashboard.jenis-biota.index')); ?>">

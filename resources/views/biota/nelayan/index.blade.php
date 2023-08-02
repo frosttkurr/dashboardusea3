@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') Jenis Biota  @endsection
+@section('title') Biota  @endsection
 @section('css')
 <link href="{{ URL::asset('assets/libs/datatables.net-bs4/datatables.net-bs4.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('assets/libs/datatables.net-buttons-bs4/datatables.net-buttons-bs4.min.css') }}" rel="stylesheet" type="text/css" />
