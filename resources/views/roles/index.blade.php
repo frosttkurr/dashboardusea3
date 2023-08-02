@@ -32,7 +32,8 @@
                     <thead>
                     <tr>
                         <th class="col-1">No.</th>
-                        <th class="col-10">Nama Role</th>
+                        <th class="col-4">Nama Role</th>
+                        <th class="col-4">Permission</th>
                         <th class="col-2">Action</th>
                     </tr>
                     </thead>
@@ -43,6 +44,12 @@
                         <tr>
                             <td>{{$key+1}}</td>
                             <td>{{$role->name}}</td>
+                            <td>
+                                @foreach ($rolePermissions[$role->id] as $permission)
+                                    {{ $permission }}
+                                    <br>
+                                @endforeach
+                            </td>
                             <td>
                                 <a class="btn btn-primary" href="{{ route('admin.dashboard.roles.edit',$role->id) }}">Edit</a>
                                 <a href="{{ route('admin.dashboard.roles.destroy', $role->id) }}" onclick="notificationBeforeDelete(event, this)">

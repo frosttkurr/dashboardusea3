@@ -32,7 +32,8 @@
                     <thead>
                     <tr>
                         <th class="col-1">No.</th>
-                        <th class="col-10">Nama Role</th>
+                        <th class="col-4">Nama Role</th>
+                        <th class="col-4">Permission</th>
                         <th class="col-2">Action</th>
                     </tr>
                     </thead>
@@ -43,6 +44,13 @@
                         <tr>
                             <td><?php echo e($key+1); ?></td>
                             <td><?php echo e($role->name); ?></td>
+                            <td>
+                                <?php $__currentLoopData = $rolePermissions[$role->id]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permission): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php echo e($permission); ?>
+
+                                    <br>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </td>
                             <td>
                                 <a class="btn btn-primary" href="<?php echo e(route('admin.dashboard.roles.edit',$role->id)); ?>">Edit</a>
                                 <a href="<?php echo e(route('admin.dashboard.roles.destroy', $role->id)); ?>" onclick="notificationBeforeDelete(event, this)">

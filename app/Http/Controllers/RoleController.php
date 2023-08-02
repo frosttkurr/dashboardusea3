@@ -29,7 +29,18 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::orderBy('id','DESC')->get();
-        return view('roles.index',compact('roles'));
+
+        foreach ($roles as $role) {
+            $permissions = DB::table("role_has_permissions")
+            ->join('permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+            ->join('roles', 'roles.id', '=', 'role_has_permissions.role_id')
+            ->where("role_has_permissions.role_id", $role->id)
+            ->pluck('permissions.name')
+            ->all();
+
+            $rolePermissions[$role->id] = $permissions;
+        }
+        return view('roles.index',compact('roles','rolePermissions'));
     }
     
     /**
