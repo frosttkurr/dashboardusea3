@@ -11,48 +11,74 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Sizing</h4>
-                <p class="card-title-desc">Set heights using classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.</p>
-                
-                <?php if($errors->any()): ?>
-                <div class="alert alert-danger alert-dismissible show fade">
-                    <div class="alert-body">
-                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <p><?php echo e($error); ?></p>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </div>
-                </div>
-                <?php endif; ?>
+                <p class="card-title-desc">Harap isi data dengan benar agar informasi yang diberikan sesuai.</p>
             </div>
             <div class="card-body">
-                <?php echo Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]); ?>
+                <form action="<?php echo e(route('admin.dashboard.roles.update', $role->id)); ?>" method="POST" enctype="multipart/form-data">
+                    <?php echo csrf_field(); ?>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label for="name">Nama:</label>
+                                <input type="text" name="name" id="name" placeholder="Nama" value="<?php echo e($role->name); ?>" class="form-control mb-4 <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
+                            
+                                <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong><?php echo e($message); ?></strong>
+                                    </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label for="permission">Permission:</label>
+                                <select name="permission" id="permission" class="form-control mb-4 <?php $__errorArgs = ['permission'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
+                                    <option selected="true" disabled="disabled">Pilih jenis permission</option>
+                                    <?php $__currentLoopData = $permissions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permission): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($permission->id); ?>" <?php if(in_array($permission->id, $rolePermissions)): ?> selected <?php endif; ?>><?php echo e($permission->name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </select>
 
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 mb-4">
-                        <div class="form-group">
-                            <strong>Name:</strong>
-                            <?php echo Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')); ?>
-
+                                <?php $__errorArgs = ['permission'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong><?php echo e($message); ?></strong>
+                                    </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="col-12 btn btn-primary">Submit</button>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 mb-4">
-                        <div class="form-group">
-                            <strong>Permission:</strong>
-                            <br/>
-                            <?php $__currentLoopData = $permission; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <label><?php echo e(Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name'))); ?>
-
-                                <?php echo e($value->name); ?></label>
-                            <br/>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </div>
-                    </div>
-                    <div class="col-12 text-center">
-                        <button type="submit" class="col-12 btn btn-primary">Submit</button>
-                    </div>
-                </div>
-                <?php echo Form::close(); ?>
-
+                </form>
             </div>
         </div>
     </div>
