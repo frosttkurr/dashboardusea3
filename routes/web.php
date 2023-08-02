@@ -141,7 +141,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             });
         });
     
-        Route::resource('roles', RoleController::class);
+        Route::group(['prefix' => 'roles', 'as' => 'roles.'], function () {
+            Route::get('/', [RoleController::class,'index'])->name('index');
+            Route::delete('/destroy/{id}', [RoleController::class,'destroy'])->name('destroy');
+            Route::get('/show{id}', [RoleController::class,'show'])->name('show');
+            Route::get('/edit/{id}', [RoleController::class,'edit'])->name('edit');
+            Route::get('/create', [RoleController::class,'create'])->name('create');
+            Route::post('/store', [RoleController::class,'store'])->name('store');
+            Route::post('/update/{id}', [RoleController::class,'update'])->name('update');
+        });
 
         Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
             Route::get('/', [UserController::class,'index'])->name('index');
