@@ -154,8 +154,7 @@ class TrackController extends Controller
             $log->createLog(Auth::user()->name, 'update', $logMessage, '\App\Track', 'TrackController@ajaxUpdate');
             
             return [true, $new->is_valid];
-        } else {
-            return [false, $new->is_valid];
         }
+        return [false, $new->is_valid];
     }
 }

@@ -36,8 +36,8 @@
                     <tr>
                         <th class="col-1">No.</th>
                         <th class="col-4">Tanggal</th>
-                        <th class="col-4">Status</th>
-                        <th class="col-2"></th>
+                        <th class="col-2">Status</th>
+                        {{-- <th class="col-2"></th> --}}
                         <th class="col-4">Action</th>
                     </tr>
                     </thead>
@@ -55,12 +55,12 @@
                                 <span id="badge_status_{{ $track->id }}" class="badge badge-success">Valid</span>
                             @endif
                         </td>
-                        <td>
+                        {{-- <td>
                             <select class="form-control form-control-sm" name="is_valid" id="status_track_{{ $track->id }}" onchange="updateStatus({{ $track->id }})">
                                 <option value="0" @if ($track->is_valid == 0) selected @endif>Belum Valid</option>
                                 <option value="1" @if ($track->is_valid == 1) selected @endif>Valid</option>
                             </select>
-                        </td>
+                        </td> --}}
                         <td>
                             @can('track')
                                 <a href="{{ route('admin.dashboard.track.edit', $track->id) }}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
@@ -124,6 +124,7 @@
             method: 'patch',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             body: JSON.stringify({
                 is_valid: getStatus.value
