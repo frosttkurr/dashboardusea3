@@ -104,11 +104,13 @@ class TrackController extends Controller
     public function update(Request $request, $id)
     {
         $validateData = $request->validate([
-            'tanggal' => 'required'
+            'tanggal' => 'required',
+            'is_valid' => 'required'
         ]);
 
         $new = Track::find($id);
         $new->tanggal = $request->tanggal;
+        $new->is_valid = $request->is_valid;
         $new->save();
 
         $log = new Log();

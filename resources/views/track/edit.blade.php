@@ -27,6 +27,21 @@
                         @enderror
                     </div>
 
+                    <div class="mb-4">
+                        <label class="form-label" for="is_valid">Status</label>
+                        <select class="form-control @error('is_valid') is-invalid @enderror" data-trigger name="is_valid" id="choices-single-default">
+                            <option selected="true" disabled="disabled">Pilih status track</option>
+                            <option value="0" @if ($track->is_valid == 0) selected @endif>Belum Valid</option>
+                            <option value="1" @if ($track->is_valid == 1) selected @endif>Valid</option>
+                        </select>
+
+                        @error('is_valid')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Ubah Data</button>
                 </form>
             </div>

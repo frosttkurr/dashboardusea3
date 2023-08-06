@@ -41,6 +41,35 @@ endif;
 unset($__errorArgs, $__bag); ?>
                     </div>
 
+                    <div class="mb-4">
+                        <label class="form-label" for="is_valid">Status</label>
+                        <select class="form-control <?php $__errorArgs = ['is_valid'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" data-trigger name="is_valid" id="choices-single-default">
+                            <option selected="true" disabled="disabled">Pilih status track</option>
+                            <option value="0" <?php if($track->is_valid == 0): ?> selected <?php endif; ?>>Belum Valid</option>
+                            <option value="1" <?php if($track->is_valid == 1): ?> selected <?php endif; ?>>Valid</option>
+                        </select>
+
+                        <?php $__errorArgs = ['is_valid'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <span class="invalid-feedback" role="alert">
+                                <strong><?php echo e($message); ?></strong>
+                            </span>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                    </div>
+
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Ubah Data</button>
                 </form>
             </div>
