@@ -139,4 +139,21 @@ class TrackController extends Controller
 
         return redirect()->route('admin.dashboard.track.index');
     }
+
+    public function ajaxUpdate(Request $request, $id)
+    {
+        $new = Track::find($id);
+        $new->is_valid = $request->is_valid;
+
+        if ($new->save()) {
+            $log = new Log();
+            $status = ($new->is_valid == 1) ? 'Valid' : 'Belum Valid';
+            $logMessage = 'Update status track data (ID: ' . $new->id . ' | Status: ' . $status . ')';
+            $log->createLog(Auth::user()->name, 'update', $logMessage, '\App\Track', 'TrackController@ajaxUpdate');
+            
+            return [true, $new->is_valid];
+        } else {
+            return [false, $new->is_valid];
+        }
+    }
 }

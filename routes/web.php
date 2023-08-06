@@ -130,6 +130,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('/create', [TrackController::class,'create'])->name('create');
             Route::post('/store', [TrackController::class,'store'])->name('store');
             Route::post('/update/{id}', [TrackController::class,'update'])->name('update');
+            Route::patch('/ajax-update/{id}', [TrackController::class,'ajaxUpdate'])->name('ajax.update');
     
             Route::group(['prefix' => 'detail/{id}', 'as' => 'detail.'], function () {
                 Route::get('/', [TrackDetailController::class,'index'])->name('index');

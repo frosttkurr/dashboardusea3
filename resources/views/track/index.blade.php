@@ -37,6 +37,7 @@
                         <th class="col-1">No.</th>
                         <th class="col-4">Tanggal</th>
                         <th class="col-4">Status</th>
+                        <th class="col-2"></th>
                         <th class="col-4">Action</th>
                     </tr>
                     </thead>
@@ -49,10 +50,16 @@
                         <td>{{date('d-M-Y', strtotime($track->tanggal))}}</td>
                         <td>
                             @if($track->is_valid == 0)
-                                Belum Valid
+                                <span id="badge_status_{{ $track->id }}" class="badge badge-warning">Belum Valid</span>
                             @else
-                                Valid
+                                <span id="badge_status_{{ $track->id }}" class="badge badge-success">Valid</span>
                             @endif
+                        </td>
+                        <td>
+                            <select class="form-control form-control-sm" name="is_valid" id="status_track_{{ $track->id }}" onchange="updateStatus({{ $track->id }})">
+                                <option value="0" @if ($track->is_valid == 0) selected @endif>Belum Valid</option>
+                                <option value="1" @if ($track->is_valid == 1) selected @endif>Valid</option>
+                            </select>
                         </td>
                         <td>
                             @can('track')
@@ -107,6 +114,48 @@
                 $("#delete-form").submit();
             }
         })
+    }
+
+    function updateStatus(track_id){
+        var getStatus = document.getElementById('status_track_' + track_id);
+        var badgeStatus = document.getElementById('badge_status_' + track_id);
+        
+        fetch('/admin/dashboard/track/ajax-update/' + track_id, {
+            method: 'patch',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                is_valid: getStatus.value
+            })
+        })
+        .then(response => {
+            return response.json()
+        }) 
+        .then(data => {
+            if (data[0] == true) {
+                if (data[1] == 0) {
+                    badgeStatus.innerHTML = "Belum Valid";
+                    badgeStatus.className = "badge badge-warning";
+                } else if (data[1] == 1) {
+                    badgeStatus.innerHTML = "Valid";
+                    badgeStatus.className = "badge badge-success";
+                }
+                
+                Swal.fire(
+                    'Berhasil!',
+                    'Status surat berubah',
+                    'success'
+                )
+            } else {
+                Swal.fire(
+                    'Gagal!',
+                    'Status surat tidak berubah',
+                    'error'
+                )
+            }
+        })
+        .catch(error => console.log(error))
     }
 </script>
 @endsection
