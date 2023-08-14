@@ -6,6 +6,7 @@ use App\Models\Lokasi;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\Log;
+use App\Models\TrackDetail;
 
 class LokasiController extends Controller
 {
@@ -121,6 +122,14 @@ class LokasiController extends Controller
 
         $log = new Log();
         $log->createLog(Auth::user()->name, 'delete', 'Delete lokasi data (ID: '.$lokasi->id.' | Lokasi: '.$lokasi->nama_lokasi.')', '\App\Lokasi', 'LokasiController@destroy');
+
+        $track_details = TrackDetail::where('id_lokasi', $id)->get();
+        foreach ($track_details as $track_detail) {
+            $track_detail->delete();
+
+            $log = new Log();
+            $log->createLog(Auth::user()->name, 'delete', 'Delete track detail data (ID: '.$track_detail->id.' | ID Track: '.$track_detail->id_track.')', '\App\TrackDetail', 'TrackDetailController@destroy');
+        }
 
         return redirect()->route('admin.dashboard.lokasi.index');
     }

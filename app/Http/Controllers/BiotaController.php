@@ -7,6 +7,7 @@ use App\Models\Log;
 use App\Models\Biota;
 use App\Models\JenisBiota;
 use Illuminate\Http\Request;
+use App\Models\TrackDetail;
 
 class BiotaController extends Controller
 {
@@ -149,6 +150,14 @@ class BiotaController extends Controller
 
         $log = new Log();
         $log->createLog(Auth::user()->name, 'delete', 'Delete biota data (ID: '.$id.' | Name: '.$biota->nama_biota.')', '\App\Biota', 'BiotaController@destroy');
+        
+        $track_details = TrackDetail::where('id_biota', $id)->get();
+        foreach ($track_details as $track_detail) {
+            $track_detail->delete();
+
+            $log = new Log();
+            $log->createLog(Auth::user()->name, 'delete', 'Delete track detail data (ID: '.$track_detail->id.' | ID Track: '.$track_detail->id_track.')', '\App\TrackDetail', 'TrackDetailController@destroy');
+        }
 
         return redirect()->route('admin.dashboard.biota.index');
     }

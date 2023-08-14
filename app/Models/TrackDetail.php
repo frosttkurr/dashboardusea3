@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Log;
 use Auth;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TrackDetail extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     protected $guarded=[];
 
     public function track(){
