@@ -42,9 +42,11 @@
                                 <td><?php echo e($lokasi->nama_lokasi); ?></td>
                                 <td>
                                     <a href="<?php echo e(route('admin.dashboard.lokasi.edit', $lokasi->id)); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
-                                    <a href="<?php echo e(route('admin.dashboard.lokasi.destroy', $lokasi->id)); ?>" onclick="notificationBeforeDelete(event, this)">
-                                        <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
-                                    </a>
+                                    <?php if(Auth::user()->roles[0]->id == 1): ?>
+                                        <a href="<?php echo e(route('admin.dashboard.lokasi.destroy', $lokasi->id)); ?>" onclick="notificationBeforeDelete(event, this)">
+                                            <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
+                                        </a>
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
