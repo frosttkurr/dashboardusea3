@@ -36,7 +36,7 @@ class HomeController extends Controller
 
     public function root()
     {
-        return view('index');
+        return redirect()->route('admin.dashboard.jenis-biota.index');
     }
 
     /*Language Translation*/
