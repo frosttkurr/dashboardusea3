@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             'lihat-report-biota',
             'lihat-kondisi-perairan',
             'logs',
+            'sig',
          ];
       
          foreach ($permissions as $permission) {
@@ -54,7 +55,8 @@ class DatabaseSeeder extends Seeder
                                     ->orWhere('name', 'lokasi')
                                     ->orWhere('name', 'role')
                                     ->orWhere('name', 'user')
-                                    ->orWhere('name', 'logs');
+                                    ->orWhere('name', 'logs')
+                                    ->orWhere('name', 'sig');
                                 })->pluck('id','id');
    
         $role->syncPermissions($permissions);
@@ -90,7 +92,8 @@ class DatabaseSeeder extends Seeder
                                     ->orWhere('name', 'track')
                                     ->orWhere('name', 'jenis-biota')
                                     ->orWhere('name', 'jenis-temuan')
-                                    ->orWhere('name', 'lokasi');
+                                    ->orWhere('name', 'lokasi')
+                                    ->orWhere('name', 'sig');
                                 })->pluck('id','id');
         $role3->syncPermissions($permissions3);
         $user3->assignRole([$role3->id]);

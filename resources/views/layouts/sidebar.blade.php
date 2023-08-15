@@ -113,6 +113,14 @@
                             </a>
                         </li>
                     @endcan
+                    @can('sig')
+                        <li>
+                            <a href="{{ route('admin.dashboard.sig.index') }}">
+                                <i data-feather="map"></i>
+                                <span data-key="t-dashboard">SIG</span>
+                            </a>
+                        </li>
+                    @endcan
                 @endif
                 
                 <!-- <li class="menu-title" data-key="t-apps">@lang('translation.Apps')</li>

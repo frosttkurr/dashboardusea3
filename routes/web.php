@@ -16,6 +16,7 @@ use App\Http\Controllers\UserController;
 use App\Models\JenisTemuanNelayan;
 use App\Models\Track;
 use App\Http\Controllers\LogController;
+use App\Http\Controllers\SigController;
 
 /*
 |--------------------------------------------------------------------------
@@ -171,6 +172,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         //Update User Details
         Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
         Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
+
+        Route::group(['prefix' => 'sig', 'as' => 'sig.'], function () {
+            Route::get('/', [SigController::class,'index'])->name('index');
+        });
     });
 });
 

@@ -108,6 +108,14 @@
                             </a>
                         </li>
                     <?php endif; ?>
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('sig')): ?>
+                        <li>
+                            <a href="<?php echo e(route('admin.dashboard.sig.index')); ?>">
+                                <i data-feather="map"></i>
+                                <span data-key="t-dashboard">SIG</span>
+                            </a>
+                        </li>
+                    <?php endif; ?>
                 <?php endif; ?>
                 
                 <!-- <li class="menu-title" data-key="t-apps"><?php echo app('translator')->get('translation.Apps'); ?></li>
