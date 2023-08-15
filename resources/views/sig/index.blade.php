@@ -24,7 +24,7 @@
                 </div>
                 </div>
             <div class="card-body">
-
+                <div id="googleMap" style="height:600px;"></div>
             </div>
         </div>
     </div> <!-- end col -->
@@ -42,4 +42,17 @@
 <script src="{{ URL::asset('assets/libs/datatables.net-responsive-bs4/datatables.net-responsive-bs4.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/pages/datatables.init.js') }}"></script>
 <script src="{{ URL::asset('assets/js/app.min.js') }}"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+    function initialize() {
+      var options = {
+        center:new google.maps.LatLng(-1.492618,116.4984935),
+        zoom:5.5,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("googleMap"),options);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 @endsection
