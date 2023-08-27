@@ -113,15 +113,15 @@ class DatabaseSeeder extends Seeder
         $user4->assignRole([$role4->id]);
 
         Lokasi::insert([
-            ['nama_lokasi' => 'Laut Maluku', 'latitude' => '-0.49432863568765184', 'longitude' => '125.19284381734148'],
-            ['nama_lokasi' => 'Laut Jawa', 'latitude' => '-5.202498421509841', 'longitude' => '112.03916583001713'],
-            ['nama_lokasi' => 'Laut Flores', 'latitude' => '-7.5944600962165', 'longitude' => '119.92419053307204'],
-            ['nama_lokasi' => 'Laut Sawu', 'latitude' => '-9.45171304898253', 'longitude' => '121.88987582857565'],
-            ['nama_lokasi' => 'Laut Banda', 'latitude' => '-5.69811981927097', 'longitude' => '126.6704934163812'],
-            ['nama_lokasi' => 'Laut Arafuru', 'latitude' => '-8.861375820596264', 'longitude' => '136.09526792247092'],
-            ['nama_lokasi' => 'Laut Halmahera', 'latitude' => '0.3514749832419972', 'longitude' => '129.28695685799053'],
-            ['nama_lokasi' => 'Laut Timor', 'latitude' => '-11.344313515460042', 'longitude' => '127.9135361912859'],
-            ['nama_lokasi' => 'Laut Seram', 'latitude' => '-2.4737864212973113', 'longitude' => '130.3490238535228'],
+            ['nama_lokasi' => 'Laut Maluku'],
+            ['nama_lokasi' => 'Laut Jawa'],
+            ['nama_lokasi' => 'Laut Flores'],
+            ['nama_lokasi' => 'Laut Sawu'],
+            ['nama_lokasi' => 'Laut Banda'],
+            ['nama_lokasi' => 'Laut Arafuru'],
+            ['nama_lokasi' => 'Laut Halmahera'],
+            ['nama_lokasi' => 'Laut Timor'],
+            ['nama_lokasi' => 'Laut Seram'],
         ]);
 
         JenisBiota::insert([

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('id_track')->constrained('tracks','id');
             $table->foreignId('id_biota')->constrained('biotas','id');
             $table->foreignId('id_lokasi')->constrained('lokasis','id');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->text('image');
             $table->text('keterangan');
             $table->timestamps();
