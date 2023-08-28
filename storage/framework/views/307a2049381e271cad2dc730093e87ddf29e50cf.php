@@ -198,6 +198,12 @@ unset($__errorArgs, $__bag); ?>
     marker.on('mouseover', function(e) {
         this.bindPopup(popupContent).openPopup();
     });
+
+    marker.on('click', function(e) {
+    if (window.innerWidth < 768) { // Use click for screens narrower than 768px (e.g., mobile)
+        this.bindPopup(popupContent).openPopup();
+    }
+});
 </script>
 <?php $__env->stopSection(); ?>
 
