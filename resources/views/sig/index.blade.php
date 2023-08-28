@@ -70,7 +70,8 @@
         });
 
         marker.on('click', function(e) {
-            var routeUrl = "{{ route('admin.dashboard.track.detail.index', "") }}" + "/" + detailTrack.id_track;
+            var routeUrl = "{{ route('admin.dashboard.track.detail.show', ['id_track', 'id']) }}";
+            routeUrl = routeUrl.replace('id_track', detailTrack.id_track).replace('id', detailTrack.id);
             window.open(routeUrl, '_blank');
         });
     
