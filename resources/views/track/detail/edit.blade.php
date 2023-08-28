@@ -70,7 +70,26 @@
                             </span>
                         @enderror
                     </div>
+
+                    <div class="mb-4">
+                        <label class="form-label" for="map">Map</label>
+                        <div id="map" class="@error('latitude') is-invalid @enderror @error('longitude') is-invalid @enderror" style="height: 400px;"></div>
+
+                        @error('latitude')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        @error('longitude')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
                     <input type="hidden" name="id_track" class="form-control" value="{{$track->id}}">
+                    <input type="hidden" name="latitude" id="latitude" value="{{$trackDetail->latitude}}">
+                    <input type="hidden" name="longitude" id="longitude" value="{{$trackDetail->longitude}}">
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Ubah Data</button>
                 </form>
             </div>
@@ -80,5 +99,29 @@
 <!-- end row -->
 @endsection
 @section('script')
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
+<script>
+    var latitude = parseFloat(document.getElementById('latitude').value);
+    var longitude = parseFloat(document.getElementById('longitude').value);
+    var map = L.map('map').setView([latitude, longitude], 10);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(map);
+
+    var marker = L.marker([latitude, longitude]).addTo(map);
+
+    map.on('click', function(e) {
+        if (marker) {
+            map.removeLayer(marker);
+        }
+        
+        marker = L.marker(e.latlng).addTo(map);
+        
+        document.getElementById('latitude').value = e.latlng.lat;
+        document.getElementById('longitude').value = e.latlng.lng;
+    });
+</script>
 @endsection

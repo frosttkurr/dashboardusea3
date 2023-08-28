@@ -123,6 +123,8 @@ class TrackDetailController extends Controller
             'id_biota' => 'required',
             'id_lokasi' => 'required',
             'keterangan' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
         ]);
 
         $new = TrackDetail::find($detail);
@@ -130,6 +132,8 @@ class TrackDetailController extends Controller
         $new->id_biota = $request->id_biota;
         $new->id_lokasi = $request->id_lokasi;
         $new->keterangan = $request->keterangan;
+        $new->latitude = $request->latitude;
+        $new->longitude = $request->longitude;
 
         if($request->file('image')){
             $path = $request->file('image')->store('track-details', 'public');
