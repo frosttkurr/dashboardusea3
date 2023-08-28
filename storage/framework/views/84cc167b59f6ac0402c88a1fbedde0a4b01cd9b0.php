@@ -48,7 +48,30 @@
     detailTracksData.forEach(function(detailTrack) {
         var lat = detailTrack.latitude;
         var lng = detailTrack.longitude;
-        L.marker([lat, lng]).addTo(map);
+        var imageSrc = "<?php echo e(url('storage/')); ?>/" + detailTrack.image;
+
+        var marker = L.marker([lat, lng]).addTo(map);
+
+        var popupContent = `
+            <div class="popup-container">
+                <h4 class="popup-title">Track Details</h4>
+                <ul>
+                    <li><b>Tanggal:</b> ${detailTrack.tanggal}</li>
+                    <li><b>Biota:</b> ${detailTrack.nama_biota}</li>
+                    <li><b>Lokasi:</b> ${detailTrack.nama_lokasi}</li>
+                    <li><b>Keterangan:</b> ${detailTrack.keterangan}</li>
+                </ul>
+                <div class="image-container">
+                    <img src="${imageSrc}" alt="Gambar biota" width="150px">
+                </div>
+            </div>
+        `;
+
+        marker.on('mouseover', function(e) {
+            this.bindPopup(popupContent).openPopup();
+        });
+
+        marker.bindTooltip("Click for details");
     });
 </script>
 <?php $__env->stopSection(); ?>
