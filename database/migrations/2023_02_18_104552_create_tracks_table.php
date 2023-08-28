@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->tinyInteger('is_valid');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
