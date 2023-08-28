@@ -34,6 +34,12 @@
                             <span data-key="t-dashboard">Lihat Kondisi Perairan</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="<?php echo e(route('dashboard.sig.index')); ?>">
+                                <i data-feather="map"></i>
+                                <span data-key="t-dashboard">SIG</span>
+                        </a>
+                    </li>
                 <?php else: ?>
                     
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('jenis-biota')): ?>

@@ -104,9 +104,9 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
 <script>
-    var defaultLatitude = -0.4807328;
-    var defaultLongitude = 121.8128948;
-    var map = L.map('map').setView([defaultLatitude, defaultLongitude], 4);
+    var defaultLatitude = -8.4512582;
+    var defaultLongitude = 115.0783864;
+    var map = L.map('map').setView([defaultLatitude, defaultLongitude], 9);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
