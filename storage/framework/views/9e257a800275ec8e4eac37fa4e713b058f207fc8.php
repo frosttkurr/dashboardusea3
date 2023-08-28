@@ -37,7 +37,6 @@
                         <th class="col-1">No.</th>
                         <th class="col-4">Tanggal</th>
                         <th class="col-2">Status</th>
-                        
                         <th class="col-4">Action</th>
                     </tr>
                     </thead>
@@ -55,7 +54,6 @@
                                 <span id="badge_status_<?php echo e($track->id); ?>" class="badge badge-success">Valid</span>
                             <?php endif; ?>
                         </td>
-                        
                         <td>
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('track')): ?>
                                 <a href="<?php echo e(route('admin.dashboard.track.edit', $track->id)); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>

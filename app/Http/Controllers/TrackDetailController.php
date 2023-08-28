@@ -89,9 +89,13 @@ class TrackDetailController extends Controller
      * @param  \App\Models\TrackDetail  $trackDetail
      * @return \Illuminate\Http\Response
      */
-    public function show(TrackDetail $trackDetail)
+    public function show($track_id, $track_detail_id)
     {
-        //
+        $track = Track::find($track_id);
+        $trackDetail = TrackDetail::find($track_detail_id);
+        $lokasis = Lokasi::all();
+        $biotas = Biota::all();
+        return view('track.detail.show',compact("track", "trackDetail", "lokasis", "biotas"));
     }
 
     /**
@@ -144,7 +148,7 @@ class TrackDetailController extends Controller
         $log = new Log();
         $log->createLog(Auth::user()->name, 'update', 'Update track detail data (ID: '.$new->id.' | ID Track: '.$new->id_track.')', '\App\TrackDetail', 'TrackDetailController@update');
 
-        return redirect()->route('admin.dashboard.track.detail.index', $id);
+        return redirect()->route('admin.dashboard.track.detail.show', [$id, $detail]);
     }
 
     /**
