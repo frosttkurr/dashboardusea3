@@ -72,7 +72,14 @@
                         @enderror
                     </div>
 
+                    <div class="mb-4">
+                        <label class="form-label" for="map">Map</label>
+                        <div id="map" style="height: 400px;"></div>
+                    </div>
+                    
                     <input type="hidden" name="id_track" class="form-control" value="{{$track->id}}">
+                    <input type="hidden" name="latitude" id="latitude">
+                    <input type="hidden" name="longitude" id="longitude">
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Tambah Data</button>
                 </form>
             </div>
@@ -82,5 +89,29 @@
 <!-- end row -->
 @endsection
 @section('script')
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
+<script>
+    var defaultLatitude = -0.4807328;
+    var defaultLongitude = 121.8128948;
+    var map = L.map('map').setView([defaultLatitude, defaultLongitude], 4);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(map);
+
+    var marker;
+
+    map.on('click', function(e) {
+        if (marker) {
+            map.removeLayer(marker);
+        }
+        
+        marker = L.marker(e.latlng).addTo(map);
+        
+        document.getElementById('latitude').value = e.latlng.lat;
+        document.getElementById('longitude').value = e.latlng.lng;
+    });
+</script>
 @endsection
