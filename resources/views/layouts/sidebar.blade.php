@@ -34,6 +34,12 @@
                             <span data-key="t-dashboard">Lihat Kondisi Perairan</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('dashboard.sig.index') }}">
+                                <i data-feather="map"></i>
+                                <span data-key="t-dashboard">SIG</span>
+                        </a>
+                    </li>
                 @else
                     {{-- <li>
                         <a href="{{ route('admin.dashboard.root') }}">

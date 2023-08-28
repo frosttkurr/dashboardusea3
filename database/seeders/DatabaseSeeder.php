@@ -62,22 +62,6 @@ class DatabaseSeeder extends Seeder
         $role->syncPermissions($permissions);
         $user->assignRole([$role->id]);
 
-        $user2 = User::create([
-            'name' => 'Nelayan', 
-            'email' => 'nelayan@gmail.com',
-            'password' => bcrypt('123456'),
-            'avatar' => '1637834357.jpg'
-        ]);
-        $role2 = Role::create(['name' => 'Nelayan']);
-        $permissions2 = Permission::where(function ($query) {
-                                        $query->where('name', 'laporan-nelayan')
-                                        ->orWhere('name', 'lihat-report-biota')
-                                        ->orWhere('name', 'lihat-kondisi-perairan');
-                                    })->pluck('id','id');
-
-        $role2->syncPermissions($permissions2);
-        $user2->assignRole([$role2->id]);
-
         $user3 = User::create([
             'name' => 'Team U-Fish', 
             'email' => 'team-ufish@gmail.com',

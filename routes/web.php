@@ -56,6 +56,10 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::group(['prefix' => 'kondisi-perairan', 'as' => 'kondisi-perairan.'], function () {
         Route::get('/', [KondisiPerairanController::class,'indexNelayan'])->name('index');
     });
+
+    Route::group(['prefix' => 'sig', 'as' => 'sig.'], function () {
+        Route::get('/', [SigController::class,'index'])->name('index');
+    });
 });
 
 
