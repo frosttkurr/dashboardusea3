@@ -37,7 +37,6 @@
                         <th class="col-1">No.</th>
                         <th class="col-4">Tanggal</th>
                         <th class="col-2">Status</th>
-                        {{-- <th class="col-2"></th> --}}
                         <th class="col-4">Action</th>
                     </tr>
                     </thead>
