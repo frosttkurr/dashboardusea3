@@ -24,7 +24,7 @@
                 </div>
                 </div>
             <div class="card-body">
-                <div id="googleMap" style="height:600px;"></div>
+                <div id="map" style="height:600px;"></div>
             </div>
         </div>
     </div> <!-- end col -->
@@ -32,29 +32,25 @@
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
-<script src="<?php echo e(URL::asset('assets/libs/datatables.net/datatables.net.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/libs/datatables.net-bs4/datatables.net-bs4.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/libs/datatables.net-buttons/datatables.net-buttons.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/libs/datatables.net-buttons-bs4/datatables.net-buttons-bs4.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/libs/jszip/jszip.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/libs/pdfmake/pdfmake.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/libs/datatables.net-responsive/datatables.net-responsive.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/libs/datatables.net-responsive-bs4/datatables.net-responsive-bs4.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/js/pages/datatables.init.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/js/app.min.js')); ?>"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="<?php echo e(URL::asset('/assets/js/app.min.js')); ?>"></script>
+<script>
+    var defaultLatitude = -0.4807328;
+    var defaultLongitude = 121.8128948;
+    var map = L.map('map').setView([defaultLatitude, defaultLongitude], 5);
 
-<script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script>
-    function initialize() {
-      var options = {
-        center:new google.maps.LatLng(-1.492618,116.4984935),
-        zoom:5.5,
-        mapTypeId:google.maps.MapTypeId.ROADMAP
-      };
-      var map = new google.maps.Map(document.getElementById("googleMap"),options);
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(map);
+
+    var detailTracksData = <?php echo json_encode($trackDetails, 15, 512) ?>;
+    detailTracksData.forEach(function(detailTrack) {
+        var lat = detailTrack.latitude;
+        var lng = detailTrack.longitude;
+        L.marker([lat, lng]).addTo(map);
+    });
+</script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Laravel\dashboardusea3\resources\views/sig/index.blade.php ENDPATH**/ ?>
