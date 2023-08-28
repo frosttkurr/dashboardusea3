@@ -113,15 +113,15 @@ class DatabaseSeeder extends Seeder
         $user4->assignRole([$role4->id]);
 
         Lokasi::insert([
-            ['nama_lokasi' => 'Laut Maluku'],
-            ['nama_lokasi' => 'Laut Jawa'],
-            ['nama_lokasi' => 'Laut Flores'],
-            ['nama_lokasi' => 'Laut Sawu'],
-            ['nama_lokasi' => 'Laut Banda'],
-            ['nama_lokasi' => 'Laut Arafuru'],
-            ['nama_lokasi' => 'Laut Halmahera'],
-            ['nama_lokasi' => 'Laut Timor'],
-            ['nama_lokasi' => 'Laut Seram'],
+            ['nama_lokasi' => 'Kabupaten Badung'],
+            ['nama_lokasi' => 'Kabupaten Bangli '],
+            ['nama_lokasi' => 'Kabupaten Buleleng'],
+            ['nama_lokasi' => 'Kabupaten Gianyar'],
+            ['nama_lokasi' => 'Kabupaten Jembrana'],
+            ['nama_lokasi' => 'Kabupaten Karangasem'],
+            ['nama_lokasi' => 'Kabupaten Klungkung'],
+            ['nama_lokasi' => 'Kabupaten Tabanan'],
+            ['nama_lokasi' => 'Kota Denpasar'],
         ]);
 
         JenisBiota::insert([
