@@ -55,12 +55,6 @@
                                 <span id="badge_status_{{ $track->id }}" class="badge badge-success">Valid</span>
                             @endif
                         </td>
-                        {{-- <td>
-                            <select class="form-control form-control-sm" name="is_valid" id="status_track_{{ $track->id }}" onchange="updateStatus({{ $track->id }})">
-                                <option value="0" @if ($track->is_valid == 0) selected @endif>Belum Valid</option>
-                                <option value="1" @if ($track->is_valid == 1) selected @endif>Valid</option>
-                            </select>
-                        </td> --}}
                         <td>
                             @can('track')
                                 <a href="{{ route('admin.dashboard.track.edit', $track->id) }}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
