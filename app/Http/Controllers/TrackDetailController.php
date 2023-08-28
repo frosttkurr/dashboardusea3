@@ -92,7 +92,7 @@ class TrackDetailController extends Controller
     public function show($track_id, $track_detail_id)
     {
         $track = Track::find($track_id);
-        $trackDetail = TrackDetail::find($track_detail_id);
+        $trackDetail = TrackDetail::with('biota')->with('lokasi')->find($track_detail_id);
         $lokasis = Lokasi::all();
         $biotas = Biota::all();
         return view('track.detail.show',compact("track", "trackDetail", "lokasis", "biotas"));
