@@ -16,10 +16,12 @@ class SigController extends Controller
      */
     public function index()
     {
-        $trackDetails = TrackDetail::join('tracks', 'track_details.id_track', '=', 'tracks.id')
-        ->join('biotas', 'track_details.id_biota', '=', 'biotas.id')
-        ->join('lokasis', 'track_details.id_lokasi', '=', 'lokasis.id')
-        ->where('tracks.is_valid', '=', 1)
+        $trackDetails = TrackDetail::with('track')
+        ->with('biota')
+        ->with('lokasi')
+        ->whereHas('track', function ($query) {
+            $query->where('is_valid', '=', 1);
+        })
         ->get();
         return view('sig.index', compact("trackDetails"));
     }
