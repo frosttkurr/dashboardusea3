@@ -59,6 +59,8 @@ class TrackDetailController extends Controller
             'id_lokasi' => 'required',
             'keterangan' => 'required',
             'image' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
         ]);
 
         $new = new TrackDetail();

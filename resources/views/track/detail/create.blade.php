@@ -74,7 +74,18 @@
 
                     <div class="mb-4">
                         <label class="form-label" for="map">Map</label>
-                        <div id="map" style="height: 400px;"></div>
+                        <div id="map" class="@error('latitude') is-invalid @enderror @error('longitude') is-invalid @enderror" style="height: 400px;"></div>
+
+                        @error('latitude')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        @error('longitude')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     
                     <input type="hidden" name="id_track" class="form-control" value="{{$track->id}}">
