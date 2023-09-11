@@ -56,6 +56,7 @@
                         <td>
                             @can('track')
                                 <a href="{{ route('admin.dashboard.track.detail.edit', [$track->id, $detail->id]) }}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
+                                <a href="{{ route('admin.dashboard.track.detail.show', [$track->id, $detail->id]) }}"><button type="button" class="mt-1 btn btn-secondary waves-effect waves-light">Detail</button></a>
                                 <a href="{{ route('admin.dashboard.track.detail.destroy',[$track->id, $detail->id]) }}" onclick="notificationBeforeDelete(event, this)">
                                     <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
                                 </a>

@@ -43,13 +43,13 @@
                         <td>{{date('d-M-Y', strtotime($track->tanggal))}}</td>
                         <td>
                             @if($track->is_valid == 0)
-                                Belum Valid
+                                <span id="badge_status_{{ $track->id }}" class="badge badge-warning">Belum Valid</span>
                             @else
-                                Valid
+                                <span id="badge_status_{{ $track->id }}" class="badge badge-success">Valid</span>
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('dashboard.track.detail.index', $track->id) }}"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Detail</button></a>
+                            <a href="{{ route('dashboard.track.detail.index', $track->id) }}"><button type="button" class="mt-1 btn btn-secondary waves-effect waves-light">Detail</button></a>
                         </td>
                     </tr>
                     @endforeach

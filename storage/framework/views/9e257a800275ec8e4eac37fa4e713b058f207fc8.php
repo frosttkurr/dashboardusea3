@@ -61,7 +61,7 @@
                                     <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
                                 </a>
                             <?php endif; ?>
-                            <a href="<?php echo e(route('admin.dashboard.track.detail.index', $track->id)); ?>"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Detail</button></a>
+                            <a href="<?php echo e(route('admin.dashboard.track.detail.index', $track->id)); ?>"><button type="button" class="mt-1 btn btn-secondary waves-effect waves-light">Detail</button></a>
                         </td>
                     </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

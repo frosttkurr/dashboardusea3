@@ -61,7 +61,7 @@
                                     <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
                                 </a>
                             @endcan
-                            <a href="{{ route('admin.dashboard.track.detail.index', $track->id) }}"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Detail</button></a>
+                            <a href="{{ route('admin.dashboard.track.detail.index', $track->id) }}"><button type="button" class="mt-1 btn btn-secondary waves-effect waves-light">Detail</button></a>
                         </td>
                     </tr>
                     @endforeach

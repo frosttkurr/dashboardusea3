@@ -43,13 +43,13 @@
                         <td><?php echo e(date('d-M-Y', strtotime($track->tanggal))); ?></td>
                         <td>
                             <?php if($track->is_valid == 0): ?>
-                                Belum Valid
+                                <span id="badge_status_<?php echo e($track->id); ?>" class="badge badge-warning">Belum Valid</span>
                             <?php else: ?>
-                                Valid
+                                <span id="badge_status_<?php echo e($track->id); ?>" class="badge badge-success">Valid</span>
                             <?php endif; ?>
                         </td>
                         <td>
-                            <a href="<?php echo e(route('dashboard.track.detail.index', $track->id)); ?>"><button type="button" class="mt-1 btn btn-primary waves-effect waves-light">Detail</button></a>
+                            <a href="<?php echo e(route('dashboard.track.detail.index', $track->id)); ?>"><button type="button" class="mt-1 btn btn-secondary waves-effect waves-light">Detail</button></a>
                         </td>
                     </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

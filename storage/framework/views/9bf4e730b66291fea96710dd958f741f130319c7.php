@@ -33,6 +33,7 @@
                         <th class="col-2">Lokasi</th>
                         <th class="col-3">Gambar</th>
                         <th class="col-3">Keterangan</th>
+                        <th></th>
                     </tr>
                     </thead>
 
@@ -47,6 +48,7 @@
                             <img src="<?php echo e(url('storage/'.$detail->image)); ?>" alt="Gambar biota" width="200px">
                         </td>
                         <td><?php echo e($detail->keterangan); ?></td>
+                        <td><a href="<?php echo e(route('dashboard.track.detail.show', [$track->id, $detail->id])); ?>"><button type="button" class="mt-1 btn btn-secondary waves-effect waves-light">Detail</button></a></td>
                     </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
