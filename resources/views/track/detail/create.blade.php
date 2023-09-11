@@ -112,17 +112,55 @@
         maxZoom: 19,
     }).addTo(map);
 
-    var marker;
+    var newMarker;
 
     map.on('click', function(e) {
-        if (marker) {
-            map.removeLayer(marker);
+        if (newMarker) {
+            map.removeLayer(newMarker);
         }
         
-        marker = L.marker(e.latlng).addTo(map);
+        newMarker = L.marker(e.latlng).addTo(map);
         
         document.getElementById('latitude').value = e.latlng.lat;
         document.getElementById('longitude').value = e.latlng.lng;
+    });
+
+    var detailTracksData = @json($trackDetails);
+    var existingMarkers = [];
+
+    detailTracksData.forEach(function(detailTrack) {
+        var lat = detailTrack.latitude;
+        var lng = detailTrack.longitude;
+        var imageSrc = "{{ url('storage/') }}/" + detailTrack.image;
+        var marker = L.marker([lat, lng]).addTo(map);
+
+        var popupContent = `
+            <div class="popup-container">
+                <h4 class="popup-title">Track Details</h4>
+                <ul>
+                    <li><b>Biota:</b> ${detailTrack.biota.nama_biota}</li>
+                    <li><b>Lokasi:</b> ${detailTrack.lokasi.nama_lokasi}</li>
+                    <li><b>Keterangan:</b> ${detailTrack.keterangan}</li>
+                </ul>
+                <div class="image-container">
+                    <img src="${imageSrc}" alt="Gambar biota" width="150px">
+                </div>
+            </div>
+        `;
+
+        marker.on('mouseover', function(e) {
+            this.bindPopup(popupContent).openPopup();
+        });
+
+        marker.on('click', function(e) {
+            var latlng = this.getLatLng();
+            map.removeLayer(newMarker);
+            newMarker = L.marker(latlng).addTo(map);
+            document.getElementById('latitude').value = latlng.lat;
+            document.getElementById('longitude').value = latlng.lng;
+        });
+
+        existingMarkers.push(marker);
     });
 </script>
 @endsection

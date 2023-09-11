@@ -42,7 +42,14 @@ class TrackDetailController extends Controller
         $track = Track::find($id);
         $lokasis = Lokasi::all();
         $biotas = Biota::where('status', 1)->get();
-        return view('track.detail.create', compact("lokasis", "biotas", "track"));
+        $trackDetails = TrackDetail::with('track')
+        ->with('biota')
+        ->with('lokasi')
+        ->whereHas('track', function ($query) {
+            $query->where('is_valid', '=', 1);
+        })
+        ->get();
+        return view('track.detail.create', compact("lokasis", "biotas", "track", "trackDetails"));
     }
 
     /**
