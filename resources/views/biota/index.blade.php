@@ -59,7 +59,7 @@
                         <td>
                             <img src="{{ url('storage/'.$biota->image) }}" width="100px" height="100px" alt="Gambar Biota">
                         </td>
-                        <td>@if ($biota->status == 1) <span class="badge badge-success">Active</span> @elseif ($biota->status == 0) <span class="badge badge-danger">Inactive</span> @endif</td>
+                        <td>@if ($biota->status == 1) <span class="badge badge-success">Aktif</span> @elseif ($biota->status == 0) <span class="badge badge-danger">Non-Aktif</span> @endif</td>
                         <td>
                             <a href="{{ route('admin.dashboard.biota.edit', $biota->id) }}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
                         </td>

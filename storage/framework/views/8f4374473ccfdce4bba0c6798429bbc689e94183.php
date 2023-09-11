@@ -61,7 +61,7 @@
                         <td>
                             <img src="<?php echo e(url('storage/'.$biota->image)); ?>" width="100px" height="100px" alt="Gambar Biota">
                         </td>
-                        <td><?php if($biota->status == 1): ?> <span class="badge badge-success">Active</span> <?php elseif($biota->status == 0): ?> <span class="badge badge-danger">Inactive</span> <?php endif; ?></td>
+                        <td><?php if($biota->status == 1): ?> <span class="badge badge-success">Aktif</span> <?php elseif($biota->status == 0): ?> <span class="badge badge-danger">Non-Aktif</span> <?php endif; ?></td>
                         <td>
                             <a href="<?php echo e(route('admin.dashboard.biota.edit', $biota->id)); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
                         </td>

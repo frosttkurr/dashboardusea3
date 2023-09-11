@@ -47,7 +47,7 @@
                     @foreach($trackDetails as $key => $detail)
                     <tr>
                         <td>{{$key+1}}</td>
-                        <td>{{$detail->biota->nama_biota}}</td>
+                        <td>{{$detail->biota->nama_biota}}  @if ($detail->biota->status == 1) <span class="badge badge-success">Aktif</span> @elseif ($detail->biota->status == 0) <span class="badge badge-danger">Non-Aktif</span> @endif</td>
                         <td>{{$detail->lokasi->nama_lokasi}}</td>
                         <td>
                             <img src="{{ url('storage/'.$detail->image) }}" alt="Gambar biota" width="200px">

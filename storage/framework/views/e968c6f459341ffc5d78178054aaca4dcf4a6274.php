@@ -47,7 +47,7 @@
                     <?php $__currentLoopData = $trackDetails; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $detail): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
                         <td><?php echo e($key+1); ?></td>
-                        <td><?php echo e($detail->biota->nama_biota); ?></td>
+                        <td><?php echo e($detail->biota->nama_biota); ?>  <?php if($detail->biota->status == 1): ?> <span class="badge badge-success">Aktif</span> <?php elseif($detail->biota->status == 0): ?> <span class="badge badge-danger">Non-Aktif</span> <?php endif; ?></td>
                         <td><?php echo e($detail->lokasi->nama_lokasi); ?></td>
                         <td>
                             <img src="<?php echo e(url('storage/'.$detail->image)); ?>" alt="Gambar biota" width="200px">

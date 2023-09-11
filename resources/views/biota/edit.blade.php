@@ -77,8 +77,8 @@
                     <div class="mb-4">
                         <label class="form-label" for="status">Status</label>
                         <select class="form-control @error('status') is-invalid @enderror" data-trigger name="status" id="choices-single-default">
-                            <option value="1" @if ($biota->status == 1) selected @endif><span class="badge badge-success">Active</span></option>
-                            <option value="0" @if ($biota->status == 0) selected @endif><span class="badge badge-danger">Inactive</span></option>
+                            <option value="1" @if ($biota->status == 1) selected @endif><span class="badge badge-success">Aktif</span></option>
+                            <option value="0" @if ($biota->status == 0) selected @endif><span class="badge badge-danger">Non-Aktif</span></option>
                         </select>
 
                         @error('status')

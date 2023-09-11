@@ -140,8 +140,8 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" data-trigger name="status" id="choices-single-default">
-                            <option value="1" <?php if($biota->status == 1): ?> selected <?php endif; ?>><span class="badge badge-success">Active</span></option>
-                            <option value="0" <?php if($biota->status == 0): ?> selected <?php endif; ?>><span class="badge badge-danger">Inactive</span></option>
+                            <option value="1" <?php if($biota->status == 1): ?> selected <?php endif; ?>><span class="badge badge-success">Aktif</span></option>
+                            <option value="0" <?php if($biota->status == 0): ?> selected <?php endif; ?>><span class="badge badge-danger">Non-Aktif</span></option>
                         </select>
 
                         <?php $__errorArgs = ['status'];

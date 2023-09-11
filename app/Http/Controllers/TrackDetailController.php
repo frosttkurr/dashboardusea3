@@ -109,7 +109,7 @@ class TrackDetailController extends Controller
         $track = Track::find($track_id);
         $trackDetail = TrackDetail::find($track_detail_id);
         $lokasis = Lokasi::all();
-        $biotas = Biota::all();
+        $biotas = Biota::where('status', 1)->get();
         return view('track.detail.edit',compact("track", "trackDetail", "lokasis", "biotas"));
     }
 
