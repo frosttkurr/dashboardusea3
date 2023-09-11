@@ -45,7 +45,7 @@
                     @foreach($laporanNelayans as $key => $laporan)
                     <tr>
                         <td>{{$key+1}}</td>
-                        <td>{{$laporan->tanggal}}</td>
+                        <td>{{date('d-M-Y', strtotime($laporan->tanggal))}}</td>
                         <td>{{$laporan->lokasi->nama_lokasi}}</td>
                         <td>{{$laporan->jenis_temuan->jenis_temuan}}</td>
                         <td>{{$laporan->isi_laporan}}</td>

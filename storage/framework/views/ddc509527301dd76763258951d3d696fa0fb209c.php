@@ -45,7 +45,7 @@
                     <?php $__currentLoopData = $laporanNelayans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $laporan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
                         <td><?php echo e($key+1); ?></td>
-                        <td><?php echo e($laporan->tanggal); ?></td>
+                        <td><?php echo e(date('d-M-Y', strtotime($laporan->tanggal))); ?></td>
                         <td><?php echo e($laporan->lokasi->nama_lokasi); ?></td>
                         <td><?php echo e($laporan->jenis_temuan->jenis_temuan); ?></td>
                         <td><?php echo e($laporan->isi_laporan); ?></td>
