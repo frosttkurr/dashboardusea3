@@ -67,6 +67,7 @@ class BiotaController extends Controller
         $new->nama_biota = $request->nama_biota;
         $new->id_jenis_biota = $request->id_jenis_biota;
         $new->deskripsi = $request->deskripsi;
+        $new->status = 1;
 
         if($request->file('image')){
             $path = $request->file('image')->store('biotas', 'public');
@@ -118,12 +119,14 @@ class BiotaController extends Controller
             'id_jenis_biota' => 'required',
             'deskripsi' => 'required',
             'image' => ['image','mimes:jpg,jpeg,png'],
+            'status' => 'required',
         ]);
         
         $new = Biota::find($id);
         $new->nama_biota = $request->nama_biota;
         $new->id_jenis_biota = $request->id_jenis_biota;
         $new->deskripsi = $request->deskripsi;
+        $new->status = $request->status;
         
         if($request->file('image')){
             $path = $request->file('image')->store('biotas', 'public');
@@ -143,22 +146,22 @@ class BiotaController extends Controller
      * @param  \App\Models\Biota  $biota
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $biota = Biota::find($id);
-        $biota->delete();
+    // public function destroy($id)
+    // {
+    //     $biota = Biota::find($id);
+    //     $biota->delete();
 
-        $log = new Log();
-        $log->createLog(Auth::user()->name, 'delete', 'Delete biota data (ID: '.$id.' | Name: '.$biota->nama_biota.')', '\App\Biota', 'BiotaController@destroy');
+    //     $log = new Log();
+    //     $log->createLog(Auth::user()->name, 'delete', 'Delete biota data (ID: '.$id.' | Name: '.$biota->nama_biota.')', '\App\Biota', 'BiotaController@destroy');
         
-        $track_details = TrackDetail::where('id_biota', $id)->get();
-        foreach ($track_details as $track_detail) {
-            $track_detail->delete();
+    //     $track_details = TrackDetail::where('id_biota', $id)->get();
+    //     foreach ($track_details as $track_detail) {
+    //         $track_detail->delete();
 
-            $log = new Log();
-            $log->createLog(Auth::user()->name, 'delete', 'Delete track detail data (ID: '.$track_detail->id.' | ID Track: '.$track_detail->id_track.')', '\App\TrackDetail', 'TrackDetailController@destroy');
-        }
+    //         $log = new Log();
+    //         $log->createLog(Auth::user()->name, 'delete', 'Delete track detail data (ID: '.$track_detail->id.' | ID Track: '.$track_detail->id_track.')', '\App\TrackDetail', 'TrackDetailController@destroy');
+    //     }
 
-        return redirect()->route('admin.dashboard.biota.index');
-    }
+    //     return redirect()->route('admin.dashboard.biota.index');
+    // }
 }

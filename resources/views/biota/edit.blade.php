@@ -73,6 +73,20 @@
                             @enderror
                         </div>
                     </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label" for="status">Status</label>
+                        <select class="form-control @error('status') is-invalid @enderror" data-trigger name="status" id="choices-single-default">
+                            <option value="1" @if ($biota->status == 1) selected @endif><span class="badge badge-success">Active</span></option>
+                            <option value="0" @if ($biota->status == 0) selected @endif><span class="badge badge-danger">Inactive</span></option>
+                        </select>
+
+                        @error('status')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Ubah Data</button>
                 </form>
             </div>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nama_biota');
             $table->string('deskripsi')->nullable();
             $table->string('image')->nullable();
+            $table->smallInteger('status')->default('1');
             $table->timestamps();
             $table->softDeletes();
         });

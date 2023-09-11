@@ -129,6 +129,34 @@ endif;
 unset($__errorArgs, $__bag); ?>
                         </div>
                     </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label" for="status">Status</label>
+                        <select class="form-control <?php $__errorArgs = ['status'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" data-trigger name="status" id="choices-single-default">
+                            <option value="1" <?php if($biota->status == 1): ?> selected <?php endif; ?>><span class="badge badge-success">Active</span></option>
+                            <option value="0" <?php if($biota->status == 0): ?> selected <?php endif; ?>><span class="badge badge-danger">Inactive</span></option>
+                        </select>
+
+                        <?php $__errorArgs = ['status'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <span class="invalid-feedback" role="alert">
+                                <strong><?php echo e($message); ?></strong>
+                            </span>
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                    </div>
                     <button type="submit" class="mt-1 btn btn-primary waves-effect waves-light">Ubah Data</button>
                 </form>
             </div>

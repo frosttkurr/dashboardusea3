@@ -36,6 +36,7 @@
                         <th class="col-2"> Jenis</th>
                         <th class="col-3"> Deskripsi</th>
                         <th class="col-2"> Gambar</th>
+                        <th class="col-1"> Status</th>
                         <th class="col-1">Action</th>
                     </tr>
                     </thead>
@@ -58,13 +59,9 @@
                         <td>
                             <img src="{{ url('storage/'.$biota->image) }}" width="100px" height="100px" alt="Gambar Biota">
                         </td>
+                        <td>@if ($biota->status == 1) <span class="badge badge-success">Active</span> @elseif ($biota->status == 0) <span class="badge badge-danger">Inactive</span> @endif</td>
                         <td>
                             <a href="{{ route('admin.dashboard.biota.edit', $biota->id) }}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
-                            @if (Auth::user()->roles[0]->id == 1)
-                                <a href="{{ route('admin.dashboard.biota.destroy', $biota->id) }}" onclick="notificationBeforeDelete(event, this)">
-                                    <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
-                                </a>
-                            @endif
                         </td>
                     </tr>
                     @endforeach

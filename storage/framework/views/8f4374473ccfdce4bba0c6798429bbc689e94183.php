@@ -36,6 +36,7 @@
                         <th class="col-2"> Jenis</th>
                         <th class="col-3"> Deskripsi</th>
                         <th class="col-2"> Gambar</th>
+                        <th class="col-1"> Status</th>
                         <th class="col-1">Action</th>
                     </tr>
                     </thead>
@@ -60,13 +61,9 @@
                         <td>
                             <img src="<?php echo e(url('storage/'.$biota->image)); ?>" width="100px" height="100px" alt="Gambar Biota">
                         </td>
+                        <td><?php if($biota->status == 1): ?> <span class="badge badge-success">Active</span> <?php elseif($biota->status == 0): ?> <span class="badge badge-danger">Inactive</span> <?php endif; ?></td>
                         <td>
                             <a href="<?php echo e(route('admin.dashboard.biota.edit', $biota->id)); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
-                            <?php if(Auth::user()->roles[0]->id == 1): ?>
-                                <a href="<?php echo e(route('admin.dashboard.biota.destroy', $biota->id)); ?>" onclick="notificationBeforeDelete(event, this)">
-                                    <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
-                                </a>
-                            <?php endif; ?>
                         </td>
                     </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
