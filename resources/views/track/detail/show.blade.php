@@ -85,7 +85,10 @@
                     <input type="hidden" name="id_track" class="form-control" value="{{$track->id}}">
                     <input type="hidden" name="latitude" id="latitude" value="{{$trackDetail->latitude}}">
                     <input type="hidden" name="longitude" id="longitude" value="{{$trackDetail->longitude}}">
-                    <a href="{{ route('admin.dashboard.track.detail.edit', [$trackDetail->id_track, $trackDetail->id]) }}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
+                    
+                    @if (Route::is('admin.*'))
+                        <a href="{{ route('admin.dashboard.track.detail.edit', [$trackDetail->id_track, $trackDetail->id]) }}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
+                    @endif
                 </form>
             </div>
         </div>

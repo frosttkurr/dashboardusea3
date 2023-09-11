@@ -18,8 +18,13 @@
 @show
     <!-- Begin page -->
     <div id="layout-wrapper">
+        @if (Route::is('dashboard.*'))
+            @include('layouts.topbar-nelayan')
+            @include('layouts.sidebar-nelayan')
+        @else 
             @include('layouts.topbar')
-        @include('layouts.sidebar')
+            @include('layouts.sidebar')
+        @endif
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->

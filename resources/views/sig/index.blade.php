@@ -51,7 +51,12 @@
         var lat = detailTrack.latitude;
         var lng = detailTrack.longitude;
         var imageSrc = "{{ url('storage/') }}/" + detailTrack.image;
-        var routeUrl = "{{ route('admin.dashboard.track.detail.show', ['id_track', 'id']) }}";
+        @if (Route::is('dashboard.*'))
+            var routeUrl = "{{ route('dashboard.track.detail.show', ['id_track', 'id']) }}";
+        @elseif (Route::is('admin.*'))
+            var routeUrl = "{{ route('admin.dashboard.track.detail.show', ['id_track', 'id']) }}";
+        @endif
+        
         routeUrl = routeUrl.replace('id_track', detailTrack.id_track).replace('id', detailTrack.id);
         var marker = L.marker([lat, lng]).addTo(map);
 

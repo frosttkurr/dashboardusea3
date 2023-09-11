@@ -51,7 +51,12 @@
         var lat = detailTrack.latitude;
         var lng = detailTrack.longitude;
         var imageSrc = "<?php echo e(url('storage/')); ?>/" + detailTrack.image;
-        var routeUrl = "<?php echo e(route('admin.dashboard.track.detail.show', ['id_track', 'id'])); ?>";
+        <?php if(Route::is('dashboard.*')): ?>
+            var routeUrl = "<?php echo e(route('dashboard.track.detail.show', ['id_track', 'id'])); ?>";
+        <?php elseif(Route::is('admin.*')): ?>
+            var routeUrl = "<?php echo e(route('admin.dashboard.track.detail.show', ['id_track', 'id'])); ?>";
+        <?php endif; ?>
+        
         routeUrl = routeUrl.replace('id_track', detailTrack.id_track).replace('id', detailTrack.id);
         var marker = L.marker([lat, lng]).addTo(map);
 
