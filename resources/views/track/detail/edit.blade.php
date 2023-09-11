@@ -22,7 +22,7 @@
                         <select name="id_biota" class="form-control @error('id_biota') is-invalid @enderror">
                             <option selected="true" disabled="disabled">Pilih Biota</option>   
                             @foreach ($biotas as $biota)
-                                <option value="{{ $biota->id }}" @if($biota->id == $trackDetail->id_biota) selected @endif>{{ $biota->nama_biota }}</option>
+                                <option value="{{ $biota->id }}" @if($biota->id == $trackDetail->id_biota) selected @endif @if ($biota->status == 0) disabled @endif>{{ $biota->nama_biota }}</option>
                             @endforeach
                         </select>
 

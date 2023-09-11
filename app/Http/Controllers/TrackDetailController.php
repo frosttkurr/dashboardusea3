@@ -41,7 +41,7 @@ class TrackDetailController extends Controller
     {
         $track = Track::find($id);
         $lokasis = Lokasi::all();
-        $biotas = Biota::all();
+        $biotas = Biota::where('status', 1)->get();
         return view('track.detail.create', compact("lokasis", "biotas", "track"));
     }
 

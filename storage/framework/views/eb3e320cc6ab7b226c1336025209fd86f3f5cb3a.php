@@ -29,7 +29,7 @@ endif;
 unset($__errorArgs, $__bag); ?>">
                             <option selected="true" disabled="disabled">Pilih Biota</option>   
                             <?php $__currentLoopData = $biotas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $biota): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <option value="<?php echo e($biota->id); ?>" <?php if($biota->id == $trackDetail->id_biota): ?> selected <?php endif; ?>><?php echo e($biota->nama_biota); ?></option>
+                                <option value="<?php echo e($biota->id); ?>" <?php if($biota->id == $trackDetail->id_biota): ?> selected <?php endif; ?> <?php if($biota->status == 0): ?> disabled <?php endif; ?>><?php echo e($biota->nama_biota); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
 
