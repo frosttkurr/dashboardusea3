@@ -102,7 +102,14 @@ class TrackDetailController extends Controller
         $trackDetail = TrackDetail::with('biota')->with('lokasi')->find($track_detail_id);
         $lokasis = Lokasi::all();
         $biotas = Biota::all();
-        return view('track.detail.show',compact("track", "trackDetail", "lokasis", "biotas"));
+        $trackDetailsData = TrackDetail::with('track')
+        ->with('biota')
+        ->with('lokasi')
+        ->whereHas('track', function ($query) {
+            $query->where('is_valid', '=', 1);
+        })
+        ->get();
+        return view('track.detail.show',compact("track", "trackDetail", "lokasis", "biotas", "trackDetailsData"));
     }
 
     /**
@@ -117,7 +124,14 @@ class TrackDetailController extends Controller
         $trackDetail = TrackDetail::find($track_detail_id);
         $lokasis = Lokasi::all();
         $biotas = Biota::where('status', 1)->get();
-        return view('track.detail.edit',compact("track", "trackDetail", "lokasis", "biotas"));
+        $trackDetailsData = TrackDetail::with('track')
+        ->with('biota')
+        ->with('lokasi')
+        ->whereHas('track', function ($query) {
+            $query->where('is_valid', '=', 1);
+        })
+        ->get();
+        return view('track.detail.edit',compact("track", "trackDetail", "lokasis", "biotas", "trackDetailsData"));
     }
 
     /**

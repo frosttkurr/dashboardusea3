@@ -111,17 +111,36 @@
         maxZoom: 19,
     }).addTo(map);
 
-    var marker = L.marker([latitude, longitude]).addTo(map);
+    var newMarker;
 
     map.on('click', function(e) {
-        if (marker) {
-            map.removeLayer(marker);
+        if (newMarker) {
+            map.removeLayer(newMarker);
         }
         
-        marker = L.marker(e.latlng).addTo(map);
+        newMarker = L.marker(e.latlng).addTo(map);
         
         document.getElementById('latitude').value = e.latlng.lat;
         document.getElementById('longitude').value = e.latlng.lng;
+    });
+
+    var detailTracksData = @json($trackDetailsData);
+    var existingMarkers = [];
+
+    detailTracksData.forEach(function(detailTrack) {
+        var lat = detailTrack.latitude;
+        var lng = detailTrack.longitude;
+        var marker = L.marker([lat, lng]).addTo(map);
+
+        marker.on('click', function(e) {
+            var latlng = this.getLatLng();
+            map.removeLayer(newMarker);
+            newMarker = L.marker(latlng).addTo(map);
+            document.getElementById('latitude').value = latlng.lat;
+            document.getElementById('longitude').value = latlng.lng;
+        });
+
+        existingMarkers.push(marker);
     });
 </script>
 @endsection

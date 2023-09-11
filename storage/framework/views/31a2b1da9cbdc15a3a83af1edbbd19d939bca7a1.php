@@ -215,26 +215,7 @@ unset($__errorArgs, $__bag); ?>
     detailTracksData.forEach(function(detailTrack) {
         var lat = detailTrack.latitude;
         var lng = detailTrack.longitude;
-        var imageSrc = "<?php echo e(url('storage/')); ?>/" + detailTrack.image;
         var marker = L.marker([lat, lng]).addTo(map);
-
-        var popupContent = `
-            <div class="popup-container">
-                <h4 class="popup-title">Track Details</h4>
-                <ul>
-                    <li><b>Biota:</b> ${detailTrack.biota.nama_biota}</li>
-                    <li><b>Lokasi:</b> ${detailTrack.lokasi.nama_lokasi}</li>
-                    <li><b>Keterangan:</b> ${detailTrack.keterangan}</li>
-                </ul>
-                <div class="image-container">
-                    <img src="${imageSrc}" alt="Gambar biota" width="150px">
-                </div>
-            </div>
-        `;
-
-        marker.on('mouseover', function(e) {
-            this.bindPopup(popupContent).openPopup();
-        });
 
         marker.on('click', function(e) {
             var latlng = this.getLatLng();
