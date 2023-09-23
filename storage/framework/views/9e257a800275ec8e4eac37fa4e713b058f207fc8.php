@@ -56,10 +56,12 @@
                         </td>
                         <td>
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('track')): ?>
-                                <a href="<?php echo e(route('admin.dashboard.track.edit', $track->id)); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
-                                <a href="<?php echo e(route('admin.dashboard.track.destroy', $track->id)); ?>" onclick="notificationBeforeDelete(event, this)">
-                                    <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
-                                </a>
+                                <?php if(Auth::user()->roles[0]->id == 1): ?>
+                                    <a href="<?php echo e(route('admin.dashboard.track.edit', $track->id)); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
+                                    <a href="<?php echo e(route('admin.dashboard.track.destroy', $track->id)); ?>" onclick="notificationBeforeDelete(event, this)">
+                                        <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
+                                    </a>
+                                <?php endif; ?>
                             <?php endif; ?>
                             <a href="<?php echo e(route('admin.dashboard.track.detail.index', $track->id)); ?>"><button type="button" class="mt-1 btn btn-secondary waves-effect waves-light">Detail</button></a>
                         </td>

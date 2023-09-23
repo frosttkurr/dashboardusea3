@@ -86,7 +86,7 @@
                     <input type="hidden" name="latitude" id="latitude" value="{{$trackDetail->latitude}}">
                     <input type="hidden" name="longitude" id="longitude" value="{{$trackDetail->longitude}}">
                     
-                    @if (Route::is('admin.*'))
+                    @if (Auth::user()->roles[0]->id == 1)
                         <a href="{{ route('admin.dashboard.track.detail.edit', [$trackDetail->id_track, $trackDetail->id]) }}"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
                     @endif
                 </form>

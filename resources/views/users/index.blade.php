@@ -59,9 +59,11 @@
                             </td>
                             <td>
                                 <a class="btn btn-primary" href="{{ route('admin.dashboard.users.edit',$user->id) }}">Edit</a>
-                                <a href="{{ route('admin.dashboard.users.destroy', $user->id) }}" onclick="notificationBeforeDelete(event, this)">
-                                    <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
-                                </a>
+                                @if (Auth::user()->roles[0]->id == 1)
+                                    <a href="{{ route('admin.dashboard.users.destroy', $user->id) }}" onclick="notificationBeforeDelete(event, this)">
+                                        <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
+                                    </a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

@@ -52,9 +52,11 @@
                             </td>
                             <td>
                                 <a class="btn btn-primary" href="{{ route('admin.dashboard.roles.edit',$role->id) }}">Edit</a>
-                                <a href="{{ route('admin.dashboard.roles.destroy', $role->id) }}" onclick="notificationBeforeDelete(event, this)">
-                                    <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
-                                </a>
+                                @if (Auth::user()->roles[0]->id == 1)
+                                    <a href="{{ route('admin.dashboard.roles.destroy', $role->id) }}" onclick="notificationBeforeDelete(event, this)">
+                                        <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
+                                    </a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

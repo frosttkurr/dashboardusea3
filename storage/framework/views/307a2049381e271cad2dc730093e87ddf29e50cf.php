@@ -156,7 +156,7 @@ unset($__errorArgs, $__bag); ?>
                     <input type="hidden" name="latitude" id="latitude" value="<?php echo e($trackDetail->latitude); ?>">
                     <input type="hidden" name="longitude" id="longitude" value="<?php echo e($trackDetail->longitude); ?>">
                     
-                    <?php if(Route::is('admin.*')): ?>
+                    <?php if(Auth::user()->roles[0]->id == 1): ?>
                         <a href="<?php echo e(route('admin.dashboard.track.detail.edit', [$trackDetail->id_track, $trackDetail->id])); ?>"><button type="button" class="mt-1 btn btn-warning waves-effect waves-light">Edit</button></a>
                     <?php endif; ?>
                 </form>

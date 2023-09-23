@@ -53,9 +53,11 @@
                             </td>
                             <td>
                                 <a class="btn btn-primary" href="<?php echo e(route('admin.dashboard.roles.edit',$role->id)); ?>">Edit</a>
-                                <a href="<?php echo e(route('admin.dashboard.roles.destroy', $role->id)); ?>" onclick="notificationBeforeDelete(event, this)">
-                                    <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
-                                </a>
+                                <?php if(Auth::user()->roles[0]->name ==  "Admin"): ?>
+                                    <a href="<?php echo e(route('admin.dashboard.roles.destroy', $role->id)); ?>" onclick="notificationBeforeDelete(event, this)">
+                                        <button type="button" class="mt-1 btn btn-danger waves-effect waves-light">Hapus</button>
+                                    </a>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
