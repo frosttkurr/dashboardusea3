@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Biota;
 use App\Models\TrackDetail;
 use App\Models\LaporanNelayan;
+use App\Exports\ExportReport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -140,5 +142,10 @@ class HomeController extends Controller
                 ], 200); // Status code here
             }
         }
+    }
+
+    public function export_excel()
+    {
+        return Excel::download(new ExportReport, '20230923_dashboardusea_reports_data.xlsx');
     }
 }

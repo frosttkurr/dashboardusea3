@@ -20,14 +20,18 @@
                     <div class="flex-grow-1">
                         <span class="text-muted mb-3 lh-1 d-block text-truncate">Unduh Data Report</span>
                         <h4 class="mb-3">
-                            <span class="counter-value" data-target="18.34">0</span>%
+                            <div class="container mt-5">
+                                <a href="{{ route('admin.dashboard.export.excel') }}" target="_blank" class="excel-link">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Excel_2013-2019_logo.svg/2170px-Microsoft_Excel_2013-2019_logo.svg.png" alt="Excel Logo" class="excel-logo" height="50px">
+                                </a>
+                            </div>
                         </h4>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="col-xl-3 col-md-6">
         <!-- card -->
         <div class="card card-h-100">
