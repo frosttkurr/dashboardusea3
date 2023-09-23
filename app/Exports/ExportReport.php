@@ -18,6 +18,21 @@ class ExportReport implements FromCollection, WithMultipleSheets
     {
         return collect([
             [
+                'title' => 'Reports',
+                'headers' => ['Total Biota Tercatat', 'Total Hasil Tracker', 'Total Laporan Nelayan Masuk'],
+                'data' => [
+                    [
+                        'Total Biota Tercatat' => Biota::count(),
+                        'Total Hasil Tracker' => TrackDetail::with('track')
+                            ->whereHas('track', function ($query) {
+                                $query->where('is_valid', '=', 1);
+                            })
+                            ->count(),
+                        'Total Laporan Nelayan Masuk' => LaporanNelayan::count(),
+                    ],  
+                ],
+            ],
+            [
                 'title' => 'Biota',
                 'headers' => ['ID', 'Jenis Biota', 'Nama Biota', 'Deskripsi'],
                 'data' => DB::table('biotas')
