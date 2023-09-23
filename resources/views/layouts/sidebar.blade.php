@@ -8,6 +8,14 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 @if (Auth::user())
+                    @if (Auth::user()->roles[0]->id == 1)
+                        <li>
+                            <a href="{{ route('admin.dashboard.root') }}">
+                                <i data-feather="align-justify"></i>
+                                <span data-key="t-codesandbox">Dashboard</span>
+                            </a>
+                        </li>
+                    @endif
                     @can('jenis-biota')
                         <li>
                             <a href="{{ route('admin.dashboard.jenis-biota.index') }}">

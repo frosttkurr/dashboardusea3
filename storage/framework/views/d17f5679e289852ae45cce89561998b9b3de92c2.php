@@ -8,6 +8,14 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 <?php if(Auth::user()): ?>
+                    <?php if(Auth::user()->roles[0]->id == 1): ?>
+                        <li>
+                            <a href="<?php echo e(route('admin.dashboard.root')); ?>">
+                                <i data-feather="align-justify"></i>
+                                <span data-key="t-codesandbox">Dashboard</span>
+                            </a>
+                        </li>
+                    <?php endif; ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('jenis-biota')): ?>
                         <li>
                             <a href="<?php echo e(route('admin.dashboard.jenis-biota.index')); ?>">

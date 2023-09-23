@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Biota;
+use App\Models\TrackDetail;
+use App\Models\LaporanNelayan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -36,7 +39,22 @@ class HomeController extends Controller
 
     public function root()
     {
-        return redirect()->route('admin.dashboard.jenis-biota.index');
+        $count_biotas = Biota::count();
+        $count_tracks = TrackDetail::with('track')
+        ->whereHas('track', function ($query) {
+            $query->where('is_valid', '=', 1);
+        })
+        ->count();
+        $count_laporan_nelayans = LaporanNelayan::count();
+        
+        $trackDetails = TrackDetail::with('track')
+        ->with('biota')
+        ->with('lokasi')
+        ->whereHas('track', function ($query) {
+            $query->where('is_valid', '=', 1);
+        })
+        ->get();
+        return view('index', compact('count_biotas', 'count_tracks', 'count_laporan_nelayans', 'trackDetails'));
     }
 
     /*Language Translation*/
