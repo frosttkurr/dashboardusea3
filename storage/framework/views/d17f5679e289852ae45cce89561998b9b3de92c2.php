@@ -56,6 +56,14 @@
                             </a>
                         </li>
                     <?php endif; ?>
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('laporan-nelayan')): ?>
+                        <li>
+                            <a href="<?php echo e(route('admin.dashboard.laporan-nelayan.index')); ?>">
+                                <i data-feather="aperture"></i>
+                                <span data-key="t-dashboard">Laporan Nelayan</span>
+                            </a>
+                        </li>
+                    <?php endif; ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('kondisi-perairan')): ?>
                         <li>
                             <a href="<?php echo e(route('admin.dashboard.kondisi-perairan.index')); ?>">

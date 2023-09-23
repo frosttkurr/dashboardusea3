@@ -56,6 +56,14 @@
                             </a>
                         </li>
                     @endcan
+                    @can('laporan-nelayan')
+                        <li>
+                            <a href="{{ route('admin.dashboard.laporan-nelayan.index') }}">
+                                <i data-feather="aperture"></i>
+                                <span data-key="t-dashboard">Laporan Nelayan</span>
+                            </a>
+                        </li>
+                    @endcan
                     @can('kondisi-perairan')
                         <li>
                             <a href="{{ route('admin.dashboard.kondisi-perairan.index') }}">

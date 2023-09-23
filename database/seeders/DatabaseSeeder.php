@@ -53,6 +53,7 @@ class DatabaseSeeder extends Seeder
                                     ->orWhere('name', 'jenis-biota')
                                     ->orWhere('name', 'jenis-temuan')
                                     ->orWhere('name', 'lokasi')
+                                    ->orWhere('name', 'laporan-nelayan')
                                     ->orWhere('name', 'role')
                                     ->orWhere('name', 'user')
                                     ->orWhere('name', 'logs')
@@ -77,6 +78,7 @@ class DatabaseSeeder extends Seeder
                                     ->orWhere('name', 'jenis-biota')
                                     ->orWhere('name', 'jenis-temuan')
                                     ->orWhere('name', 'lokasi')
+                                    ->orWhere('name', 'laporan-nelayan')
                                     ->orWhere('name', 'sig');
                                 })->pluck('id','id');
         $role3->syncPermissions($permissions3);
