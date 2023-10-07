@@ -66,7 +66,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
         Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
-        Route::get('export/excel', [App\Http\Controllers\HomeController::class, 'export_excel'])->name('export.excel');
+        Route::post('export/excel', [App\Http\Controllers\HomeController::class, 'export_excel'])->name('export.excel');
 
         Route::group(['prefix' => 'jenis-biota', 'as' => 'jenis-biota.'], function () {
             Route::get('/', [JenisBiotaController::class,'index'])->name('index');

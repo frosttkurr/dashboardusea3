@@ -144,8 +144,14 @@ class HomeController extends Controller
         }
     }
 
-    public function export_excel()
+    public function export_excel(Request $request)
     {
-        return Excel::download(new ExportReport, '20230923_dashboardusea_reports_data.xlsx');
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+
+        $dateToday = date('Ymd');
+        $file_name = $dateToday . "_dashboardusea_reports_data.xlsx";
+
+        return Excel::download(new ExportReport($startDate, $endDate), $file_name);
     }
 }
